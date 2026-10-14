@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>یوسف پرورش | توسعه‌دهنده و طراح</title>
+<meta name="description" content="Yousef Parvaresh — Personal Website | سایت شخصی یوسف پرورش">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23242830'/%3E%3Ctext x='50' y='72' font-size='56' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'%3EY%3C/text%3E%3C/svg%3E">
+<style>
+[data-theme="light"]{
+  --bg:#f4f5f7; --bg2:#ffffff; --card:#ffffff; --card2:#eceef1;
+  --border:#e3e6ea; --text:#1a1d23; --muted:#6b7280;
+  --acc:#242830; --on-acc:#ffffff; --acc-soft:rgba(36,40,48,.06);
+  --grad:linear-gradient(120deg,#3a3f48,#14161b,#3a3f48);
+  --nav-bg:rgba(244,245,247,.88); --grid:rgba(20,24,32,.05);
+  --orb:#c7ccd4; --hover-b:rgba(36,40,48,.45);
+  --shadow:0 22px 44px -22px rgba(20,24,32,.28);
+}
+[data-theme="dark"]{
+  --bg:#0f1114; --bg2:#16181d; --card:#191c22; --card2:#22262e;
+  --border:#2a2f38; --text:#eef0f3; --muted:#98a0ac;
+  --acc:#e8eaee; --on-acc:#14161a; --acc-soft:rgba(232,234,238,.07);
+  --grad:linear-gradient(120deg,#f2f4f7,#aab1bd,#f2f4f7);
+  --nav-bg:rgba(15,17,20,.88); --grid:rgba(255,255,255,.045);
+  --orb:#2e3542; --hover-b:rgba(232,234,238,.5);
+  --shadow:0 22px 44px -18px rgba(0,0,0,.65);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Vazirmatn','Segoe UI',Tahoma,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;transition:background .4s,color .4s}
+html[lang="en"] body{font-family:'Inter','Segoe UI',system-ui,Arial,sans-serif}
+button{font-family:inherit;cursor:pointer}
+::selection{background:var(--acc);color:var(--on-acc)}
+::-webkit-scrollbar{width:9px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--card2);border-radius:9px}
+
+/* لودر — حلقه چرخان + مونوگرام + نوار (CSS خالص، همیشه بسته می‌شه) */
+#loader{position:fixed;top:0;right:0;bottom:0;left:0;z-index:999;background:var(--bg);display:grid;place-items:center;pointer-events:none;animation:loaderOut .6s ease 1.4s forwards}
+@keyframes loaderOut{to{opacity:0;visibility:hidden}}
+.l-wrap{text-align:center}
+.l-mark{position:relative;width:96px;height:96px;margin:0 auto 18px}
+.l-ring{position:absolute;top:0;right:0;bottom:0;left:0;border-radius:50%;border:4px solid var(--card2);border-top-color:var(--acc);animation:lspin .9s linear infinite}
+@keyframes lspin{to{transform:rotate(360deg)}}
+.l-letter{position:absolute;top:0;right:0;bottom:0;left:0;display:grid;place-items:center;font-size:2.1rem;font-weight:900}
+.l-name{font-weight:900;font-size:1.2rem}
+.l-bar{width:140px;height:4px;border-radius:99px;background:var(--card2);margin:14px auto 0;overflow:hidden}
+.l-bar i{display:block;height:100%;width:45%;border-radius:99px;background:var(--acc);animation:lbar 1.1s ease-in-out infinite}
+@keyframes lbar{0%{transform:translateX(160%)}100%{transform:translateX(-260%)}}
+
+body::before{content:'';position:fixed;top:0;right:0;bottom:0;left:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:44px 44px;-webkit-mask-image:radial-gradient(ellipse at 50% 0%,#000 0%,transparent 70%);mask-image:radial-gradient(ellipse at 50% 0%,#000 0%,transparent 70%);pointer-events:none;z-index:0}
+.orb{position:fixed;border-radius:50%;filter:blur(110px);background:var(--orb);opacity:.3;z-index:0;pointer-events:none}
+.orb1{width:420px;height:420px;top:-140px;left:-140px;animation:drift 14s ease-in-out infinite}
+.orb2{width:380px;height:380px;bottom:-160px;right:-120px;animation:drift 16s ease-in-out infinite reverse}
+@keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,30px)}}
+.container{max-width:1150px;margin:0 auto;padding:0 22px;position:relative;z-index:1}
+main{position:relative;z-index:1}
+.grad{background:var(--grad);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 7s linear infinite}
+@keyframes shine{to{background-position:200% center}}
+
+header{position:fixed;top:0;right:0;left:0;z-index:100;transition:.3s}
+header.scrolled{background:var(--nav-bg);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px;gap:10px}
+.logo{font-weight:900;font-size:1.3rem;color:var(--text);text-decoration:none;white-space:nowrap}
+.logo b{color:var(--muted);font-weight:900}
+.nav-links{display:flex;gap:4px;list-style:none}
+.nav-links a{position:relative;padding:9px 13px;border-radius:10px;color:var(--muted);text-decoration:none;font-weight:500;font-size:.9rem;transition:.3s;white-space:nowrap}
+.nav-links a:hover{color:var(--text)}
+.nav-links a.active{color:var(--text);font-weight:700}
+.nav-links a.active::after{content:'';position:absolute;bottom:3px;right:13px;left:13px;height:2.5px;border-radius:3px;background:var(--acc)}
+.nav-actions{display:flex;gap:8px;align-items:center}
+.nav-btn{height:40px;min-width:40px;border-radius:12px;border:1px solid var(--border);background:var(--card);color:var(--text);font-size:1rem;display:grid;place-items:center;transition:.3s;padding:0 10px;font-weight:800}
+.nav-btn:hover{border-color:var(--acc)}
+.burger{display:none;font-size:1.15rem}
+
+.page{display:none;min-height:100vh;padding:120px 0 80px}
+.page.active{display:block;animation:pageIn .5s ease}
+@keyframes pageIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.sec-head{margin-bottom:38px}
+.kicker{display:inline-block;background:var(--acc-soft);border:1px solid var(--border);padding:6px 16px;border-radius:99px;font-weight:700;font-size:.85rem}
+.sec-title{font-size:clamp(1.6rem,3.4vw,2.3rem);font-weight:900;margin-top:14px}
+.sec-desc{color:var(--muted);margin-top:10px;max-width:580px;line-height:2}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+/* بخش‌های درباره من و سابقه داخل صفحه خانه */
+.home-sec{border-top:1px solid var(--border);margin-top:80px;padding-top:70px}
+html[dir="ltr"] .home-sec{padding-top:70px}
+
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:110px}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:46px;align-items:center}
+.welcome{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--border);padding:9px 18px;border-radius:99px;font-size:.9rem;color:var(--muted);font-weight:600}
+.hero h1{font-size:clamp(2.1rem,5.4vw,3.6rem);font-weight:900;line-height:1.35;margin:20px 0 10px}
+.type-wrap{font-size:clamp(1.05rem,2.4vw,1.45rem);font-weight:700;min-height:2em}
+#typed{color:var(--muted);font-weight:800}
+.cursor{display:inline-block;width:3px;height:1.05em;background:var(--acc);margin-inline-start:5px;vertical-align:-.15em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.lead{color:var(--muted);line-height:2.1;margin:14px 0 28px;max-width:520px}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 27px;border-radius:14px;font-weight:700;font-size:.95rem;border:none;transition:.3s;text-decoration:none}
+.btn.primary{background:var(--grad);background-size:200% auto;color:var(--on-acc);box-shadow:var(--shadow)}
+.btn.primary:hover{transform:translateY(-3px);background-position:100% center}
+.btn.ghost{background:var(--card);border:1px solid var(--border);color:var(--text)}
+.btn.ghost:hover{border-color:var(--acc);transform:translateY(-3px)}
+.socials{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.socials a{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--card);border:1px solid var(--border);color:var(--muted);transition:.3s}
+.socials a:hover{color:var(--on-acc);background:var(--acc);border-color:transparent;transform:translateY(-4px)}
+.socials svg{width:20px;height:20px;fill:currentColor}
+
+.avatar-wrap{position:relative;display:grid;place-items:center}
+#badges{position:absolute;top:0;right:0;bottom:0;left:0;pointer-events:none}
+.avatar{width:min(320px,68vw);aspect-ratio:1;border-radius:50%;position:relative;display:grid;place-items:center;background:radial-gradient(circle at 30% 25%,var(--card2),var(--card));border:1px solid var(--border);overflow:visible}
+.avatar::before{content:'';position:absolute;top:-14px;right:-14px;bottom:-14px;left:-14px;border-radius:50%;border:2px dashed var(--border);animation:spin 26s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.avatar img{position:absolute;top:6%;right:6%;width:88%;height:88%;border-radius:50%;object-fit:cover}
+.initial{font-size:clamp(5rem,13vw,7.5rem);font-weight:900}
+.badge{position:absolute;display:flex;align-items:center;gap:9px;background:var(--card);border:1px solid var(--border);padding:10px 15px;border-radius:14px;font-size:.85rem;font-weight:700;box-shadow:var(--shadow);animation:bob 5s ease-in-out infinite}
+.badge small{display:block;color:var(--muted);font-weight:500;font-size:.7rem}
+.badge .ico{font-size:1.35rem}
+.b1{top:6%;right:-4%}
+.b2{bottom:12%;left:-8%;animation-delay:1.2s}
+.b3{bottom:-3%;right:10%;animation-delay:2.2s}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-top:70px}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:22px;text-align:center;transition:.3s}
+.stat:hover{transform:translateY(-5px);border-color:var(--hover-b);box-shadow:var(--shadow)}
+.stat .num{font-size:1.9rem;font-weight:900}
+.stat .lbl{color:var(--muted);font-size:.87rem;margin-top:4px}
+
+.about-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:34px;align-items:start}
+.about-text p{color:var(--muted);line-height:2.2;margin-bottom:16px;text-align:justify}
+.about-text p b{color:var(--text)}
+.why{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:26px}
+.why .item{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px;display:flex;gap:12px;align-items:flex-start;transition:.3s}
+.why .item:hover{transform:translateY(-4px);border-color:var(--hover-b)}
+.item .ico{font-size:1.5rem}
+.item h4{font-size:.93rem;margin-bottom:4px}
+.item p{font-size:.8rem;color:var(--muted);line-height:1.8}
+.info-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:26px;position:sticky;top:100px}
+.info-card h3{margin-bottom:14px;font-size:1.08rem;font-weight:800}
+.info-row{display:flex;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px dashed var(--border);font-size:.9rem;flex-wrap:wrap}
+.info-row:last-child{border:none}
+.info-row .k{color:var(--muted)}
+.info-row .v{font-weight:700}
+
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px}
+.filter-btn{padding:9px 20px;border-radius:99px;background:var(--card);border:1px solid var(--border);color:var(--muted);font-size:.87rem;font-weight:600;transition:.3s}
+.filter-btn:hover{color:var(--text)}
+.filter-btn.active{background:var(--acc);color:var(--on-acc);border-color:transparent}
+.p-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}
+.p-card{background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;cursor:pointer;transition:.35s;animation:cardIn .5s ease both}
+@keyframes cardIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.p-card:hover{transform:translateY(-8px);border-color:var(--hover-b);box-shadow:var(--shadow)}
+.p-media{height:180px;display:grid;place-items:center;position:relative;overflow:hidden}
+.p-media .icon{font-size:3.6rem;filter:drop-shadow(0 10px 18px rgba(0,0,0,.35));transition:.4s;z-index:1}
+.p-card:hover .icon{transform:scale(1.15) rotate(-6deg)}
+.p-media img{position:absolute;top:0;right:0;width:100%;height:100%;object-fit:cover;z-index:2;transition:.4s}
+.p-card:hover .p-media img{transform:scale(1.06)}
+.p-body{padding:20px}
+.p-cat{font-size:.74rem;font-weight:700;background:var(--acc-soft);padding:4px 13px;border-radius:99px;display:inline-block;margin-bottom:10px}
+.p-title{font-size:1.05rem;font-weight:800;margin-bottom:8px}
+.p-desc{font-size:.86rem;color:var(--muted);line-height:1.9;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.p-foot{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:14px;border-top:1px dashed var(--border)}
+.p-year{color:var(--muted);font-size:.82rem}
+.p-more{font-size:.85rem;font-weight:700}
+
+.modal{position:fixed;top:0;right:0;bottom:0;left:0;z-index:200;display:none;align-items:center;justify-content:center;padding:20px}
+.modal.open{display:flex}
+.modal-bg{position:absolute;top:0;right:0;bottom:0;left:0;background:rgba(10,12,16,.7);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.modal-card{position:relative;background:var(--bg2);border:1px solid var(--border);border-radius:24px;max-width:680px;width:100%;max-height:88vh;overflow-y:auto;animation:pop .35s ease}
+@keyframes pop{from{opacity:0;transform:scale(.94) translateY(14px)}to{opacity:1;transform:none}}
+.modal-hero{height:200px;display:grid;place-items:center;position:relative;overflow:hidden}
+.modal-hero .icon{font-size:4.2rem;filter:drop-shadow(0 12px 20px rgba(0,0,0,.35));position:relative;z-index:1}
+.modal-hero img{position:absolute;top:0;right:0;width:100%;height:100%;object-fit:cover;z-index:2}
+.modal-close{position:absolute;top:16px;left:16px;width:38px;height:38px;border-radius:12px;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.3);color:#fff;font-size:1.1rem;display:grid;place-items:center;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:.3s;z-index:3}
+.modal-close:hover{transform:rotate(90deg)}
+.modal-body{padding:26px 28px 30px}
+.m-meta{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 16px}
+.m-chip{font-size:.78rem;background:var(--card);border:1px solid var(--border);padding:5px 14px;border-radius:99px;color:var(--muted)}
+.modal-body h3{font-size:1.4rem;font-weight:900}
+.modal-body>p{color:var(--muted);line-height:2.1;margin:14px 0 18px;font-size:.93rem}
+.m-feats{list-style:none;margin-bottom:20px}
+.m-feats li{padding:10px 0;border-bottom:1px dashed var(--border);display:flex;gap:10px;font-size:.9rem}
+.m-feats li::before{content:'✓';font-weight:900}
+.m-tech{display:flex;gap:8px;flex-wrap:wrap}
+.m-tech span{font-size:.78rem;font-weight:700;background:var(--acc-soft);border:1px solid var(--border);padding:5px 13px;border-radius:8px}
+.m-nav{display:flex;justify-content:space-between;align-items:center;margin-top:24px;padding-top:18px;border-top:1px dashed var(--border);gap:10px;flex-wrap:wrap}
+.m-nav button{background:var(--card);border:1px solid var(--border);color:var(--text);padding:10px 18px;border-radius:12px;font-size:.84rem;font-weight:700;transition:.3s}
+.m-nav button:hover{border-color:var(--acc)}
+#mOrder{background:var(--acc);color:var(--on-acc);border-color:transparent}
+#mOrder:hover{opacity:.85}
+
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));gap:16px 22px}
+.skill-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;transition:.3s}
+.skill-card:hover{transform:translateY(-4px);border-color:var(--hover-b)}
+.skill-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;gap:10px}
+.skill-name{font-weight:700;font-size:.92rem;display:flex;gap:10px;align-items:center}
+.skill-name .ico{font-size:1.25rem}
+.skill-pct{font-weight:800;font-size:.85rem}
+.bar{height:9px;background:var(--card2);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--acc);border-radius:99px;transition:width 1.2s cubic-bezier(.22,1,.36,1)}
+.tools{margin-top:44px}
+.tools h3{font-size:1.15rem;font-weight:800;margin-bottom:18px}
+.chips{display:flex;flex-wrap:wrap;gap:12px}
+.t-chip{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--border);padding:10px 18px;border-radius:12px;font-size:.87rem;font-weight:600;transition:.3s}
+.t-chip:hover{transform:translateY(-4px);border-color:var(--acc)}
+.t-chip .ico{font-size:1.1rem}
+
+.timeline{position:relative;max-width:760px;margin:0 auto;padding-right:40px}
+html[dir="ltr"] .timeline{padding-right:0;padding-left:40px}
+.timeline::before{content:'';position:absolute;right:11px;top:6px;bottom:6px;width:2px;background:linear-gradient(180deg,var(--acc),transparent)}
+html[dir="ltr"] .timeline::before{right:auto;left:11px}
+.t-item{position:relative;margin-bottom:30px}
+.t-item::before{content:'';position:absolute;right:-38px;top:22px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:3px solid var(--acc);box-shadow:0 0 0 5px var(--acc-soft)}
+html[dir="ltr"] .t-item::before{right:auto;left:-38px}
+.t-date{display:inline-block;font-size:.78rem;font-weight:800;background:var(--acc-soft);padding:4px 14px;border-radius:99px;margin-bottom:10px}
+.t-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px 22px;transition:.3s}
+.t-card:hover{transform:translateY(-4px);border-color:var(--hover-b)}
+.t-card h4{font-size:1.02rem;font-weight:800;margin-bottom:8px}
+.t-card p{color:var(--muted);font-size:.88rem;line-height:1.95}
+
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-bottom:34px}
+.c-card{display:block;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:30px 24px;text-align:center;transition:.35s;color:var(--text);text-decoration:none;position:relative;overflow:hidden}
+.c-card::before{content:'';position:absolute;top:0;right:0;left:0;height:3px;background:var(--acc);opacity:0;transition:.3s}
+.c-card:hover{transform:translateY(-8px);border-color:var(--hover-b);box-shadow:var(--shadow)}
+.c-card:hover::before{opacity:1}
+.c-ico{width:64px;height:64px;margin:0 auto 16px;border-radius:18px;display:grid;place-items:center;background:var(--acc-soft)}
+.c-ico svg{width:28px;height:28px;fill:currentColor}
+.c-card h4{font-size:1.05rem;margin-bottom:6px}
+.c-val{color:var(--muted);font-size:.95rem;direction:ltr;unicode-bidi:embed;display:inline-block;font-weight:600}
+.c-hint{margin-top:12px;font-size:.78rem;font-weight:700}
+.copy-btn{margin-top:12px;background:var(--card2);border:1px solid var(--border);color:var(--muted);padding:7px 18px;border-radius:10px;font-size:.78rem;font-weight:700;transition:.3s}
+.copy-btn:hover{color:var(--text);border-color:var(--acc)}
+.cta{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:42px 30px;text-align:center}
+.cta h3{font-size:clamp(1.3rem,3vw,1.8rem);font-weight:900;margin-bottom:10px}
+.cta p{color:var(--muted);margin-bottom:24px;line-height:2;max-width:640px;margin-inline:auto}
+
+footer{border-top:1px solid var(--border);padding:30px 0;position:relative;z-index:1}
+.f-grid{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.f-links{display:flex;gap:18px;flex-wrap:wrap}
+.f-links a{color:var(--muted);text-decoration:none;font-size:.85rem;transition:.3s}
+.f-links a:hover{color:var(--text)}
+.f-copy{color:var(--muted);font-size:.85rem}
+.f-copy b{color:var(--text)}
+.toast{position:fixed;bottom:26px;left:50%;transform:translate(-50%,120px);background:var(--card);border:1px solid var(--border);padding:13px 24px;border-radius:14px;font-size:.88rem;font-weight:600;z-index:300;transition:.4s;box-shadow:var(--shadow);opacity:0}
+.toast.show{transform:translate(-50%,0);opacity:1}
+.top-btn{position:fixed;bottom:26px;left:26px;width:46px;height:46px;border-radius:14px;background:var(--acc);color:var(--on-acc);border:none;font-size:1.15rem;z-index:150;opacity:0;pointer-events:none;transition:.35s;transform:translateY(10px)}
+.top-btn.show{opacity:1;pointer-events:auto;transform:none}
+
+@media(max-width:920px){
+  .burger{display:grid}
+  .nav-links{position:fixed;top:72px;right:0;left:0;flex-direction:column;background:var(--nav-bg);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:14px 22px 22px;gap:4px;transform:translateY(-12px);transition:.35s;opacity:0;visibility:hidden}
+  .nav-links.open{transform:none;opacity:1;visibility:visible}
+  .hero-grid{grid-template-columns:1fr;text-align:center}
+  .lead{margin-inline:auto}
+  .btns,.socials{justify-content:center}
+  .about-grid{grid-template-columns:1fr}
+  .info-card{position:static}
+  .skills-grid{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .why{grid-template-columns:1fr}
+  .badge{transform:scale(.85)}
+  .b1{right:0}.b2{left:0}
+  .b3{display:none}
+  .cta{padding:30px 20px}
+  .m-nav{justify-content:center}
+  .home-sec{margin-top:60px;padding-top:50px}
+}
+</style>
+</head>
+<body>
+
+<div id="loader">
+  <div class="l-wrap">
+    <div class="l-mark"><div class="l-ring"></div><span class="l-letter grad">Y</span></div>
+    <div class="l-name grad">یوسف پرورش</div>
+    <div class="l-bar"><i></i></div>
+  </div>
+</div>
+
+<div class="orb orb1"></div><div class="orb orb2"></div>
+
+<header id="header">
+  <div class="container nav">
+    <a href="#home" class="logo" data-i18n="brand">یوسف <b>پرورش</b></a>
+    <!-- ✏️ منوی جدید: ۴ آیتم -->
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" data-page="home" data-i18n="nav.home" class="active">خانه</a></li>
+      <li><a href="#portfolio" data-page="portfolio" data-i18n="nav.portfolio">نمونه کارها</a></li>
+      <li><a href="#skills" data-page="skills" data-i18n="nav.skills">مهارت‌ها</a></li>
+      <li><a href="#contact" data-page="contact" data-i18n="nav.contact">ارتباط با من</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-btn" id="langBtn" title="Language">EN</button>
+      <button class="nav-btn" id="themeBtn" title="Theme">🌙</button>
+      <button class="nav-btn burger" id="burger">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ═══════ خانه (شامل درباره من + سابقه و تجربه) ═══════ -->
+<section class="page active" id="page-home">
+  <div class="container hero">
+    <div class="hero-grid">
+      <div>
+        <span class="welcome" data-i18n="hero.chip">👋 به وب‌سایت شخصی من خوش اومدی!</span>
+        <h1 data-i18n="hero.h1">ایده‌ها رو به <span class="grad">کد و خلاقیت</span> تبدیل می‌کنم</h1>
+        <div class="type-wrap"><span id="typed"></span><span class="cursor"></span></div>
+        <p class="lead" data-i18n="hero.lead"></p>
+        <div class="btns">
+          <a href="#portfolio" class="btn primary" data-i18n="hero.btnWork">مشاهده نمونه کارها</a>
+          <a href="#contact" class="btn ghost" data-i18n="hero.btnContact">ارتباط با من</a>
+        </div>
+        <div class="socials">
+          <a href="https://t.me/Yousef017" target="_blank" title="Telegram"><svg viewBox="0 0 24 24"><path d="M2,21L23,12L2,3V10L17,12L2,14V21Z"/></svg></a>
+          <a href="https://instagram.com/yousef._.parvaresh" target="_blank" title="Instagram"><svg viewBox="0 0 24 24"><path d="M7.8,2H16.2C19.87,2 22,4.13 22,7.8V16.2C22,19.87 19.87,22 16.2,22H7.8C4.13,22 2,19.87 2,16.2V7.8C2,4.13 4.13,2 7.8,2M7.6,4C5.61,4 4,5.61 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4C18.39,20 20,18.39 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z"/></svg></a>
+          <a href="https://t.me/NeuroCodeX_1" target="_blank" title="Telegram Channel"><svg viewBox="0 0 24 24"><path d="M3,9V15H7L12,20V4L7,9H3M16.5,12C16.5,10.23 15.48,8.71 14,7.97V16.02C15.48,15.29 16.5,13.77 16.5,12M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18,19.86 21,16.28 21,12C21,7.72 18,4.14 14,3.23Z"/></svg></a>
+          <a href="tel:09370132965" title="Phone"><svg viewBox="0 0 24 24"><path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/></svg></a>
+        </div>
+      </div>
+      <div class="avatar-wrap">
+        <div class="avatar" id="avatarBox">
+          <!-- ✏️ عکس شخصی: عکست رو با اسم me.jpg کنار index.html بذار — خودکار نمایش داده می‌شه -->
+          <span class="initial grad" id="avatarInitial">ی</span>
+        </div>
+        <div id="badges"></div>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="num" data-target="30">۰</div><div class="lbl" data-i18n="hero.stat1">پروژه انجام‌شده</div></div>
+      <div class="stat"><div class="num" data-target="25">۰</div><div class="lbl" data-i18n="hero.stat2">مشتری راضی</div></div>
+      <div class="stat"><div class="num" data-target="2">۰</div><div class="lbl" data-i18n="hero.stat3">سال تجربه</div></div>
+      <div class="stat"><div class="num" data-target="10">۰</div><div class="lbl" data-i18n="hero.stat4">مهارت تخصصی</div></div>
+    </div>
+  </div>
+
+  <!-- ─── درباره من (داخل خانه) ─── -->
+  <div class="container home-sec">
+    <div class="sec-head reveal">
+      <span class="kicker" data-i18n="about.kicker">درباره من</span>
+      <h2 class="sec-title" data-i18n="about.title"></h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p data-i18n="about.p1"></p>
+        <p data-i18n="about.p2"></p>
+        <div class="why" id="whyGrid"></div>
+      </div>
+      <div class="info-card reveal">
+        <h3 data-i18n="about.infoTitle"></h3>
+        <div id="infoRows"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── سابقه و تجربه (داخل خانه) ─── -->
+  <div class="container home-sec">
+    <div class="sec-head reveal">
+      <span class="kicker" data-i18n="experience.kicker">سابقه و تجربه</span>
+      <h2 class="sec-title" data-i18n="experience.title"></h2>
+    </div>
+    <div class="timeline" id="timeline"></div>
+  </div>
+</section>
+
+<!-- ═══════ نمونه کارها ═══════ -->
+<section class="page" id="page-portfolio">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="kicker" data-i18n="portfolio.kicker">نمونه کارها</span>
+      <h2 class="sec-title" data-i18n="portfolio.title"></h2>
+      <p class="sec-desc" data-i18n="portfolio.desc"></p>
+    </div>
+    <div class="filters" id="filters">
+      <button class="filter-btn active" data-f="all" data-i18n="filters.all">همه</button>
+      <button class="filter-btn" data-f="site" data-i18n="filters.site">سایت</button>
+      <button class="filter-btn" data-f="bot" data-i18n="filters.bot">ربات</button>
+      <button class="filter-btn" data-f="app" data-i18n="filters.app">اپلیکیشن</button>
+      <button class="filter-btn" data-f="design" data-i18n="filters.design">طراحی</button>
+      <button class="filter-btn" data-f="office" data-i18n="filters.office">آفیس</button>
+    </div>
+    <div class="p-grid" id="pGrid"></div>
+  </div>
+</section>
+
+<!-- ═══════ مهارت‌ها ═══════ -->
+<section class="page" id="page-skills">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="kicker" data-i18n="skills.kicker">مهارت‌ها</span>
+      <h2 class="sec-title" data-i18n="skills.title"></h2>
+    </div>
+    <div class="skills-grid" id="skillGrid"></div>
+    <div class="tools reveal">
+      <h3 data-i18n="skills.toolsTitle"></h3>
+      <div class="chips">
+        <span class="t-chip"><span class="ico">💻</span>VS Code</span>
+        <span class="t-chip"><span class="ico">🐙</span>Git &amp; GitHub</span>
+        <span class="t-chip"><span class="ico">⚙️</span>n8n</span>
+        <span class="t-chip"><span class="ico">🤖</span>ChatGPT</span>
+        <span class="t-chip"><span class="ico">🎨</span>Canva</span>
+        <span class="t-chip"><span class="ico">🖌</span>Photoshop</span>
+        <span class="t-chip"><span class="ico">📄</span>Word</span>
+        <span class="t-chip"><span class="ico">📊</span>Excel</span>
+        <span class="t-chip"><span class="ico">📽</span>PowerPoint</span>
+        <span class="t-chip"><span class="ico">🚀</span>GitHub Pages</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ ارتباط با من (تماس + کانال تلگرام) ═══════ -->
+<section class="page" id="page-contact">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="kicker" data-i18n="contact.kicker">ارتباط با من</span>
+      <h2 class="sec-title" data-i18n="contact.title"></h2>
+      <p class="sec-desc" data-i18n="contact.desc"></p>
+    </div>
+    <div class="contact-grid">
+      <div class="c-card reveal">
+        <div class="c-ico"><svg viewBox="0 0 24 24"><path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/></svg></div>
+        <h4 data-i18n="contact.phone">تلفن</h4>
+        <a class="c-val" href="tel:09370132965">0937 013 2965</a><br>
+        <button class="copy-btn" onclick="copyPhone()" data-i18n="contact.copy">📋 کپی شماره</button>
+        <div class="c-hint" data-i18n="contact.direct">تماس مستقیم</div>
+      </div>
+      <a class="c-card reveal" href="https://t.me/Yousef017" target="_blank">
+        <div class="c-ico"><svg viewBox="0 0 24 24"><path d="M2,21L23,12L2,3V10L17,12L2,14V21Z"/></svg></div>
+        <h4 data-i18n="contact.telegram">تلگرام شخصی</h4>
+        <span class="c-val">@Yousef017</span>
+        <div class="c-hint" data-i18n="contact.tgHint">ارسال پیام در تلگرام ←</div>
+      </a>
+      <a class="c-card reveal" href="https://instagram.com/yousef._.parvaresh" target="_blank">
+        <div class="c-ico"><svg viewBox="0 0 24 24"><path d="M7.8,2H16.2C19.87,2 22,4.13 22,7.8V16.2C22,19.87 19.87,22 16.2,22H7.8C4.13,22 2,19.87 2,16.2V7.8C2,4.13 4.13,2 7.8,2M7.6,4C5.61,4 4,5.61 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4C18.39,20 20,18.39 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z"/></svg></div>
+        <h4 data-i18n="contact.instagram">اینستاگرام</h4>
+        <span class="c-val">@yousef._.parvaresh</span>
+        <div class="c-hint" data-i18n="contact.igHint">دنبال کردن و دایرکت ←</div>
+      </a>
+      <a class="c-card reveal" href="https://t.me/NeuroCodeX_1" target="_blank">
+        <div class="c-ico"><svg viewBox="0 0 24 24"><path d="M3,9V15H7L12,20V4L7,9H3M16.5,12C16.5,10.23 15.48,8.71 14,7.97V16.02C15.48,15.29 16.5,13.77 16.5,12M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18,19.86 21,16.28 21,12C21,7.72 18,4.14 14,3.23Z"/></svg></div>
+        <h4 data-i18n="contact.channel">کانال تلگرام</h4>
+        <span class="c-val">@NeuroCodeX_1</span>
+        <div class="c-hint" data-i18n="contact.chHint">عضویت در کانال ←</div>
+      </a>
+    </div>
+    <div class="cta reveal">
+      <h3 data-i18n="contact.ctaTitle"></h3>
+      <p data-i18n="contact.ctaText"></p>
+      <div class="btns" style="justify-content:center">
+        <a href="https://t.me/Yousef017" target="_blank" class="btn primary" data-i18n="contact.ctaBtn">💬 پیام در تلگرام</a>
+        <a href="https://t.me/NeuroCodeX_1" target="_blank" class="btn ghost" data-i18n="contact.ctaChannel">📢 عضویت در کانال</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container f-grid">
+    <div class="f-copy" data-i18n="footer">© ۱۴۰۴ یوسف پرورش — ساخته شده با <b>❤</b> و کدهای خالص</div>
+    <div class="f-links">
+      <a href="#home" data-i18n="nav.home">خانه</a>
+      <a href="#portfolio" data-i18n="nav.portfolio">نمونه کارها</a>
+      <a href="#skills" data-i18n="nav.skills">مهارت‌ها</a>
+      <a href="#contact" data-i18n="nav.contact">ارتباط با من</a>
+    </div>
+  </div>
+</footer>
+
+<div class="modal" id="modal">
+  <div class="modal-bg" id="modalBg"></div>
+  <div class="modal-card">
+    <div class="modal-hero" id="mHero">
+      <span class="icon" id="mIcon"></span>
+      <img id="mImg" alt="" style="display:none">
+      <button class="modal-close" id="mClose">✕</button>
+    </div>
+    <div class="modal-body">
+      <h3 id="mTitle"></h3>
+      <div class="m-meta" id="mChips"></div>
+      <p id="mDesc"></p>
+      <ul class="m-feats" id="mFeats"></ul>
+      <div class="m-tech" id="mTech"></div>
+      <div class="m-nav">
+        <button id="mPrev" data-i18n="modal.prev">→ پروژه قبلی</button>
+        <button id="mOrder" data-i18n="modal.order">سفارش پروژه مشابه</button>
+        <button id="mNext" data-i18n="modal.next">پروژه بعدی ←</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<button class="top-btn" id="topBtn">↑</button>
+
+<script>
+/* ════════════════ تصاویر اختصاصی نمونه‌کارها (داخل کد — همیشه لود می‌شن) ════════════════ */
+function svgURI(s){return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(s)}
+var ART={
+'aria-shop':'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380"><rect width="600" height="380" fill="#e9ebee"/><rect x="60" y="34" width="480" height="312" rx="16" fill="#ffffff" stroke="#d9dde3"/><path d="M60,50a16,16 0 0 1 16,-16h448a16,16 0 0 1 16,16v26h-480z" fill="#242830"/><circle cx="86" cy="54" r="5" fill="#6b7280"/><circle cx="104" cy="54" r="5" fill="#9aa2ae"/><circle cx="122" cy="54" r="5" fill="#c7ccd4"/><rect x="400" y="44" width="120" height="20" rx="10" fill="#3a404a"/><rect x="84" y="96" width="432" height="78" rx="10" fill="#242830"/><rect x="104" y="116" width="170" height="12" rx="6" fill="#f2f4f7"/><rect x="104" y="138" width="110" height="10" rx="5" fill="#9aa2ae"/><rect x="356" y="112" width="136" height="46" rx="8" fill="#3a404a"/><circle cx="390" cy="135" r="13" fill="#e9ebee"/><path d="M384,135l5,5l9,-10" stroke="#242830" stroke-width="3" fill="none"/><rect x="416" y="128" width="60" height="7" rx="3.5" fill="#9aa2ae"/><rect x="416" y="141" width="40" height="6" rx="3" fill="#6b7280"/><rect x="84" y="192" width="132" height="132" rx="10" fill="#f4f5f7" stroke="#e3e6ea"/><rect x="96" y="204" width="108" height="70" rx="6" fill="#d9dde3"/><rect x="96" y="284" width="80" height="9" rx="4" fill="#6b7280"/><rect x="96" y="301" width="52" height="9" rx="4" fill="#c7ccd4"/><rect x="234" y="192" width="132" height="132" rx="10" fill="#f4f5f7" stroke="#e3e6ea"/><rect x="246" y="204" width="108" height="70" rx="6" fill="#c7ccd4"/><rect x="246" y="284" width="80" height="9" rx="4" fill="#6b7280"/><rect x="246" y="301" width="52" height="9" rx="4" fill="#c7ccd4"/><rect x="384" y="192" width="132" height="132" rx="10" fill="#f4f5f7" stroke="#e3e6ea"/><rect x="396" y="204" width="108" height="70" rx="6" fill="#9aa2ae"/><rect x="396" y="284" width="80" height="9" rx="4" fill="#6b7280"/><rect x="396" y="301" width="52" height="9" rx="4" fill="#c7ccd4"/></svg>',
+'tg-bot':'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380"><rect width="600" height="380" fill="#e9ebee"/><rect x="205" y="22" width="190" height="336" rx="28" fill="#242830"/><rect x="217" y="42" width="166" height="296" rx="14" fill="#f6f7f9"/><path d="M217,56a14,14 0 0 1 14,-14h138a14,14 0 0 1 14,14v22h-166z" fill="#3a404a"/><circle cx="240" cy="60" r="9" fill="#e9ebee"/><rect x="256" y="52" width="70" height="7" rx="3.5" fill="#c7ccd4"/><rect x="256" y="64" width="44" height="5" rx="2.5" fill="#6b7280"/><rect x="228" y="94" width="104" height="34" rx="10" fill="#e3e6ea"/><rect x="238" y="106" width="72" height="8" rx="4" fill="#9aa2ae"/><rect x="252" y="138" width="118" height="34" rx="10" fill="#242830"/><rect x="264" y="150" width="82" height="8" rx="4" fill="#9aa2ae"/><rect x="228" y="182" width="96" height="34" rx="10" fill="#e3e6ea"/><rect x="238" y="194" width="64" height="8" rx="4" fill="#9aa2ae"/><rect x="262" y="226" width="108" height="34" rx="10" fill="#242830"/><rect x="274" y="238" width="70" height="8" rx="4" fill="#9aa2ae"/><rect x="228" y="276" width="45" height="22" rx="8" fill="#d9dde3"/><rect x="281" y="276" width="45" height="22" rx="8" fill="#d9dde3"/><rect x="334" y="276" width="38" height="22" rx="8" fill="#242830"/><circle cx="352" cy="318" r="14" fill="#242830"/><path d="M346,318l14,-6l-6,14l-2,-6z" fill="#ffffff"/></svg>',
+'karino-app':'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380"><rect width="600" height="380" fill="#e9ebee"/><rect x="205" y="22" width="190" height="336" rx="28" fill="#3a404a"/><rect x="217" y="42" width="166" height="296" rx="14" fill="#ffffff"/><path d="M217,56a14,14 0 0 1 14,-14h138a14,14 0 0 1 14,14v22h-166z" fill="#242830"/><rect x="230" y="52" width="80" height="8" rx="4" fill="#c7ccd4"/><rect x="228" y="98" width="144" height="36" rx="9" fill="#f2f3f5"/><rect x="238" y="108" width="16" height="16" rx="4" fill="#242830"/><path d="M241,116l4,4l7,-8" stroke="#ffffff" stroke-width="2.5" fill="none"/><rect x="264" y="112" width="88" height="8" rx="4" fill="#c7ccd4"/><rect x="228" y="144" width="144" height="36" rx="9" fill="#f2f3f5"/><rect x="238" y="154" width="16" height="16" rx="4" fill="#242830"/><path d="M241,162l4,4l7,-8" stroke="#ffffff" stroke-width="2.5" fill="none"/><rect x="264" y="158" width="70" height="8" rx="4" fill="#c7ccd4"/><rect x="228" y="190" width="144" height="36" rx="9" fill="#242830"/><rect x="238" y="200" width="16" height="16" rx="4" fill="none" stroke="#9aa2ae" stroke-width="2"/><rect x="264" y="204" width="80" height="8" rx="4" fill="#9aa2ae"/><rect x="228" y="236" width="144" height="36" rx="9" fill="#f2f3f5"/><rect x="238" y="246" width="16" height="16" rx="4" fill="none" stroke="#9aa2ae" stroke-width="2"/><rect x="264" y="250" width="60" height="8" rx="4" fill="#c7ccd4"/><circle cx="350" cy="318" r="16" fill="#242830"/><path d="M350,310v16M342,318h16" stroke="#ffffff" stroke-width="3"/></svg>',
+'cafe-brand':'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380"><rect width="600" height="380" fill="#242830"/><circle cx="300" cy="175" r="110" fill="none" stroke="#6b7280" stroke-width="2" stroke-dasharray="4 7"/><ellipse cx="300" cy="222" rx="54" ry="9" fill="#3a404a"/><path d="M262,168h76v32a30,30 0 0 1 -30,30h-16a30,30 0 0 1 -30,-30z" fill="#f2f4f7"/><path d="M338,176h12a14,14 0 0 1 0,28h-12" fill="none" stroke="#f2f4f7" stroke-width="7"/><path d="M285,150q7,-12 0,-24" stroke="#9aa2ae" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M315,150q7,-12 0,-24" stroke="#9aa2ae" stroke-width="5" fill="none" stroke-linecap="round"/><rect x="248" y="252" width="104" height="11" rx="5.5" fill="#9aa2ae"/><rect x="268" y="272" width="64" height="8" rx="4" fill="#6b7280"/><circle cx="266" cy="318" r="9" fill="#f2f4f7"/><circle cx="300" cy="318" r="9" fill="#9aa2ae"/><circle cx="334" cy="318" r="9" fill="#6b7280"/></svg>',
+'excel-dash':'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380"><rect width="600" height="380" fill="#e9ebee"/><rect x="60" y="34" width="480" height="312" rx="14" fill="#ffffff" stroke="#d9dde3"/><path d="M60,48a14,14 0 0 1 14,-14h452a14,14 0 0 1 14,14v22h-480z" fill="#242830"/><rect x="82" y="46" width="90" height="10" rx="5" fill="#c7ccd4"/><path d="M84,118h246M84,156h246M84,194h246M84,232h246M84,270h246M84,308h246M134,92v216M184,92v216M234,92v216M284,92v216" stroke="#e3e6ea" stroke-width="1.5"/><rect x="84" y="92" width="246" height="26" fill="#242830"/><rect x="96" y="101" width="60" height="8" rx="4" fill="#9aa2ae"/><rect x="146" y="101" width="60" height="8" rx="4" fill="#9aa2ae"/><rect x="196" y="101" width="60" height="8" rx="4" fill="#9aa2ae"/><rect x="246" y="101" width="60" height="8" rx="4" fill="#9aa2ae"/><path d="M368,308h150" stroke="#c7ccd4" stroke-width="2"/><rect x="376" y="240" width="22" height="68" rx="4" fill="#c7ccd4"/><rect x="408" y="200" width="22" height="108" rx="4" fill="#9aa2ae"/><rect x="440" y="222" width="22" height="86" rx="4" fill="#6b7280"/><rect x="472" y="160" width="22" height="148" rx="4" fill="#3a404a"/><rect x="504" y="184" width="22" height="124" rx="4" fill="#242830"/></svg>',
+'rayan-web':'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380"><rect width="600" height="380" fill="#e9ebee"/><rect x="60" y="34" width="480" height="312" rx="16" fill="#ffffff" stroke="#d9dde3"/><path d="M60,50a16,16 0 0 1 16,-16h448a16,16 0 0 1 16,16v32h-480z" fill="#f6f7f9"/><path d="M60,82h480" stroke="#e3e6ea" stroke-width="1.5"/><circle cx="94" cy="58" r="10" fill="#242830"/><rect x="112" y="53" width="70" height="10" rx="5" fill="#242830"/><rect x="300" y="54" width="40" height="8" rx="4" fill="#9aa2ae"/><rect x="350" y="54" width="40" height="8" rx="4" fill="#9aa2ae"/><rect x="400" y="54" width="40" height="8" rx="4" fill="#9aa2ae"/><rect x="456" y="46" width="64" height="24" rx="8" fill="#242830"/><rect x="90" y="116" width="200" height="15" rx="7" fill="#242830"/><rect x="90" y="141" width="150" height="15" rx="7" fill="#242830"/><rect x="90" y="168" width="180" height="9" rx="4.5" fill="#9aa2ae"/><rect x="90" y="184" width="130" height="9" rx="4.5" fill="#c7ccd4"/><rect x="90" y="212" width="110" height="30" rx="9" fill="#242830"/><rect x="104" y="223" width="82" height="8" rx="4" fill="#c7ccd4"/><rect x="330" y="110" width="180" height="132" rx="12" fill="#242830"/><circle cx="390" cy="170" r="34" fill="none" stroke="#9aa2ae" stroke-width="2.5"/><circle cx="390" cy="170" r="18" fill="#e9ebee"/><path d="M420,142l52,-18M420,198l52,18" stroke="#6b7280" stroke-width="2"/><rect x="90" y="270" width="132" height="56" rx="10" fill="#f4f5f7" stroke="#e3e6ea"/><rect x="234" y="270" width="132" height="56" rx="10" fill="#f4f5f7" stroke="#e3e6ea"/><rect x="378" y="270" width="132" height="56" rx="10" fill="#f4f5f7" stroke="#e3e6ea"/><rect x="102" y="284" width="26" height="26" rx="7" fill="#3a404a"/><rect x="246" y="284" width="26" height="26" rx="7" fill="#6b7280"/><rect x="390" y="284" width="26" height="26" rx="7" fill="#9aa2ae"/><rect x="138" y="290" width="66" height="7" rx="3.5" fill="#9aa2ae"/><rect x="282" y="290" width="66" height="7" rx="3.5" fill="#9aa2ae"/><rect x="426" y="290" width="66" height="7" rx="3.5" fill="#9aa2ae"/><rect x="138" y="303" width="44" height="6" rx="3" fill="#c7ccd4"/><rect x="282" y="303" width="44" height="6" rx="3" fill="#c7ccd4"/><rect x="426" y="303" width="44" height="6" rx="3" fill="#c7ccd4"/></svg>',
+'banner-set':'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380"><rect width="600" height="380" fill="#e9ebee"/><rect x="78" y="64" width="176" height="252" rx="16" fill="#242830"/><rect x="86" y="88" width="70" height="12" rx="6" fill="#9aa2ae"/><circle cx="166" cy="180" r="40" fill="none" stroke="#6b7280" stroke-width="2.5"/><circle cx="166" cy="180" r="16" fill="#e9ebee"/><rect x="110" y="252" width="112" height="9" rx="4.5" fill="#9aa2ae"/><rect x="110" y="270" width="72" height="8" rx="4" fill="#6b7280"/><rect x="212" y="64" width="176" height="252" rx="16" fill="#f2f4f7" stroke="#d9dde3"/><rect x="220" y="88" width="70" height="12" rx="6" fill="#3a404a"/><circle cx="300" cy="180" r="40" fill="#242830"/><path d="M284,180l12,12l20,-24" stroke="#f2f4f7" stroke-width="4" fill="none"/><rect x="244" y="252" width="112" height="9" rx="4.5" fill="#9aa2ae"/><rect x="244" y="270" width="72" height="8" rx="4" fill="#c7ccd4"/><rect x="346" y="64" width="176" height="252" rx="16" fill="#3a404a"/><rect x="354" y="88" width="70" height="12" rx="6" fill="#c7ccd4"/><rect x="382" y="150" width="104" height="104" rx="14" fill="none" stroke="#9aa2ae" stroke-width="2.5" transform="rotate(12 434 202)"/><circle cx="434" cy="180" r="14" fill="#f2f4f7"/><rect x="378" y="252" width="112" height="9" rx="4.5" fill="#9aa2ae"/><rect x="378" y="270" width="72" height="8" rx="4" fill="#6b7280"/></svg>',
+'word-automation':'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380"><rect width="600" height="380" fill="#e9ebee"/><rect x="168" y="62" width="210" height="290" rx="12" fill="#f4f5f7" stroke="#e3e6ea"/><rect x="222" y="40" width="210" height="290" rx="12" fill="#ffffff" stroke="#d9dde3"/><path d="M394,40h26a12,12 0 0 1 12,12v26z" fill="#d9dde3"/><rect x="240" y="62" width="130" height="14" rx="7" fill="#242830"/><rect x="240" y="92" width="174" height="8" rx="4" fill="#9aa2ae"/><rect x="240" y="108" width="150" height="8" rx="4" fill="#c7ccd4"/><rect x="240" y="124" width="162" height="8" rx="4" fill="#c7ccd4"/><rect x="240" y="148" width="174" height="30" rx="6" fill="#242830"/><rect x="252" y="158" width="60" height="10" rx="5" fill="#c7ccd4"/><rect x="240" y="188" width="84" height="60" rx="6" fill="#f2f3f5" stroke="#e3e6ea"/><rect x="332" y="188" width="82" height="60" rx="6" fill="#f2f3f5" stroke="#e3e6ea"/><path d="M240,218h174" stroke="#e3e6ea" stroke-width="1.5"/><rect x="252" y="200" width="52" height="8" rx="4" fill="#9aa2ae"/><rect x="344" y="200" width="52" height="8" rx="4" fill="#9aa2ae"/><rect x="252" y="228" width="40" height="8" rx="4" fill="#c7ccd4"/><rect x="344" y="228" width="40" height="8" rx="4" fill="#c7ccd4"/><rect x="240" y="262" width="110" height="8" rx="4" fill="#9aa2ae"/><rect x="240" y="278" width="88" height="8" rx="4" fill="#c7ccd4"/><path d="M300,306q24,-14 48,0" stroke="#242830" stroke-width="2.5" fill="none"/><rect x="352" y="302" width="46" height="8" rx="4" fill="#d9dde3"/></svg>'
+};
+
+/* ════════════════ ترجمه‌ها ════════════════ */
+var I18N={
+fa:{
+ brand:'یوسف <b>پرورش</b>',
+ nav:{home:'خانه',portfolio:'نمونه کارها',skills:'مهارت‌ها',contact:'ارتباط با من'},
+ hero:{chip:'👋 به وب‌سایت شخصی من خوش اومدی!',
+  h1:'ایده‌ها رو به <span class="grad">کد و خلاقیت</span> تبدیل می‌کنم',
+  lead:'من یوسف پرورش هستم؛ سایت می‌سازم، ربات تلگرام می‌نویسم، با هوش مصنوعی ایده‌ها رو به محصول واقعی تبدیل می‌کنم و طراحی لوگو و بنر هم انجام می‌دم. اگه دنبال یه اجراکار سریع و خلاق هستی، جای درستی اومدی!',
+  btnWork:'مشاهده نمونه کارها',btnContact:'ارتباط با من',
+  badges:[['🐍','Python','برنامه‌نویسی'],['🌐','HTML/CSS','طراحی وب'],['🤖','AI','هوش مصنوعی']],
+  stat1:'پروژه انجام‌شده',stat2:'مشتری راضی',stat3:'سال تجربه',stat4:'مهارت تخصصی',initial:'ی'},
+ roles:['توسعه‌دهنده وب 🌐','برنامه‌نویس پایتون 🐍','سازنده ربات تلگرام 🤖','طراح لوگو و بنر 🎨','علاقه‌مند به هوش مصنوعی 🧠'],
+ about:{kicker:'درباره من',title:'کمی بیشتر <span class="grad">با من آشنا شو</span>',
+  p1:'من <b>یوسف پرورش</b> هستم؛ با بیش از <b>۲ سال تجربه</b> در دنیای تکنولوژی و برنامه‌نویسی. مسیر من از یه کنجکاوی ساده شروع شد: «این سایت‌ها چطور ساخته می‌شن؟» و امروز به جایی رسیدم که می‌تونم از صفر تا صد یه پروژه نرم‌افزاری رو بسازم، رفع اشکال کنم و منتشرش کنم.',
+  p2:'تخصص اصلی من <b>طراحی و ساخت سایت با HTML و CSS</b>، <b>برنامه‌نویسی پایتون</b> و <b>ساخت ربات‌های تلگرام با n8n</b> هست. علاوه بر اون، از ابزارهای هوش مصنوعی برای سریع‌تر و خلاقانه‌تر شدن کارم استفاده می‌کنم و توی طراحی لوگو و بنر و مدیریت فایل‌های آفیس هم تجربه دارم.',
+  why:[['⚡','یادگیری سریع','همیشه در حال یادگیری تکنولوژی‌های جدیدم'],['🎯','حل خلاقانه مسئله','به چالش‌ها به چشم فرصت نگاه می‌کنم'],['🤝','تعهد و صداقت','تحویل به‌موقع و شفاف در همه مراحل'],['🛠','پشتیبانی واقعی','بعد از تحویل هم کنارت هستم']],
+  infoTitle:'📋 اطلاعات شخصی',
+  rows:[['نام و نام خانوادگی','یوسف پرورش'],['رشته تحصیلی','کامپیوتر'],['سابقه کار','۲ سال'],['زمینه فعالیت','برنامه‌نویسی و طراحی'],['زبان‌ها','فارسی'],['وضعیت همکاری','آماده دریافت پروژه']]},
+ portfolio:{kicker:'نمونه کارها',title:'پروژه‌هایی که <span class="grad">ساختم</span>',desc:'روی هر پروژه کلیک کن تا جزئیات کاملش رو ببینی. برای سفارش پروژه مشابه، از بخش ارتباط با من در ارتباط باش.',more:'جزئیات پروژه ←'},
+ filters:{all:'همه',site:'سایت',bot:'ربات',app:'اپلیکیشن',design:'طراحی',office:'آفیس'},
+ skills:{kicker:'مهارت‌ها',title:'چی بلدم و <span class="grad">چقدر بلدم</span>',toolsTitle:'🧰 ابزارهایی که باهاشون کار می‌کنم'},
+ experience:{kicker:'سابقه و تجربه',title:'مسیر <span class="grad">رشد من</span>'},
+ contact:{kicker:'ارتباط با من',title:'بیا با هم <span class="grad">شروع کنیم</span>',desc:'از هر راهی که راحتی، من در دسترسم؛ تلفن، تلگرام، اینستاگرام یا کانال تلگرامم.',
+  phone:'تلفن',copy:'📋 کپی شماره',direct:'تماس مستقیم',
+  telegram:'تلگرام شخصی',tgHint:'ارسال پیام در تلگرام ←',
+  instagram:'اینستاگرام',igHint:'دنبال کردن و دایرکت ←',
+  channel:'کانال تلگرام',chHint:'عضویت در کانال ←',
+  ctaTitle:'یه ایده تو سرته؟ بزن بریم! 🚀',
+  ctaText:'برای سفارش طراحی سایت، ساخت ربات تلگرام، طراحی لوگو یا هر پروژه دیگه‌ای، مستقیم تو تلگرام پیام بده. معمولاً خیلی سریع جواب می‌دم!',
+  ctaBtn:'💬 پیام در تلگرام',ctaChannel:'📢 عضویت در کانال'},
+ modal:{prev:'→ پروژه قبلی',next:'پروژه بعدی ←',order:'سفارش پروژه مشابه'},
+ copied:'شماره کپی شد ✅',
+ footer:'© ۱۴۰۴ یوسف پرورش — ساخته شده با <b>❤</b> و کدهای خالص',
+ titles:{home:'یوسف پرورش | خانه',portfolio:'یوسف پرورش | نمونه کارها',skills:'یوسف پرورش | مهارت‌ها',contact:'یوسف پرورش | ارتباط با من'}
+},
+en:{
+ brand:'Yousef <b>Parvaresh</b>',
+ nav:{home:'Home',portfolio:'Portfolio',skills:'Skills',contact:'Contact'},
+ hero:{chip:'👋 Welcome to my personal website!',
+  h1:'I turn ideas into <span class="grad">code &amp; creativity</span>',
+  lead:'I\'m Yousef Parvaresh — I build websites, develop Telegram bots, turn AI-powered ideas into real products, and design logos & banners. If you\'re looking for a fast and creative developer, you\'re in the right place!',
+  btnWork:'View My Work',btnContact:'Contact Me',
+  badges:[['🐍','Python','Programming'],['🌐','HTML/CSS','Web Design'],['🤖','AI','Artificial Intelligence']],
+  stat1:'Projects Done',stat2:'Happy Clients',stat3:'Years of Experience',stat4:'Core Skills',initial:'Y'},
+ roles:['Web Developer 🌐','Python Developer 🐍','Telegram Bot Maker 🤖','Logo & Banner Designer 🎨','AI Enthusiast 🧠'],
+ about:{kicker:'About Me',title:'Get to know <span class="grad">me better</span>',
+  p1:'I\'m <b>Yousef Parvaresh</b> with over <b>2 years of experience</b> in technology and programming. My journey began with a simple curiosity: "How are websites made?" Today I can take a software project from zero to hero — build it, debug it and ship it.',
+  p2:'My core expertise is <b>web design with HTML & CSS</b>, <b>Python programming</b> and <b>building Telegram bots with n8n</b>. On top of that, I use AI tools to work faster and more creatively, with hands-on experience in logo & banner design and Office files.',
+  why:[['⚡','Fast Learner','Always exploring new technologies'],['🎯','Creative Problem Solver','I see challenges as opportunities'],['🤝','Committed & Honest','On-time delivery, full transparency'],['🛠','Real Support','I stay by your side after delivery']],
+  infoTitle:'📋 Personal Info',
+  rows:[['Full Name','Yousef Parvaresh'],['Field of Study','Computer'],['Experience','2 Years'],['Focus Area','Programming & Design'],['Languages','Persian'],['Availability','Open for Projects']]},
+ portfolio:{kicker:'Portfolio',title:'Projects I\'ve <span class="grad">built</span>',desc:'Click any project to see its full details. To order a similar one, reach me through the contact section.',more:'View details →'},
+ filters:{all:'All',site:'Websites',bot:'Bots',app:'Apps',design:'Design',office:'Office'},
+ skills:{kicker:'Skills',title:'What I know & <span class="grad">how well</span>',toolsTitle:'🧰 Tools I work with'},
+ experience:{kicker:'Experience',title:'My <span class="grad">growth journey</span>'},
+ contact:{kicker:'Contact',title:'Let\'s <span class="grad">start together</span>',desc:'Reach me any way you like — phone, Telegram, Instagram or my Telegram channel.',
+  phone:'Phone',copy:'📋 Copy number',direct:'Direct call',
+  telegram:'Personal Telegram',tgHint:'Send a message on Telegram →',
+  instagram:'Instagram',igHint:'Follow & DM →',
+  channel:'Telegram Channel',chHint:'Join the channel →',
+  ctaTitle:'Got an idea? Let\'s go! 🚀',
+  ctaText:'For website design, Telegram bots, logo design or any other project — message me directly on Telegram. I usually reply fast!',
+  ctaBtn:'💬 Message on Telegram',ctaChannel:'📢 Join the Channel'},
+ modal:{prev:'← Previous',next:'Next →',order:'Order a similar project'},
+ copied:'Number copied ✅',
+ footer:'© 2025 Yousef Parvaresh — Crafted with <b>❤</b> and pure code',
+ titles:{home:'Yousef Parvaresh | Home',portfolio:'Yousef Parvaresh | Portfolio',skills:'Yousef Parvaresh | Skills',contact:'Yousef Parvaresh | Contact'}
+}};
+
+/* ════════════════ داده‌ها ════════════════ */
+var catNames={site:{fa:'سایت',en:'Website'},bot:{fa:'ربات',en:'Bot'},app:{fa:'اپلیکیشن',en:'App'},design:{fa:'طراحی',en:'Design'},office:{fa:'آفیس',en:'Office'}};
+var PROJECTS=[
+ {id:'aria-shop',cat:'site',icon:'🛒',grad:['#454b56','#1c2027'],img:'',year:{fa:'۱۴۰۳',en:'2024'},
+  title:{fa:'فروشگاه آنلاین آریاشاپ',en:'AriaShop Online Store'},
+  desc:{fa:'یک فروشگاه اینترنتی کامل با طراحی مدرن و ریسپانسیو؛ شامل صفحه محصولات، سبد خرید و فرم سفارش.',en:'A complete online store with a modern, fully responsive design — product pages, shopping cart and order form.'},
+  features:{fa:['طراحی کاملاً ریسپانسیو','صفحه محصولات و سبد خرید','انیمیشن‌های نرم و رابط کاربری مدرن','انتشار آنلاین با GitHub Pages'],en:['Fully responsive layout','Product listing & shopping cart','Smooth animations & modern UI','Published online with GitHub Pages']},
+  tech:['HTML','CSS','JavaScript','GitHub Pages']},
+ {id:'tg-bot',cat:'bot',icon:'🤖',grad:['#3a404a','#14171d'],img:'',year:{fa:'۱۴۰۳',en:'2024'},
+  title:{fa:'ربات مدیریت گروه تلگرام',en:'Telegram Group Manager Bot'},
+  desc:{fa:'رباتی هوشمند برای مدیریت گروه‌های تلگرامی با خوش‌آمدگویی خودکار، ضداسپم و اتوماسیون n8n.',en:'A smart bot for managing Telegram groups with auto welcome, anti-spam and n8n automation.'},
+  features:{fa:['خوش‌آمدگویی خودکار به اعضای جدید','سیستم ضداسپم و مدیریت اخطار','دستورات سفارشی قابل تنظیم','اتوماسیون با n8n و پایتون'],en:['Automatic welcome for new members','Anti-spam & warning system','Custom configurable commands','Automation with n8n & Python']},
+  tech:['Python','n8n','Telegram API']},
+ {id:'karino-app',cat:'app',icon:'📱',grad:['#565d68','#2a2f37'],img:'',year:{fa:'۱۴۰۳',en:'2024'},
+  title:{fa:'اپلیکیشن مدیریت وظایف «کارینو»',en:'Karino Task Manager App'},
+  desc:{fa:'اپلیکیشنی ساده و سریع برای ثبت و پیگیری کارهای روزانه با دسته‌بندی و اولویت‌بندی.',en:'A simple, fast app for tracking daily tasks with categories and priorities.'},
+  features:{fa:['افزودن، ویرایش و حذف وظایف','دسته‌بندی و اولویت‌بندی کارها','ذخیره‌سازی خودکار اطلاعات','طراحی مینیمال و کاربرپسند'],en:['Add, edit & delete tasks','Categories and priorities','Automatic data saving','Minimal, user-friendly design']},
+  tech:['Python','App Development']},
+ {id:'cafe-brand',cat:'design',icon:'✒️',grad:['#23272f','#0f1115'],img:'',year:{fa:'۱۴۰۳',en:'2024'},
+  title:{fa:'هویت بصری کافه دُنج',en:'Doonj Café Brand Identity'},
+  desc:{fa:'طراحی کامل هویت بصری یک کافه؛ از لوگو و منو تا بنرهای اینستاگرام با سبکی مدرن و گرم.',en:'A complete visual identity for a café — logo, menu and Instagram banners with a modern, warm style.'},
+  features:{fa:['طراحی لوگو از صفر','ست چاپی شامل منو و کارت ویزیت','بنرهای اینستاگرام هماهنگ با لوگو','پالت رنگی اختصاصی'],en:['Logo design from scratch','Print set: menu & business cards','Instagram banners matching the logo','Custom color palette']},
+  tech:['Logo Design','Photoshop','Canva']},
+ {id:'excel-dash',cat:'office',icon:'📊',grad:['#6e7684','#3c434e'],img:'',year:{fa:'۱۴۰۳',en:'2024'},
+  title:{fa:'داشبورد گزارش فروش اکسل',en:'Excel Sales Dashboard'},
+  desc:{fa:'داشبورد پویای اکسل برای نمایش خودکار فروش، سود و موجودی انبار به‌صورت نموداری.',en:'A dynamic Excel dashboard displaying sales, profit and inventory automatically with charts.'},
+  features:{fa:['جداول پویا و فیلترهای هوشمند','نمودارهای تحلیلی فروش','فرمول‌نویسی و گزارش خودکار','قالب قابل استفاده مجدد'],en:['Dynamic tables & smart filters','Analytical sales charts','Formulas & auto-generated reports','Reusable template']},
+  tech:['Excel','Word','PowerPoint']},
+ {id:'rayan-web',cat:'site',icon:'🌐',grad:['#8a93a3','#4a5160'],img:'',year:{fa:'۱۴۰۴',en:'2025'},
+  title:{fa:'سایت شرکتی رایان‌وب',en:'RayanWeb Corporate Website'},
+  desc:{fa:'وب‌سایت معرفی شرکت با ساختار چندصفحه‌ای، فرم تماس و بخش نمونه‌کارها؛ سریع و بهینه.',en:'A company website with multi-page structure, contact form and portfolio — fast and SEO-friendly.'},
+  features:{fa:['ساختار چندصفحه‌ای حرفه‌ای','بهینه برای سئو و سرعت بالا','فرم تماس و معرفی خدمات','انتشار رایگان با GitHub Pages'],en:['Professional multi-page structure','SEO & speed optimized','Contact form & services section','Free hosting on GitHub Pages']},
+  tech:['HTML','CSS','GitHub Pages']},
+ {id:'banner-set',cat:'design',icon:'🎨',grad:['#4a5160','#23272f'],img:'',year:{fa:'۱۴۰۴',en:'2025'},
+  title:{fa:'پکیج بنر اینستاگرام رستوران سُل',en:'Sol Restaurant Banner Pack'},
+  desc:{fa:'طراحی ۹ بنر هماهنگ برای پیج اینستاگرام یک رستوران با ست رنگی مشخص و سبک مینیمال.',en:'A set of 9 matching Instagram banners for a restaurant page with a consistent color palette.'},
+  features:{fa:['۹ بنر هماهنگ استوری و پست','ست رنگی و تایپوگرافی یکسان','فایل‌های آماده انتشار','طراحی مجدد رایگان تا رضایت کامل'],en:['9 matching story & post banners','Consistent colors & typography','Ready-to-publish files','Free revisions until satisfied']},
+  tech:['Photoshop','Canva','Brand Design']},
+ {id:'word-automation',cat:'office',icon:'📄',grad:['#3c434e','#1c2027'],img:'',year:{fa:'۱۴۰۳',en:'2024'},
+  title:{fa:'قالب خودکار گزارش Word',en:'Automated Word Report Template'},
+  desc:{fa:'قالب حرفه‌ای Word با فهرست خودکار، سرصفحه و امضای دیجیتال برای گزارش‌های ماهانه شرکت.',en:'A professional Word template with auto table of contents, headers and signature area for monthly reports.'},
+  features:{fa:['فهرست مطالب خودکار','سرصفحه و پاصفحه اختصاصی','جدول‌های از پیش طراحی‌شده','راهنمای استفاده فارسی'],en:['Automatic table of contents','Custom header & footer','Pre-designed tables','Persian user guide']},
+  tech:['Word','Office Automation']}
+];
+PROJECTS.forEach(function(p){ if(!p.img && ART[p.id]) p.img=svgURI(ART[p.id]); });
+
+var SKILLS=[
+ {i:'🌐',n:{fa:'طراحی سایت با HTML و CSS',en:'Web Design with HTML & CSS'},v:92},
+ {i:'🐍',n:{fa:'برنامه‌نویسی Python',en:'Python Programming'},v:85},
+ {i:'🤖',n:{fa:'ساخت ربات تلگرام با n8n و Python',en:'Telegram Bots with n8n & Python'},v:80},
+ {i:'🧠',n:{fa:'استفاده از ابزارهای هوش مصنوعی (AI)',en:'Working with AI Tools'},v:90},
+ {i:'🎨',n:{fa:'طراحی لوگو و بنر',en:'Logo & Banner Design'},v:78},
+ {i:'📄',n:{fa:'تسلط بر Word، Excel و PowerPoint',en:'Word, Excel & PowerPoint'},v:95},
+ {i:'📱',n:{fa:'ساخت اپلیکیشن و نرم‌افزار',en:'App & Software Development'},v:70},
+ {i:'🛠',n:{fa:'رفع خطا و اشکال‌زدایی پروژه‌ها',en:'Debugging & Troubleshooting'},v:88},
+ {i:'🚀',n:{fa:'انتشار سایت با GitHub Pages',en:'Publishing with GitHub Pages'},v:86},
+ {i:'⚙️',n:{fa:'توسعه و بهینه‌سازی پروژه‌های نرم‌افزاری',en:'Software Development & Optimization'},v:82}
+];
+/* تایم‌لاین — سابقه ۲ سال (۱۴۰۳ تا ۱۴۰۴) */
+var TIMELINE=[
+ {e:'🚀',date:{fa:'۱۴۰۳',en:'2024'},t:{fa:'شروع سفر؛ یادگیری HTML و CSS',en:'Starting the Journey: HTML & CSS'},d:{fa:'اولین صفحات وب، اولین باگ‌ها و لذت دیدن اولین سایت روی مرورگر!',en:'First web pages, first bugs, and the joy of seeing my first website live!'}},
+ {e:'🐍',date:{fa:'۱۴۰۳',en:'2024'},t:{fa:'ورود جدی به پایتون',en:'Diving into Python'},d:{fa:'نوشتن اولین اسکریپت‌ها و ابزارهای کاربردی برای خودکار کردن کارها.',en:'Writing my first scripts and handy tools for automating tasks.'}},
+ {e:'🎨',date:{fa:'۱۴۰۳',en:'2024'},t:{fa:'اولین سفارش‌های طراحی لوگو و بنر',en:'First Logo & Banner Orders'},d:{fa:'همکاری با کسب‌وکارهای کوچک برای طراحی لوگو، بنر و هویت بصری.',en:'Collaborating with small businesses on logos, banners and visual identity.'}},
+ {e:'🤖',date:{fa:'۱۴۰۳',en:'2024'},t:{fa:'ساخت اولین ربات تلگرام',en:'My First Telegram Bot'},d:{fa:'ربات مدیریت گروه با پایتون و n8n؛ خوش‌آمدگویی خودکار، ضداسپم و دستورات سفارشی.',en:'A group-management bot with Python & n8n — auto welcome, anti-spam and custom commands.'}},
+ {e:'📊',date:{fa:'۱۴۰۳',en:'2024'},t:{fa:'پروژه‌های آفیس و داشبورد اکسل',en:'Office Projects & Excel Dashboard'},d:{fa:'ساخت داشبورد گزارش فروش و قالب‌های حرفه‌ای Word برای مشتریان.',en:'Building a sales dashboard and professional Word templates for clients.'}},
+ {e:'📱',date:{fa:'۱۴۰۴',en:'2025'},t:{fa:'اولین پروژه اپلیکیشن',en:'First App Project'},d:{fa:'طراحی و ساخت اپلیکیشن مدیریت وظایف «کارینو» و تجربه چرخه کامل یک محصول.',en:'Designing and building the "Karino" task manager app — a full product cycle experience.'}},
+ {e:'⚙️',date:{fa:'۱۴۰۴',en:'2025'},t:{fa:'اتوماسیون حرفه‌ای با n8n',en:'Professional Automation with n8n'},d:{fa:'راه‌اندازی ورک‌فلوهای خودکار برای کسب‌وکارها؛ اتصال ربات‌ها به سرویس‌های مختلف.',en:'Setting up automated workflows connecting bots to various services.'}},
+ {e:'🌍',date:{fa:'۱۴۰۴',en:'2025'},t:{fa:'انتشار سایت‌ها با GitHub Pages',en:'Publishing with GitHub Pages'},d:{fa:'انتشار چندین پروژه وب آنلاین و ترکیب هوش مصنوعی با روند کار.',en:'Publishing several web projects online and blending AI into my workflow.'}}
+];
+
+/* ════════════════ ابزار ════════════════ */
+function $(s){return document.querySelector(s)}
+function $all(s){return document.querySelectorAll(s)}
+function t(path){return path.split('.').reduce(function(o,k){return o?o[k]:undefined},I18N[lang])}
+var lang='fa',curFilter='all',curPage='home',cur=0,countersDone=false,typeTimer=null;
+function faNum(n){return Number(n).toLocaleString('fa-IR')}
+function locNum(n){return lang==='fa'?faNum(n):String(n)}
+var io=('IntersectionObserver' in window)?new IntersectionObserver(function(es){
+  es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+},{threshold:.12}):null;
+function watchReveals(){
+  if(!io){$all('.reveal').forEach(function(el){el.classList.add('in')});return}
+  $all('.reveal:not(.in)').forEach(function(el){io.observe(el)});
+}
+function closeMenu(){
+  $('#navLinks').classList.remove('open');
+  $('#burger').textContent='☰';
+}
+
+/* ════════════════ رندرها ════════════════ */
+function renderBadges(){
+  $('#badges').innerHTML=I18N[lang].hero.badges.map(function(b,i){
+    return '<div class="badge b'+(i+1)+'"><span class="ico">'+b[0]+'</span><span>'+b[1]+'<small>'+b[2]+'</small></span></div>';
+  }).join('');
+  $('#avatarInitial').textContent=I18N[lang].hero.initial;
+}
+function renderWhy(){
+  $('#whyGrid').innerHTML=I18N[lang].about.why.map(function(w){
+    return '<div class="item"><span class="ico">'+w[0]+'</span><div><h4>'+w[1]+'</h4><p>'+w[2]+'</p></div></div>';
+  }).join('');
+}
+function renderInfo(){
+  $('#infoRows').innerHTML=I18N[lang].about.rows.map(function(r){
+    return '<div class="info-row"><span class="k">'+r[0]+'</span><span class="v">'+r[1]+'</span></div>';
+  }).join('');
+}
+function renderProjects(){
+  var g=$('#pGrid');g.innerHTML='';
+  PROJECTS.filter(function(p){return curFilter==='all'||p.cat===curFilter}).forEach(function(p,idx){
+    var media='<span class="icon">'+p.icon+'</span>';
+    if(p.img){media+='<img src="'+p.img+'" alt="'+p.title[lang]+'" loading="lazy" onerror="this.remove()">'}
+    var card=document.createElement('div');
+    card.className='p-card';
+    card.style.animationDelay=(idx*60)+'ms';
+    card.innerHTML=
+      '<div class="p-media" style="background:linear-gradient(135deg,'+p.grad[0]+','+p.grad[1]+')">'+media+'</div>'+
+      '<div class="p-body">'+
+        '<span class="p-cat">'+catNames[p.cat][lang]+'</span>'+
+        '<h3 class="p-title">'+p.title[lang]+'</h3>'+
+        '<p class="p-desc">'+p.desc[lang]+'</p>'+
+        '<div class="p-foot"><span class="p-year">📅 '+p.year[lang]+'</span><span class="p-more">'+I18N[lang].portfolio.more+'</span></div>'+
+      '</div>';
+    card.addEventListener('click',function(){openProject(p.id)});
+    g.appendChild(card);
+  });
+}
+function renderSkills(){
+  $('#skillGrid').innerHTML=SKILLS.map(function(s){
+    return '<div class="skill-card"><div class="skill-top">'+
+      '<span class="skill-name"><span class="ico">'+s.i+'</span>'+s.n[lang]+'</span>'+
+      '<span class="skill-pct">'+locNum(s.v)+(lang==='fa'?'٪':'%')+'</span></div>'+
+      '<div class="bar"><i data-level="'+s.v+'"></i></div></div>';
+  }).join('');
+}
+function animateSkills(){
+  $all('.bar i').forEach(function(b){
+    b.style.width='0';
+    setTimeout(function(){b.style.width=b.getAttribute('data-level')+'%'},80);
+  });
+}
+function renderTimeline(){
+  $('#timeline').innerHTML=TIMELINE.map(function(x){
+    return '<div class="t-item reveal"><span class="t-date">'+x.date[lang]+'</span>'+
+      '<div class="t-card"><h4>'+x.e+' '+x.t[lang]+'</h4><p>'+x.d[lang]+'</p></div></div>';
+  }).join('');
+  watchReveals();
+}
+
+/* ════════════════ مودال ════════════════ */
+function openProject(id){
+  for(var i=0;i<PROJECTS.length;i++)if(PROJECTS[i].id===id)cur=i;
+  var p=PROJECTS[cur],mImg=$('#mImg');
+  $('#mHero').style.background='linear-gradient(135deg,'+p.grad[0]+','+p.grad[1]+')';
+  $('#mIcon').textContent=p.icon;
+  mImg.onerror=function(){mImg.style.display='none'};
+  if(p.img){mImg.style.display='block';mImg.src=p.img}
+  else{mImg.style.display='none'}
+  $('#mTitle').textContent=p.title[lang];
+  $('#mChips').innerHTML='<span class="m-chip">📂 '+catNames[p.cat][lang]+'</span><span class="m-chip">📅 '+p.year[lang]+'</span>';
+  $('#mDesc').textContent=p.desc[lang];
+  $('#mFeats').innerHTML=p.features[lang].map(function(f){return '<li>'+f+'</li>'}).join('');
+  $('#mTech').innerHTML=p.tech.map(function(x){return '<span>'+x+'</span>'}).join('');
+  $('#modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){
+  $('#modal').classList.remove('open');
+  document.body.style.overflow='';
+}
+ $('#mClose').onclick=closeModal;
+ $('#modalBg').onclick=closeModal;
+ $('#mNext').onclick=function(){openProject(PROJECTS[(cur+1)%PROJECTS.length].id)};
+ $('#mPrev').onclick=function(){openProject(PROJECTS[(cur-1+PROJECTS.length)%PROJECTS.length].id)};
+ $('#mOrder').onclick=function(){closeModal();go('contact')};
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){closeModal();closeMenu()}
+});
+
+ $('#filters').addEventListener('click',function(e){
+  var b=e.target.closest('.filter-btn');if(!b)return;
+  $all('.filter-btn').forEach(function(x){x.classList.remove('active')});
+  b.classList.add('active');curFilter=b.getAttribute('data-f');renderProjects();
+});
+
+/* ════════════════ ناوبری (۴ صفحه) ════════════════ */
+function go(id){
+  if(!I18N.fa.titles[id])id='home'; /* هش‌های قدیمی مثل #about به خانه برمی‌گردند */
+  curPage=id;
+  $all('.page').forEach(function(p){p.classList.remove('active')});
+  var pg=$('#page-'+id);if(pg)pg.classList.add('active');
+  $all('.nav-links a').forEach(function(a){a.classList.toggle('active',a.getAttribute('data-page')===id)});
+  document.title=I18N[lang].titles[id];
+  window.scrollTo(0,0);
+  closeMenu();
+  if(id==='skills')animateSkills();
+  if(id==='home')runCounters();
+  watchReveals();
+  if(location.hash.slice(1)!==id)location.hash=id;
+}
+window.addEventListener('hashchange',function(){
+  var id=location.hash.slice(1)||'home';
+  if(id!==curPage)go(id);
+});
+ $all('.nav-links a').forEach(function(a){
+  a.addEventListener('click',closeMenu);
+});
+ $('#burger').onclick=function(){
+  var nl=$('#navLinks');
+  nl.classList.toggle('open');
+  this.textContent=nl.classList.contains('open')?'✕':'☰';
+};
+
+/* ════════════════ افکت تایپ ════════════════ */
+var ri=0,ci=0,del=false;
+function startTyping(){
+  if(typeTimer)clearTimeout(typeTimer);
+  ri=0;ci=0;del=false;$('#typed').textContent='';
+  typeLoop();
+}
+function typeLoop(){
+  var w=I18N[lang].roles[ri];
+  ci=del?ci-1:ci+1;
+  $('#typed').textContent=w.slice(0,ci);
+  var sp=del?45:90;
+  if(!del&&ci===w.length){del=true;sp=1600}
+  else if(del&&ci===0){del=false;ri=(ri+1)%I18N[lang].roles.length;sp=350}
+  typeTimer=setTimeout(typeLoop,sp);
+}
+
+/* ════════════════ شمارنده آمار ════════════════ */
+function fillStats(){
+  $all('.stat .num').forEach(function(el){
+    el.textContent=locNum(+el.getAttribute('data-target'))+'+';
+  });
+}
+function runCounters(){
+  if(countersDone){fillStats();return}
+  countersDone=true;
+  $all('.stat .num').forEach(function(el){
+    var target=+el.getAttribute('data-target'),st=performance.now();
+    (function step(n){
+      var p=Math.min((n-st)/1400,1);
+      var v=Math.round(target*(1-Math.pow(1-p,3)));
+      el.textContent=(lang==='fa'?faNum(v):String(v))+'+';
+      if(p<1)requestAnimationFrame(step);
+    })(st);
+  });
+}
+setTimeout(runCounters,800);
+
+/* ════════════════ اسکرول ════════════════ */
+var header=$('#header'),topBtn=$('#topBtn');
+window.addEventListener('scroll',function(){
+  header.classList.toggle('scrolled',window.scrollY>30);
+  topBtn.classList.toggle('show',window.scrollY>500);
+});
+topBtn.onclick=function(){window.scrollTo({top:0,behavior:'smooth'})};
+
+/* ════════════════ تم ════════════════ */
+function setTheme(x){
+  document.documentElement.setAttribute('data-theme',x);
+  $('#themeBtn').textContent=x==='dark'?'☀️':'🌙';
+  try{localStorage.setItem('yp-theme',x)}catch(e){}
+}
+ $('#themeBtn').onclick=function(){
+  setTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark');
+};
+
+/* ════════════════ دو زبانه ════════════════ */
+function applyLang(l){
+  lang=l;
+  try{localStorage.setItem('yp-lang',l)}catch(e){}
+  var d=I18N[l];
+  document.documentElement.setAttribute('lang',l);
+  document.documentElement.setAttribute('dir',l==='fa'?'rtl':'ltr');
+  $all('[data-i18n]').forEach(function(el){
+    var v=t(el.getAttribute('data-i18n'));
+    if(typeof v==='string')el.innerHTML=v;
+  });
+  closeModal();
+  renderBadges();renderWhy();renderInfo();renderProjects();renderSkills();renderTimeline();
+  $('#langBtn').textContent=l==='fa'?'EN':'فا';
+  startTyping();
+  if(countersDone)fillStats();
+  if(curPage==='skills')animateSkills();
+  document.title=d.titles[curPage]||d.titles.home;
+  watchReveals();
+}
+ $('#langBtn').onclick=function(){applyLang(lang==='fa'?'en':'fa')};
+
+/* ════════════════ کپی و توست ════════════════ */
+var toastEl=$('#toast'),toastT=null;
+function showToast(msg){
+  toastEl.textContent=msg;toastEl.classList.add('show');
+  if(toastT)clearTimeout(toastT);
+  toastT=setTimeout(function(){toastEl.classList.remove('show')},2600);
+}
+function copyPhone(){
+  var txt='09370132965';
+  function done(){showToast(I18N[lang].copied)}
+  if(navigator.clipboard&&window.isSecureContext){
+    navigator.clipboard.writeText(txt).then(done);
+  }else{
+    var ta=document.createElement('textarea');
+    ta.value=txt;document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy')}catch(e){}
+    ta.remove();done();
+  }
+}
+
+/* ════════════════ عکس پروفایل خودکار ════════════════
+   عکست رو با یکی از این اسم‌ها کنار index.html بذار:
+   me.jpg یا me.png یا me.jpeg یا profile.jpg */
+(function(){
+  var names=['me.jpg','me.png','me.jpeg','profile.jpg'];
+  var i=0,test=new Image();
+  test.onload=function(){
+    var img=document.createElement('img');
+    img.src=names[i];img.alt='Yousef Parvaresh';
+    $('#avatarBox').appendChild(img);
+  };
+  test.onerror=function(){i++;if(i<names.length)test.src=names[i]};
+  test.src=names[0];
+})();
+
+/* ════════════════ شروع ════════════════ */
+(function init(){
+  var savedTheme='light',savedLang='fa';
+  try{
+    savedTheme=localStorage.getItem('yp-theme')||'light';
+    savedLang=localStorage.getItem('yp-lang')||'fa';
+  }catch(e){}
+  setTheme(savedTheme);
+  applyLang(savedLang);
+  go(location.hash.slice(1)||'home');
+  setTimeout(function(){
+    var l=document.getElementById('loader');
+    if(l)l.style.display='none';
+  },2400);
+})();
+</script>
+</body>
+</html>
