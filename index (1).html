@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>یوسف پرورش | توسعه‌دهنده و طراح</title>
+<meta name="description" content="Yousef Parvaresh — Personal Website | سایت شخصی یوسف پرورش">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23242830'/%3E%3Ctext x='50' y='72' font-size='56' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'%3EY%3C/text%3E%3C/svg%3E">
+<meta name="google-site-verification" content="0h8lvghSqkaD5cFnsIE2p06StlPI16KkhF1a96809Cw" />
+<style>
+[data-theme="light"]{
+  --bg:#f4f5f7; --bg2:#ffffff; --card:#ffffff; --card2:#eceef1;
+  --border:#e3e6ea; --text:#1a1d23; --muted:#6b7280;
+  --acc:#242830; --on-acc:#ffffff; --acc-soft:rgba(36,40,48,.06);
+  --grad:linear-gradient(120deg,#3a3f48,#14161b,#3a3f48);
+  --nav-bg:rgba(244,245,247,.88); --grid:rgba(20,24,32,.05);
+  --orb:#c7ccd4; --hover-b:rgba(36,40,48,.45);
+  --shadow:0 22px 44px -22px rgba(20,24,32,.28);
+}
+[data-theme="dark"]{
+  --bg:#0f1114; --bg2:#16181d; --card:#191c22; --card2:#22262e;
+  --border:#2a2f38; --text:#eef0f3; --muted:#98a0ac;
+  --acc:#e8eaee; --on-acc:#14161a; --acc-soft:rgba(232,234,238,.07);
+  --grad:linear-gradient(120deg,#f2f4f7,#aab1bd,#f2f4f7);
+  --nav-bg:rgba(15,17,20,.88); --grid:rgba(255,255,255,.045);
+  --orb:#2e3542; --hover-b:rgba(232,234,238,.5);
+  --shadow:0 22px 44px -18px rgba(0,0,0,.65);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Vazirmatn','Segoe UI',Tahoma,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;transition:background .4s,color .4s}
+html[lang="en"] body{font-family:'Inter','Segoe UI',system-ui,Arial,sans-serif}
+button{font-family:inherit;cursor:pointer}
+::selection{background:var(--acc);color:var(--on-acc)}
+::-webkit-scrollbar{width:9px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--card2);border-radius:9px}
+
+/* لودر — حلقه چرخان + مونوگرام + نوار (CSS خالص، همیشه بسته می‌شه) */
+#loader{position:fixed;top:0;right:0;bottom:0;left:0;z-index:999;background:var(--bg);display:grid;place-items:center;pointer-events:none;animation:loaderOut .6s ease 1.4s forwards}
+@keyframes loaderOut{to{opacity:0;visibility:hidden}}
+.l-wrap{text-align:center}
+.l-mark{position:relative;width:96px;height:96px;margin:0 auto 18px}
+.l-ring{position:absolute;top:0;right:0;bottom:0;left:0;border-radius:50%;border:4px solid var(--card2);border-top-color:var(--acc);animation:lspin .9s linear infinite}
+@keyframes lspin{to{transform:rotate(360deg)}}
+.l-letter{position:absolute;top:0;right:0;bottom:0;left:0;display:grid;place-items:center;font-size:2.1rem;font-weight:900}
+.l-name{font-weight:900;font-size:1.2rem}
+.l-bar{width:140px;height:4px;border-radius:99px;background:var(--card2);margin:14px auto 0;overflow:hidden}
+.l-bar i{display:block;height:100%;width:45%;border-radius:99px;background:var(--acc);animation:lbar 1.1s ease-in-out infinite}
+@keyframes lbar{0%{transform:translateX(160%)}100%{transform:translateX(-260%)}}
+
+body::before{content:'';position:fixed;top:0;right:0;bottom:0;left:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:44px 44px;-webkit-mask-image:radial-gradient(ellipse at 50% 0%,#000 0%,transparent 70%);mask-image:radial-gradient(ellipse at 50% 0%,#000 0%,transparent 70%);pointer-events:none;z-index:0}
+.orb{position:fixed;border-radius:50%;filter:blur(110px);background:var(--orb);opacity:.3;z-index:0;pointer-events:none}
+.orb1{width:420px;height:420px;top:-140px;left:-140px;animation:drift 14s ease-in-out infinite}
+.orb2{width:380px;height:380px;bottom:-160px;right:-120px;animation:drift 16s ease-in-out infinite reverse}
+@keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,30px)}}
+.container{max-width:1150px;margin:0 auto;padding:0 22px;position:relative;z-index:1}
+main{position:relative;z-index:1}
+.grad{background:var(--grad);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 7s linear infinite}
+@keyframes shine{to{background-position:200% center}}
+
+header{position:fixed;top:0;right:0;left:0;z-index:100;transition:.3s}
+header.scrolled{background:var(--nav-bg);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px;gap:10px}
+.logo{font-weight:900;font-size:1.3rem;color:var(--text);text-decoration:none;white-space:nowrap}
+.logo b{color:var(--muted);font-weight:900}
+.nav-links{display:flex;gap:4px;list-style:none}
+.nav-links a{position:relative;padding:9px 13px;border-radius:10px;color:var(--muted);text-decoration:none;font-weight:500;font-size:.9rem;transition:.3s;white-space:nowrap}
+.nav-links a:hover{color:var(--text)}
+.nav-links a.active{color:var(--text);font-weight:700}
+.nav-links a.active::after{content:'';position:absolute;bottom:3px;right:13px;left:13px;height:2.5px;border-radius:3px;background:var(--acc)}
+.nav-actions{display:flex;gap:8px;align-items:center}
+.nav-btn{height:40px;min-width:40px;border-radius:12px;border:1px solid var(--border);background:var(--card);color:var(--text);font-size:1rem;display:grid;place-items:center;transition:.3s;padding:0 10px;font-weight:800}
+.nav-btn:hover{border-color:var(--acc)}
+.burger{display:none;font-size:1.15rem}
+
+.page{display:none;min-height:100vh;padding:120px 0 80px}
+.page.active{display:block;animation:pageIn .5s ease}
+@keyframes pageIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.sec-head{margin-bottom:38px}
+.kicker{display:inline-block;background:var(--acc-soft);border:1px solid var(--border);padding:6px 16px;border-radius:99px;font-weight:700;font-size:.85rem}
+.sec-title{font-size:clamp(1.6rem,3.4vw,2.3rem);font-weight:900;margin-top:14px}
+.sec-desc{color:var(--muted);margin-top:10px;max-width:580px;line-height:2}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+/* بخش‌های درباره من و سابقه داخل صفحه خانه */
+.home-sec{border-top:1px solid var(--border);margin-top:80px;padding-top:70px}
+html[dir="ltr"] .home-sec{padding-top:70px}
+
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:110px}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:46px;align-items:center}
+.welcome{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--border);padding:9px 18px;border-radius:99px;font-size:.9rem;color:var(--muted);font-weight:600}
+.hero h1{font-size:clamp(2.1rem,5.4vw,3.6rem);font-weight:900;line-height:1.35;margin:20px 0 10px}
+.type-wrap{font-size:clamp(1.05rem,2.4vw,1.45rem);font-weight:700;min-height:2em}
+#typed{color:var(--muted);font-weight:800}
+.cursor{display:inline-block;width:3px;height:1.05em;background:var(--acc);margin-inline-start:5px;vertical-align:-.15em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.lead{color:var(--muted);line-height:2.1;margin:14px 0 28px;max-width:520px}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 27px;border-radius:14px;font-weight:700;font-size:.95rem;border:none;transition:.3s;text-decoration:none}
+.btn.primary{background:var(--grad);background-size:200% auto;color:var(--on-acc);box-shadow:var(--shadow)}
+.btn.primary:hover{transform:translateY(-3px);background-position:100% center}
+.btn.ghost{background:var(--card);border:1px solid var(--border);color:var(--text)}
+.btn.ghost:hover{border-color:var(--acc);transform:translateY(-3px)}
+.socials{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.socials a{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--card);border:1px solid var(--border);color:var(--muted);transition:.3s}
+.socials a:hover{color:var(--on-acc);background:var(--acc);border-color:transparent;transform:translateY(-4px)}
+.socials svg{width:20px;height:20px;fill:currentColor}
+
+.avatar-wrap{position:relative;display:grid;place-items:center}
+#badges{position:absolute;top:0;right:0;bottom:0;left:0;pointer-events:none}
+.avatar{width:min(320px,68vw);aspect-ratio:1;border-radius:50%;position:relative;display:grid;place-items:center;background:radial-gradient(circle at 30% 25%,var(--card2),var(--card));border:1px solid var(--border);overflow:visible}
+.avatar::before{content:'';position:absolute;top:-14px;right:-14px;bottom:-14px;left:-14px;border-radius:50%;border:2px dashed var(--border);animation:spin 26s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.avatar img{position:absolute;top:6%;right:6%;width:88%;height:88%;border-radius:50%;object-fit:cover}
+.initial{font-size:clamp(5rem,13vw,7.5rem);font-weight:900}
+.badge{position:absolute;display:flex;align-items:center;gap:9px;background:var(--card);border:1px solid var(--border);padding:10px 15px;border-radius:14px;font-size:.85rem;font-weight:700;box-shadow:var(--shadow);animation:bob 5s ease-in-out infinite}
+.badge small{display:block;color:var(--muted);font-weight:500;font-size:.7rem}
+.badge .ico{font-size:1.35rem}
+.b1{top:6%;right:-4%}
+.b2{bottom:12%;left:-8%;animation-delay:1.2s}
+.b3{bottom:-3%;right:10%;animation-delay:2.2s}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-top:70px}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:22px;text-align:center;transition:.3s}
+.stat:hover{transform:translateY(-5px);border-color:var(--hover-b);box-shadow:var(--shadow)}
+.stat .num{font-size:1.9rem;font-weight:900}
+.stat .lbl{color:var(--muted);font-size:.87rem;margin-top:4px}
+
+.about-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:34px;align-items:start}
+.about-text p{color:var(--muted);line-height:2.2;margin-bottom:16px;text-align:justify}
+.about-text p b{color:var(--text)}
+.why{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:26px}
+.why .item{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px;display:flex;gap:12px;align-items:flex-start;transition:.3s}
+.why .item:hover{transform:translateY(-4px);border-color:var(--hover-b)}
+.item .ico{font-size:1.5rem}
+.item h4{font-size:.93rem;margin-bottom:4px}
+.item p{font-size:.8rem;color:var(--muted);line-height:1.8}
+.info-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:26px;position:sticky;top:100px}
+.info-card h3{margin-bottom:14px;font-size:1.08rem;font-weight:800}
+.info-row{display:flex;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px dashed var(--border);font-size:.9rem;flex-wrap:wrap}
+.info-row:last-child{border:none}
+.info-row .k{color:var(--muted)}
+.info-row .v{font-weight:700}
+
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px}
+.filter-btn{padding:9px 20px;border-radius:99px;background:var(--card);border:1px solid var(--border);color:var(--muted);font-size:.87rem;font-weight:600;transition:.3s}
+.filter-btn:hover{color:var(--text)}
+.filter-btn.active{background:var(--acc);color:var(--on-acc);border-color:transparent}
+.p-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}
+.p-card{background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;cursor:pointer;transition:.35s;animation:cardIn .5s ease both}
+@keyframes cardIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.p-card:hover{transform:translateY(-8px);border-color:var(--hover-b);box-shadow:var(--shadow)}
+.p-media{height:230px;display:grid;place-items:center;position:relative;overflow:hidden;background:var(--card2)}
+.p-media .icon{font-size:3.4rem;filter:drop-shadow(0 10px 18px rgba(0,0,0,.22));transition:.4s;z-index:1}
+.p-card:hover .icon{transform:scale(1.12) rotate(-5deg)}
+.p-media img{position:absolute;top:0;right:0;width:100%;height:100%;object-fit:contain;z-index:2}
+.g-badge{position:absolute;top:12px;inset-inline-start:12px;z-index:3;background:rgba(10,12,16,.55);color:#fff;font-size:.72rem;font-weight:700;padding:4px 11px;border-radius:99px;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.p-body{padding:20px}
+.p-cat{font-size:.74rem;font-weight:700;background:var(--acc-soft);padding:4px 13px;border-radius:99px;display:inline-block;margin-bottom:10px}
+.p-title{font-size:1.05rem;font-weight:800;margin-bottom:8px}
+.p-desc{font-size:.86rem;color:var(--muted);line-height:1.9;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.p-foot{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:14px;border-top:1px dashed var(--border)}
+.p-year{color:var(--muted);font-size:.82rem}
+.p-more{font-size:.85rem;font-weight:700}
+.p-empty{grid-column:1/-1;text-align:center;padding:56px 20px;color:var(--muted);background:var(--card);border:1.5px dashed var(--border);border-radius:20px;font-weight:600;line-height:2}
+
+.modal{position:fixed;top:0;right:0;bottom:0;left:0;z-index:200;display:none;align-items:center;justify-content:center;padding:20px}
+.modal.open{display:flex}
+.modal-bg{position:absolute;top:0;right:0;bottom:0;left:0;background:rgba(10,12,16,.7);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.modal-card{position:relative;background:var(--bg2);border:1px solid var(--border);border-radius:24px;max-width:680px;width:100%;max-height:88vh;overflow-y:auto;animation:pop .35s ease}
+@keyframes pop{from{opacity:0;transform:scale(.94) translateY(14px)}to{opacity:1;transform:none}}
+.modal-hero{height:clamp(240px,46vh,420px);display:grid;place-items:center;position:relative;overflow:hidden;background:var(--card2);touch-action:pan-y}
+.modal-hero .icon{font-size:4rem;filter:drop-shadow(0 12px 20px rgba(0,0,0,.25));position:relative;z-index:1}
+.m-slides{position:absolute;top:0;right:0;bottom:0;left:0;z-index:2}
+.m-slides img{position:absolute;top:0;right:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity .45s ease}
+.m-slides img.on{opacity:1}
+.g-arrow{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.28);background:rgba(10,12,16,.4);color:#fff;font-size:1.05rem;line-height:1;z-index:4;display:grid;place-items:center;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:background .3s}
+.g-arrow:hover{background:rgba(10,12,16,.68)}
+html[dir="rtl"] .g-prev,html[dir="rtl"] .g-next{transform:translateY(-50%) rotate(180deg)}
+.g-prev{inset-inline-start:14px}
+.g-next{inset-inline-end:14px}
+.g-dots{position:absolute;bottom:13px;right:0;left:0;display:flex;justify-content:center;gap:7px;z-index:4}
+.g-dot{width:8px;height:8px;border-radius:50%;border:none;background:rgba(255,255,255,.5);padding:0;transition:.3s}
+.g-dot.on{background:#fff;transform:scale(1.3)}
+.g-count{position:absolute;top:15px;inset-inline-end:66px;z-index:4;background:rgba(10,12,16,.5);color:#fff;font-size:.74rem;font-weight:700;padding:4px 12px;border-radius:99px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);direction:ltr}
+.modal-close{position:absolute;top:16px;left:16px;width:38px;height:38px;border-radius:12px;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.3);color:#fff;font-size:1.1rem;display:grid;place-items:center;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:.3s;z-index:5}
+.modal-close:hover{transform:rotate(90deg)}
+.modal-body{padding:26px 28px 30px}
+.m-meta{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 16px}
+.m-chip{font-size:.78rem;background:var(--card);border:1px solid var(--border);padding:5px 14px;border-radius:99px;color:var(--muted)}
+.modal-body h3{font-size:1.4rem;font-weight:900}
+.modal-body>p{color:var(--muted);line-height:2.1;margin:14px 0 18px;font-size:.93rem}
+.m-feats{list-style:none;margin-bottom:20px}
+.m-feats li{padding:10px 0;border-bottom:1px dashed var(--border);display:flex;gap:10px;font-size:.9rem}
+.m-feats li::before{content:'✓';font-weight:900}
+.m-tech{display:flex;gap:8px;flex-wrap:wrap}
+.m-tech span{font-size:.78rem;font-weight:700;background:var(--acc-soft);border:1px solid var(--border);padding:5px 13px;border-radius:8px}
+.m-nav{display:flex;justify-content:space-between;align-items:center;margin-top:24px;padding-top:18px;border-top:1px dashed var(--border);gap:10px;flex-wrap:wrap}
+.m-nav button{background:var(--card);border:1px solid var(--border);color:var(--text);padding:10px 18px;border-radius:12px;font-size:.84rem;font-weight:700;transition:.3s}
+.m-nav button:hover{border-color:var(--acc)}
+#mOrder{background:var(--acc);color:var(--on-acc);border-color:transparent}
+#mOrder:hover{opacity:.85}
+
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));gap:16px 22px}
+.skill-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;transition:.3s}
+.skill-card:hover{transform:translateY(-4px);border-color:var(--hover-b)}
+.skill-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;gap:10px}
+.skill-name{font-weight:700;font-size:.92rem;display:flex;gap:10px;align-items:center}
+.skill-name .ico{font-size:1.25rem}
+.skill-pct{font-weight:800;font-size:.85rem}
+.bar{height:9px;background:var(--card2);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--acc);border-radius:99px;transition:width 1.2s cubic-bezier(.22,1,.36,1)}
+.tools{margin-top:44px}
+.tools h3{font-size:1.15rem;font-weight:800;margin-bottom:18px}
+.chips{display:flex;flex-wrap:wrap;gap:12px}
+.t-chip{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--border);padding:10px 18px;border-radius:12px;font-size:.87rem;font-weight:600;transition:.3s}
+.t-chip:hover{transform:translateY(-4px);border-color:var(--acc)}
+.t-chip .ico{font-size:1.1rem}
+
+.timeline{position:relative;max-width:760px;margin:0 auto;padding-right:40px}
+html[dir="ltr"] .timeline{padding-right:0;padding-left:40px}
+.timeline::before{content:'';position:absolute;right:11px;top:6px;bottom:6px;width:2px;background:linear-gradient(180deg,var(--acc),transparent)}
+html[dir="ltr"] .timeline::before{right:auto;left:11px}
+.t-item{position:relative;margin-bottom:30px}
+.t-item::before{content:'';position:absolute;right:-38px;top:22px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:3px solid var(--acc);box-shadow:0 0 0 5px var(--acc-soft)}
+html[dir="ltr"] .t-item::before{right:auto;left:-38px}
+.t-date{display:inline-block;font-size:.78rem;font-weight:800;background:var(--acc-soft);padding:4px 14px;border-radius:99px;margin-bottom:10px}
+.t-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px 22px;transition:.3s}
+.t-card:hover{transform:translateY(-4px);border-color:var(--hover-b)}
+.t-card h4{font-size:1.02rem;font-weight:800;margin-bottom:8px}
+.t-card p{color:var(--muted);font-size:.88rem;line-height:1.95}
+
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-bottom:34px}
+.c-card{display:block;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:30px 24px;text-align:center;transition:.35s;color:var(--text);text-decoration:none;position:relative;overflow:hidden}
+.c-card::before{content:'';position:absolute;top:0;right:0;left:0;height:3px;background:var(--acc);opacity:0;transition:.3s}
+.c-card:hover{transform:translateY(-8px);border-color:var(--hover-b);box-shadow:var(--shadow)}
+.c-card:hover::before{opacity:1}
+.c-ico{width:64px;height:64px;margin:0 auto 16px;border-radius:18px;display:grid;place-items:center;background:var(--acc-soft)}
+.c-ico svg{width:28px;height:28px;fill:currentColor}
+.c-card h4{font-size:1.05rem;margin-bottom:6px}
+.c-val{color:var(--muted);font-size:.95rem;direction:ltr;unicode-bidi:embed;display:inline-block;font-weight:600}
+.c-hint{margin-top:12px;font-size:.78rem;font-weight:700}
+.copy-btn{margin-top:12px;background:var(--card2);border:1px solid var(--border);color:var(--muted);padding:7px 18px;border-radius:10px;font-size:.78rem;font-weight:700;transition:.3s}
+.copy-btn:hover{color:var(--text);border-color:var(--acc)}
+.cta{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:42px 30px;text-align:center}
+.cta h3{font-size:clamp(1.3rem,3vw,1.8rem);font-weight:900;margin-bottom:10px}
+.cta p{color:var(--muted);margin-bottom:24px;line-height:2;max-width:640px;margin-inline:auto}
+
+footer{border-top:1px solid var(--border);padding:30px 0;position:relative;z-index:1}
+.f-grid{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.f-links{display:flex;gap:18px;flex-wrap:wrap}
+.f-links a{color:var(--muted);text-decoration:none;font-size:.85rem;transition:.3s}
+.f-links a:hover{color:var(--text)}
+.f-copy{color:var(--muted);font-size:.85rem}
+.f-copy b{color:var(--text)}
+.toast{position:fixed;bottom:26px;left:50%;transform:translate(-50%,120px);background:var(--card);border:1px solid var(--border);padding:13px 24px;border-radius:14px;font-size:.88rem;font-weight:600;z-index:300;transition:.4s;box-shadow:var(--shadow);opacity:0}
+.toast.show{transform:translate(-50%,0);opacity:1}
+.top-btn{position:fixed;bottom:26px;left:26px;width:46px;height:46px;border-radius:14px;background:var(--acc);color:var(--on-acc);border:none;font-size:1.15rem;z-index:150;opacity:0;pointer-events:none;transition:.35s;transform:translateY(10px)}
+.top-btn.show{opacity:1;pointer-events:auto;transform:none}
+
+@media(max-width:920px){
+  .burger{display:grid}
+  .nav-links{position:fixed;top:72px;right:0;left:0;flex-direction:column;background:var(--nav-bg);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:14px 22px 22px;gap:4px;transform:translateY(-12px);transition:.35s;opacity:0;visibility:hidden}
+  .nav-links.open{transform:none;opacity:1;visibility:visible}
+  .hero-grid{grid-template-columns:1fr;text-align:center}
+  .lead{margin-inline:auto}
+  .btns,.socials{justify-content:center}
+  .about-grid{grid-template-columns:1fr}
+  .info-card{position:static}
+  .skills-grid{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .why{grid-template-columns:1fr}
+  .badge{transform:scale(.85)}
+  .b1{right:0}.b2{left:0}
+  .b3{display:none}
+  .cta{padding:30px 20px}
+  .m-nav{justify-content:center}
+  .home-sec{margin-top:60px;padding-top:50px}
+  .g-arrow{width:36px;height:36px}
+  .modal-body{padding:22px 20px 26px}
+}
+</style>
+</head>
+<body>
+
+<div id="loader">
+  <div class="l-wrap">
+    <div class="l-mark"><div class="l-ring"></div><span class="l-letter grad">Y</span></div>
+    <div class="l-name grad">یوسف پرورش</div>
+    <div class="l-bar"><i></i></div>
+  </div>
+</div>
+
+<div class="orb orb1"></div><div class="orb orb2"></div>
+
+<header id="header">
+  <div class="container nav">
+    <a href="#home" class="logo" data-i18n="brand">یوسف <b>پرورش</b></a>
+    <!-- ✏️ منوی جدید: ۴ آیتم -->
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" data-page="home" data-i18n="nav.home" class="active">خانه</a></li>
+      <li><a href="#portfolio" data-page="portfolio" data-i18n="nav.portfolio">نمونه کارها</a></li>
+      <li><a href="#skills" data-page="skills" data-i18n="nav.skills">مهارت‌ها</a></li>
+      <li><a href="#contact" data-page="contact" data-i18n="nav.contact">ارتباط با من</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-btn" id="langBtn" title="Language" aria-label="تغییر زبان">EN</button>
+      <button class="nav-btn" id="themeBtn" title="Theme" aria-label="تغییر تم">🌙</button>
+      <button class="nav-btn burger" id="burger" aria-label="منو">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ═══════ خانه (شامل درباره من + سابقه و تجربه) ═══════ -->
+<section class="page active" id="page-home">
+  <div class="container hero">
+    <div class="hero-grid">
+      <div>
+        <span class="welcome" data-i18n="hero.chip">👋 به وب‌سایت شخصی من خوش اومدی!</span>
+        <h1 data-i18n="hero.h1">ایده‌ها رو به <span class="grad">کد و خلاقیت</span> تبدیل می‌کنم</h1>
+        <div class="type-wrap"><span id="typed"></span><span class="cursor"></span></div>
+        <p class="lead" data-i18n="hero.lead"></p>
+        <div class="btns">
+          <a href="#portfolio" class="btn primary" data-i18n="hero.btnWork">مشاهده نمونه کارها</a>
+          <a href="#contact" class="btn ghost" data-i18n="hero.btnContact">ارتباط با من</a>
+        </div>
+        <div class="socials">
+          <a href="https://t.me/Yousef017" target="_blank" rel="noopener noreferrer" title="Telegram"><svg viewBox="0 0 24 24"><path d="M2,21L23,12L2,3V10L17,12L2,14V21Z"/></svg></a>
+          <a href="https://instagram.com/yousef._.parvaresh" target="_blank" rel="noopener noreferrer" title="Instagram"><svg viewBox="0 0 24 24"><path d="M7.8,2H16.2C19.87,2 22,4.13 22,7.8V16.2C22,19.87 19.87,22 16.2,22H7.8C4.13,22 2,19.87 2,16.2V7.8C2,4.13 4.13,2 7.8,2M7.6,4C5.61,4 4,5.61 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4C18.39,20 20,18.39 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z"/></svg></a>
+          <a href="https://t.me/NeuroCodeX_1" target="_blank" rel="noopener noreferrer" title="Telegram Channel"><svg viewBox="0 0 24 24"><path d="M3,9V15H7L12,20V4L7,9H3M16.5,12C16.5,10.23 15.48,8.71 14,7.97V16.02C15.48,15.29 16.5,13.77 16.5,12M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18,19.86 21,16.28 21,12C21,7.72 18,4.14 14,3.23Z"/></svg></a>
+          <a href="tel:09370132965" title="Phone"><svg viewBox="0 0 24 24"><path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/></svg></a>
+        </div>
+      </div>
+      <div class="avatar-wrap">
+        <div class="avatar" id="avatarBox">
+          <!-- ✏️ عکس شخصی: عکست رو با اسم me.jpg کنار index.html بذار — خودکار نمایش داده می‌شه -->
+          <span class="initial grad" id="avatarInitial">ی</span>
+        </div>
+        <div id="badges"></div>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="num" data-target="30">۰</div><div class="lbl" data-i18n="hero.stat1">پروژه انجام‌شده</div></div>
+      <div class="stat"><div class="num" data-target="25">۰</div><div class="lbl" data-i18n="hero.stat2">مشتری راضی</div></div>
+      <div class="stat"><div class="num" data-target="2">۰</div><div class="lbl" data-i18n="hero.stat3">سال تجربه</div></div>
+      <div class="stat"><div class="num" data-target="10">۰</div><div class="lbl" data-i18n="hero.stat4">مهارت تخصصی</div></div>
+    </div>
+  </div>
+
+  <!-- ─── درباره من (داخل خانه) ─── -->
+  <div class="container home-sec">
+    <div class="sec-head reveal">
+      <span class="kicker" data-i18n="about.kicker">درباره من</span>
+      <h2 class="sec-title" data-i18n="about.title"></h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p data-i18n="about.p1"></p>
+        <p data-i18n="about.p2"></p>
+        <div class="why" id="whyGrid"></div>
+      </div>
+      <div class="info-card reveal">
+        <h3 data-i18n="about.infoTitle"></h3>
+        <div id="infoRows"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── سابقه و تجربه (داخل خانه) ─── -->
+  <div class="container home-sec">
+    <div class="sec-head reveal">
+      <span class="kicker" data-i18n="experience.kicker">سابقه و تجربه</span>
+      <h2 class="sec-title" data-i18n="experience.title"></h2>
+    </div>
+    <div class="timeline" id="timeline"></div>
+  </div>
+</section>
+
+<!-- ═══════ نمونه کارها ═══════ -->
+<section class="page" id="page-portfolio">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="kicker" data-i18n="portfolio.kicker">نمونه کارها</span>
+      <h2 class="sec-title" data-i18n="portfolio.title"></h2>
+      <p class="sec-desc" data-i18n="portfolio.desc"></p>
+    </div>
+    <div class="filters" id="filters">
+      <button class="filter-btn active" data-f="all" data-i18n="filters.all">همه</button>
+      <button class="filter-btn" data-f="site" data-i18n="filters.site">سایت</button>
+      <button class="filter-btn" data-f="shop" data-i18n="filters.shop">فروشگاه</button>
+      <button class="filter-btn" data-f="software" data-i18n="filters.software">نرم‌افزار</button>
+      <button class="filter-btn" data-f="bot" data-i18n="filters.bot">ربات</button>
+      <button class="filter-btn" data-f="design" data-i18n="filters.design">طراحی</button>
+    </div>
+    <div class="p-grid" id="pGrid"></div>
+  </div>
+</section>
+
+<!-- ═══════ مهارت‌ها ═══════ -->
+<section class="page" id="page-skills">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="kicker" data-i18n="skills.kicker">مهارت‌ها</span>
+      <h2 class="sec-title" data-i18n="skills.title"></h2>
+    </div>
+    <div class="skills-grid" id="skillGrid"></div>
+    <div class="tools reveal">
+      <h3 data-i18n="skills.toolsTitle"></h3>
+      <div class="chips">
+        <span class="t-chip"><span class="ico">💻</span>VS Code</span>
+        <span class="t-chip"><span class="ico">🐙</span>Git &amp; GitHub</span>
+        <span class="t-chip"><span class="ico">⚙️</span>n8n</span>
+        <span class="t-chip"><span class="ico">🤖</span>ChatGPT</span>
+        <span class="t-chip"><span class="ico">🎨</span>Canva</span>
+        <span class="t-chip"><span class="ico">🖌</span>Photoshop</span>
+        <span class="t-chip"><span class="ico">📄</span>Word</span>
+        <span class="t-chip"><span class="ico">📊</span>Excel</span>
+        <span class="t-chip"><span class="ico">📽</span>PowerPoint</span>
+        <span class="t-chip"><span class="ico">🚀</span>GitHub Pages</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ ارتباط با من (تماس + کانال تلگرام) ═══════ -->
+<section class="page" id="page-contact">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="kicker" data-i18n="contact.kicker">ارتباط با من</span>
+      <h2 class="sec-title" data-i18n="contact.title"></h2>
+      <p class="sec-desc" data-i18n="contact.desc"></p>
+    </div>
+    <div class="contact-grid">
+      <div class="c-card reveal">
+        <div class="c-ico"><svg viewBox="0 0 24 24"><path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/></svg></div>
+        <h4 data-i18n="contact.phone">تلفن</h4>
+        <a class="c-val" href="tel:09370132965">0937 013 2965</a><br>
+        <button class="copy-btn" onclick="copyPhone()" data-i18n="contact.copy">📋 کپی شماره</button>
+        <div class="c-hint" data-i18n="contact.direct">تماس مستقیم</div>
+      </div>
+      <a class="c-card reveal" href="https://t.me/Yousef017" target="_blank" rel="noopener noreferrer">
+        <div class="c-ico"><svg viewBox="0 0 24 24"><path d="M2,21L23,12L2,3V10L17,12L2,14V21Z"/></svg></div>
+        <h4 data-i18n="contact.telegram">تلگرام شخصی</h4>
+        <span class="c-val">@Yousef017</span>
+        <div class="c-hint" data-i18n="contact.tgHint">ارسال پیام در تلگرام ←</div>
+      </a>
+      <a class="c-card reveal" href="https://instagram.com/yousef._.parvaresh" target="_blank" rel="noopener noreferrer">
+        <div class="c-ico"><svg viewBox="0 0 24 24"><path d="M7.8,2H16.2C19.87,2 22,4.13 22,7.8V16.2C22,19.87 19.87,22 16.2,22H7.8C4.13,22 2,19.87 2,16.2V7.8C2,4.13 4.13,2 7.8,2M7.6,4C5.61,4 4,5.61 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4C18.39,20 20,18.39 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z"/></svg></div>
+        <h4 data-i18n="contact.instagram">اینستاگرام</h4>
+        <span class="c-val">@yousef._.parvaresh</span>
+        <div class="c-hint" data-i18n="contact.igHint">دنبال کردن و دایرکت ←</div>
+      </a>
+      <a class="c-card reveal" href="https://t.me/NeuroCodeX_1" target="_blank" rel="noopener noreferrer">
+        <div class="c-ico"><svg viewBox="0 0 24 24"><path d="M3,9V15H7L12,20V4L7,9H3M16.5,12C16.5,10.23 15.48,8.71 14,7.97V16.02C15.48,15.29 16.5,13.77 16.5,12M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18,19.86 21,16.28 21,12C21,7.72 18,4.14 14,3.23Z"/></svg></div>
+        <h4 data-i18n="contact.channel">کانال تلگرام</h4>
+        <span class="c-val">@NeuroCodeX_1</span>
+        <div class="c-hint" data-i18n="contact.chHint">عضویت در کانال ←</div>
+      </a>
+    </div>
+    <div class="cta reveal">
+      <h3 data-i18n="contact.ctaTitle"></h3>
+      <p data-i18n="contact.ctaText"></p>
+      <div class="btns" style="justify-content:center">
+        <a href="https://t.me/Yousef017" target="_blank" rel="noopener noreferrer" class="btn primary" data-i18n="contact.ctaBtn">💬 پیام در تلگرام</a>
+        <a href="https://t.me/NeuroCodeX_1" target="_blank" rel="noopener noreferrer" class="btn ghost" data-i18n="contact.ctaChannel">📢 عضویت در کانال</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container f-grid">
+    <div class="f-copy" data-i18n="footer">© ۱۴۰۴ یوسف پرورش — ساخته شده با <b>❤</b> و کدهای خالص</div>
+    <div class="f-links">
+      <a href="#home" data-i18n="nav.home">خانه</a>
+      <a href="#portfolio" data-i18n="nav.portfolio">نمونه کارها</a>
+      <a href="#skills" data-i18n="nav.skills">مهارت‌ها</a>
+      <a href="#contact" data-i18n="nav.contact">ارتباط با من</a>
+    </div>
+  </div>
+</footer>
+
+<div class="modal" id="modal">
+  <div class="modal-bg" id="modalBg"></div>
+  <div class="modal-card">
+    <div class="modal-hero" id="mHero">
+      <span class="icon" id="mIcon"></span>
+      <div class="m-slides" id="mSlides"></div>
+      <button class="g-arrow g-prev" id="gPrev" aria-label="تصویر قبلی">❮</button>
+      <button class="g-arrow g-next" id="gNext" aria-label="تصویر بعدی">❯</button>
+      <div class="g-dots" id="gDots"></div>
+      <span class="g-count" id="gCount"></span>
+      <button class="modal-close" id="mClose" aria-label="بستن">✕</button>
+    </div>
+    <div class="modal-body">
+      <h3 id="mTitle"></h3>
+      <div class="m-meta" id="mChips"></div>
+      <p id="mDesc"></p>
+      <ul class="m-feats" id="mFeats"></ul>
+      <div class="m-tech" id="mTech"></div>
+      <div class="m-nav">
+        <button id="mPrev" data-i18n="modal.prev">→ پروژه قبلی</button>
+        <button id="mOrder" data-i18n="modal.order">سفارش پروژه مشابه</button>
+        <button id="mNext" data-i18n="modal.next">پروژه بعدی ←</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<button class="top-btn" id="topBtn" aria-label="بازگشت به بالا">↑</button>
+
+<script>
+/* ════════════════ تصاویر اختصاصی نمونه‌کارها (داخل کد — همیشه لود می‌شن) ════════════════ */
+function svgURI(s){return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(s)}
+var ART={
+'sabz':'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380"><rect width="600" height="380" fill="#242b31"/><rect x="66" y="26" width="468" height="328" rx="14" fill="#f4f7f6"/><path d="M66,40a14,14 0 0 1 14,-14h440a14,14 0 0 1 14,14v26h-468z" fill="#1a6b4f"/><circle cx="90" cy="46" r="5" fill="#9fd8c2"/><rect x="106" y="40" width="120" height="12" rx="6" fill="#cde9dd"/><rect x="462" y="40" width="54" height="12" rx="6" fill="#2f8f6c"/><rect x="90" y="84" width="236" height="17" rx="8" fill="#1a6b4f"/><rect x="90" y="110" width="188" height="9" rx="4.5" fill="#86a99d"/><rect x="90" y="126" width="148" height="9" rx="4.5" fill="#bcd4cb"/><rect x="90" y="150" width="92" height="24" rx="12" fill="#1a6b4f"/><rect x="192" y="150" width="92" height="24" rx="12" fill="#dff0e8"/><rect x="336" y="84" width="174" height="90" rx="10" fill="#dcebe4"/><rect x="352" y="100" width="92" height="9" rx="4.5" fill="#5d7f74"/><rect x="352" y="116" width="140" height="7" rx="3.5" fill="#a5bfb6"/><rect x="352" y="130" width="118" height="7" rx="3.5" fill="#a5bfb6"/><rect x="352" y="146" width="64" height="17" rx="8.5" fill="#1a6b4f"/><rect x="90" y="192" width="138" height="70" rx="10" fill="#ffffff" stroke="#dde8e3" stroke-width="1.5"/><rect x="104" y="206" width="24" height="24" rx="7" fill="#2f8f6c"/><rect x="104" y="238" width="96" height="8" rx="4" fill="#597367"/><rect x="104" y="252" width="62" height="6" rx="3" fill="#a3b8b0"/><rect x="236" y="192" width="138" height="70" rx="10" fill="#ffffff" stroke="#dde8e3" stroke-width="1.5"/><rect x="250" y="206" width="24" height="24" rx="7" fill="#2f8f6c"/><rect x="250" y="238" width="96" height="8" rx="4" fill="#597367"/><rect x="250" y="252" width="62" height="6" rx="3" fill="#a3b8b0"/><rect x="382" y="192" width="138" height="70" rx="10" fill="#ffffff" stroke="#dde8e3" stroke-width="1.5"/><rect x="396" y="206" width="24" height="24" rx="7" fill="#2f8f6c"/><rect x="396" y="238" width="96" height="8" rx="4" fill="#597367"/><rect x="396" y="252" width="62" height="6" rx="3" fill="#a3b8b0"/><rect x="90" y="282" width="430" height="50" rx="10" fill="#1a6b4f"/><rect x="106" y="297" width="150" height="9" rx="4.5" fill="#cde9dd"/><rect x="106" y="313" width="100" height="7" rx="3.5" fill="#7fb9a1"/><rect x="424" y="294" width="80" height="26" rx="13" fill="#eafff6"/></svg>',
+'bagify':'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380"><rect width="600" height="380" fill="#2b2430"/><rect x="66" y="26" width="468" height="328" rx="14" fill="#fbf8f9"/><path d="M66,40a14,14 0 0 1 14,-14h440a14,14 0 0 1 14,14v26h-468z" fill="#7b2d52"/><circle cx="90" cy="46" r="5" fill="#e6bcd1"/><rect x="106" y="40" width="92" height="12" rx="6" fill="#f0d7e3"/><rect x="384" y="40" width="132" height="12" rx="6" fill="#a95f83"/><rect x="90" y="82" width="430" height="66" rx="10" fill="#7b2d52"/><rect x="106" y="100" width="200" height="13" rx="6.5" fill="#f7e6ee"/><rect x="106" y="121" width="140" height="9" rx="4.5" fill="#c98dae"/><rect x="424" y="107" width="80" height="22" rx="11" fill="#fdf4f8"/><circle cx="132" cy="192" r="26" fill="#efd9e3"/><circle cx="220" cy="192" r="26" fill="#e2c3d1"/><circle cx="308" cy="192" r="26" fill="#d5aec0"/><circle cx="396" cy="192" r="26" fill="#efd9e3"/><circle cx="484" cy="192" r="26" fill="#e2c3d1"/><rect x="114" y="227" width="36" height="7" rx="3.5" fill="#8a6b78"/><rect x="202" y="227" width="36" height="7" rx="3.5" fill="#8a6b78"/><rect x="290" y="227" width="36" height="7" rx="3.5" fill="#8a6b78"/><rect x="378" y="227" width="36" height="7" rx="3.5" fill="#8a6b78"/><rect x="466" y="227" width="36" height="7" rx="3.5" fill="#8a6b78"/><rect x="90" y="256" width="138" height="76" rx="10" fill="#ffffff" stroke="#eee0e7" stroke-width="1.5"/><rect x="102" y="268" width="114" height="40" rx="6" fill="#f1e4ea"/><rect x="102" y="314" width="70" height="8" rx="4" fill="#7b5566"/><rect x="236" y="256" width="138" height="76" rx="10" fill="#ffffff" stroke="#eee0e7" stroke-width="1.5"/><rect x="248" y="268" width="114" height="40" rx="6" fill="#f1e4ea"/><rect x="248" y="314" width="70" height="8" rx="4" fill="#7b5566"/><rect x="382" y="256" width="138" height="76" rx="10" fill="#ffffff" stroke="#eee0e7" stroke-width="1.5"/><rect x="394" y="268" width="114" height="40" rx="6" fill="#f1e4ea"/><rect x="394" y="314" width="70" height="8" rx="4" fill="#7b5566"/></svg>',
+'fashion':'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380"><rect width="600" height="380" fill="#232830"/><rect x="66" y="26" width="468" height="328" rx="14" fill="#f6f5f2"/><path d="M66,40a14,14 0 0 1 14,-14h440a14,14 0 0 1 14,14v26h-468z" fill="#232f45"/><circle cx="90" cy="46" r="5" fill="#aebad0"/><rect x="106" y="40" width="96" height="12" rx="6" fill="#cdd6e4"/><rect x="430" y="40" width="86" height="12" rx="6" fill="#5a6b8c"/><rect x="90" y="82" width="430" height="86" rx="10" fill="#232f45"/><rect x="106" y="102" width="210" height="14" rx="7" fill="#e8edf5"/><rect x="106" y="124" width="150" height="9" rx="4.5" fill="#8b98b3"/><rect x="106" y="142" width="86" height="20" rx="10" fill="#e8edf5"/><rect x="366" y="96" width="130" height="62" rx="8" fill="#39486a"/><rect x="90" y="186" width="98" height="112" rx="10" fill="#ffffff" stroke="#e6e3dc" stroke-width="1.5"/><rect x="100" y="196" width="78" height="62" rx="6" fill="#e3ded4"/><rect x="100" y="266" width="60" height="8" rx="4" fill="#5f5b52"/><rect x="100" y="280" width="42" height="7" rx="3.5" fill="#a09a8d"/><rect x="198" y="186" width="98" height="112" rx="10" fill="#ffffff" stroke="#e6e3dc" stroke-width="1.5"/><rect x="208" y="196" width="78" height="62" rx="6" fill="#d8d2c6"/><rect x="208" y="266" width="60" height="8" rx="4" fill="#5f5b52"/><rect x="208" y="280" width="42" height="7" rx="3.5" fill="#a09a8d"/><rect x="306" y="186" width="98" height="112" rx="10" fill="#ffffff" stroke="#e6e3dc" stroke-width="1.5"/><rect x="316" y="196" width="78" height="62" rx="6" fill="#e3ded4"/><rect x="316" y="266" width="60" height="8" rx="4" fill="#5f5b52"/><rect x="316" y="280" width="42" height="7" rx="3.5" fill="#a09a8d"/><rect x="414" y="186" width="98" height="112" rx="10" fill="#ffffff" stroke="#e6e3dc" stroke-width="1.5"/><rect x="424" y="196" width="78" height="62" rx="6" fill="#d8d2c6"/><rect x="424" y="266" width="60" height="8" rx="4" fill="#5f5b52"/><rect x="424" y="280" width="42" height="7" rx="3.5" fill="#a09a8d"/><rect x="90" y="312" width="430" height="26" rx="8" fill="#232f45"/><rect x="106" y="321" width="120" height="8" rx="4" fill="#8b98b3"/><rect x="454" y="319" width="50" height="12" rx="6" fill="#e8edf5"/></svg>',
+'qronix':'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380"><rect width="600" height="380" fill="#1b222c"/><rect x="170" y="22" width="180" height="336" rx="28" fill="#0d1319"/><rect x="182" y="42" width="156" height="296" rx="14" fill="#17212b"/><path d="M182,56a14,14 0 0 1 14,-14h128a14,14 0 0 1 14,14v22h-156z" fill="#229ed9"/><circle cx="204" cy="57" r="9" fill="#cfe9f7"/><rect x="220" y="50" width="64" height="7" rx="3.5" fill="#e8f4fb"/><rect x="220" y="61" width="40" height="5" rx="2.5" fill="#9dcbe4"/><rect x="194" y="92" width="88" height="30" rx="9" fill="#223544"/><rect x="204" y="103" width="60" height="8" rx="4" fill="#8fa8ba"/><rect x="238" y="132" width="88" height="30" rx="9" fill="#229ed9"/><rect x="250" y="143" width="58" height="8" rx="4" fill="#dff0fa"/><rect x="244" y="172" width="70" height="86" rx="8" fill="#ffffff"/><rect x="252" y="180" width="16" height="16" fill="#17212b"/><rect x="290" y="180" width="16" height="16" fill="#17212b"/><rect x="252" y="234" width="16" height="16" fill="#17212b"/><rect x="276" y="186" width="7" height="7" fill="#17212b"/><rect x="288" y="200" width="7" height="7" fill="#17212b"/><rect x="262" y="202" width="7" height="7" fill="#17212b"/><rect x="276" y="214" width="7" height="7" fill="#17212b"/><rect x="290" y="228" width="7" height="7" fill="#17212b"/><rect x="262" y="228" width="7" height="7" fill="#17212b"/><rect x="276" y="242" width="7" height="7" fill="#17212b"/><rect x="252" y="204" width="7" height="7" fill="#17212b"/><rect x="288" y="220" width="7" height="7" fill="#17212b"/><rect x="196" y="286" width="128" height="24" rx="12" fill="#223544"/><circle cx="310" cy="298" r="8" fill="#229ed9"/><path d="M307,298l7,-3l-3,7l-1.5,-3z" fill="#ffffff"/><rect x="416" y="120" width="124" height="124" rx="14" fill="#ffffff"/><rect x="430" y="134" width="28" height="28" fill="none" stroke="#17212b" stroke-width="8"/><rect x="498" y="134" width="28" height="28" fill="none" stroke="#17212b" stroke-width="8"/><rect x="430" y="202" width="28" height="28" fill="none" stroke="#17212b" stroke-width="8"/><rect x="468" y="140" width="10" height="10" fill="#17212b"/><rect x="484" y="156" width="10" height="10" fill="#17212b"/><rect x="468" y="172" width="10" height="10" fill="#17212b"/><rect x="468" y="188" width="10" height="10" fill="#17212b"/><rect x="484" y="204" width="10" height="10" fill="#17212b"/><rect x="468" y="204" width="10" height="10" fill="#17212b"/><rect x="468" y="220" width="10" height="10" fill="#17212b"/><rect x="430" y="172" width="10" height="10" fill="#17212b"/><rect x="484" y="220" width="10" height="10" fill="#17212b"/><rect x="120" y="150" width="14" height="14" rx="4" fill="#229ed9" opacity=".85"/><rect x="104" y="176" width="14" height="14" rx="4" fill="#229ed9" opacity=".55"/><rect x="128" y="196" width="14" height="14" rx="4" fill="#229ed9" opacity=".35"/><rect x="96" y="216" width="14" height="14" rx="4" fill="#229ed9" opacity=".2"/></svg>',
+'logos':'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380"><rect width="600" height="380" fill="#0c0c0e"/><rect x="70" y="52" width="140" height="230" rx="10" fill="#151517" stroke="#2e2e33" stroke-width="1.5"/><circle cx="140" cy="132" r="30" fill="none" stroke="#c9a227" stroke-width="2"/><path d="M128,120l12,24l12,-24" stroke="#c9a227" stroke-width="2.5" fill="none"/><rect x="122" y="184" width="36" height="3.5" rx="1.75" fill="#c9a227"/><rect x="112" y="196" width="56" height="3" rx="1.5" fill="#7d6a3d"/><rect x="120" y="206" width="40" height="3" rx="1.5" fill="#4e4327"/><rect x="230" y="52" width="140" height="230" rx="10" fill="#f3efe7"/><circle cx="300" cy="132" r="30" fill="none" stroke="#a8871f" stroke-width="2"/><rect x="291" y="123" width="18" height="18" fill="none" stroke="#a8871f" stroke-width="2" transform="rotate(45 300 132)"/><rect x="282" y="184" width="36" height="3.5" rx="1.75" fill="#a8871f"/><rect x="272" y="196" width="56" height="3" rx="1.5" fill="#b9ad93"/><rect x="280" y="206" width="40" height="3" rx="1.5" fill="#cfc7b4"/><rect x="390" y="52" width="140" height="230" rx="10" fill="#151517" stroke="#2e2e33" stroke-width="1.5"/><circle cx="460" cy="132" r="30" fill="none" stroke="#c9a227" stroke-width="2"/><path d="M446,142l10,-17l7,10l7,-11l10,18" stroke="#c9a227" stroke-width="2.5" fill="none"/><rect x="442" y="184" width="36" height="3.5" rx="1.75" fill="#c9a227"/><rect x="432" y="196" width="56" height="3" rx="1.5" fill="#7d6a3d"/><rect x="440" y="206" width="40" height="3" rx="1.5" fill="#4e4327"/><rect x="70" y="308" width="460" height="2" fill="#2e2e33"/><rect x="70" y="322" width="120" height="8" rx="4" fill="#c9a227" opacity=".85"/><rect x="200" y="322" width="200" height="8" rx="4" fill="#3a3a40"/><rect x="410" y="322" width="120" height="8" rx="4" fill="#3a3a40"/></svg>',
+'cyberguard':'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380"><rect width="600" height="380" fill="#141a16"/><rect x="50" y="28" width="500" height="324" rx="14" fill="#0e1f18" stroke="#1e3b2d" stroke-width="1.5"/><path d="M50,42a14,14 0 0 1 14,-14h472a14,14 0 0 1 14,14v24h-500z" fill="#132b21"/><circle cx="74" cy="47" r="5" fill="#2f8f6c"/><circle cx="92" cy="47" r="5" fill="#1d5c42"/><circle cx="110" cy="47" r="5" fill="#16402f"/><rect x="380" y="41" width="150" height="12" rx="6" fill="#1d5c42"/><rect x="50" y="66" width="130" height="286" fill="#0c1a14"/><rect x="66" y="86" width="16" height="16" rx="4" fill="#2f8f6c"/><rect x="90" y="90" width="70" height="8" rx="4" fill="#9fd8c2"/><rect x="66" y="126" width="16" height="16" rx="4" fill="#1d5c42"/><rect x="90" y="130" width="58" height="8" rx="4" fill="#52756a"/><rect x="66" y="166" width="16" height="16" rx="4" fill="#1d5c42"/><rect x="90" y="170" width="64" height="8" rx="4" fill="#52756a"/><rect x="66" y="206" width="16" height="16" rx="4" fill="#1d5c42"/><rect x="90" y="210" width="52" height="8" rx="4" fill="#52756a"/><rect x="66" y="246" width="16" height="16" rx="4" fill="#1d5c42"/><rect x="90" y="250" width="60" height="8" rx="4" fill="#52756a"/><path d="M180,120l46,16v38c0,34 -20,54 -46,64c-26,-10 -46,-30 -46,-64v-38z" fill="#153527" stroke="#2f8f6c" stroke-width="2.5"/><path d="M164,168l12,12l22,-24" stroke="#7fe0b6" stroke-width="4" fill="none"/><rect x="250" y="110" width="270" height="34" rx="8" fill="#132b21"/><rect x="262" y="122" width="90" height="9" rx="4.5" fill="#9fd8c2"/><rect x="430" y="118" width="76" height="18" rx="9" fill="#2f8f6c"/><rect x="250" y="156" width="270" height="12" rx="6" fill="#132b21"/><rect x="250" y="156" width="170" height="12" rx="6" fill="#3fae7f"/><rect x="250" y="180" width="270" height="12" rx="6" fill="#132b21"/><rect x="250" y="180" width="110" height="12" rx="6" fill="#c9a227"/><rect x="250" y="212" width="130" height="60" rx="10" fill="#132b21"/><rect x="262" y="224" width="100" height="8" rx="4" fill="#52756a"/><rect x="262" y="240" width="106" height="7" rx="3.5" fill="#3c554b"/><rect x="262" y="254" width="80" height="7" rx="3.5" fill="#3c554b"/><rect x="394" y="212" width="126" height="60" rx="10" fill="#132b21"/><rect x="406" y="224" width="80" height="8" rx="4" fill="#52756a"/><rect x="406" y="240" width="100" height="7" rx="3.5" fill="#3c554b"/><rect x="406" y="254" width="70" height="7" rx="3.5" fill="#3c554b"/><rect x="250" y="288" width="270" height="44" rx="10" fill="#132b21"/><rect x="262" y="300" width="140" height="8" rx="4" fill="#9fd8c2"/><rect x="262" y="315" width="180" height="7" rx="3.5" fill="#3c554b"/><rect x="468" y="298" width="40" height="24" rx="7" fill="#2f8f6c"/></svg>',
+'membersim':'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380"><rect width="600" height="380" fill="#23262e"/><rect x="56" y="28" width="488" height="324" rx="14" fill="#f5f6fa"/><path d="M56,42a14,14 0 0 1 14,-14h460a14,14 0 0 1 14,14v24h-488z" fill="#3d4a8a"/><circle cx="80" cy="47" r="5" fill="#b9c3ea"/><rect x="96" y="41" width="130" height="12" rx="6" fill="#d6dcf3"/><rect x="456" y="41" width="70" height="12" rx="6" fill="#6a78b8"/><rect x="72" y="82" width="290" height="250" rx="10" fill="#ffffff" stroke="#e4e7f0" stroke-width="1.5"/><rect x="86" y="96" width="120" height="10" rx="5" fill="#3d4a8a"/><rect x="86" y="122" width="262" height="36" rx="8" fill="#f2f4fb"/><circle cx="104" cy="140" r="11" fill="#c3ccec"/><rect x="124" y="130" width="90" height="8" rx="4" fill="#4c5678"/><rect x="124" y="144" width="60" height="6" rx="3" fill="#a3abc7"/><rect x="296" y="132" width="42" height="15" rx="7.5" fill="#2f8f6c"/><rect x="86" y="166" width="262" height="36" rx="8" fill="#f2f4fb"/><circle cx="104" cy="184" r="11" fill="#c3ccec"/><rect x="124" y="174" width="80" height="8" rx="4" fill="#4c5678"/><rect x="124" y="188" width="56" height="6" rx="3" fill="#a3abc7"/><rect x="296" y="176" width="42" height="15" rx="7.5" fill="#b8bcc9"/><rect x="86" y="210" width="262" height="36" rx="8" fill="#f2f4fb"/><circle cx="104" cy="228" r="11" fill="#c3ccec"/><rect x="124" y="218" width="96" height="8" rx="4" fill="#4c5678"/><rect x="124" y="232" width="64" height="6" rx="3" fill="#a3abc7"/><rect x="296" y="220" width="42" height="15" rx="7.5" fill="#2f8f6c"/><rect x="86" y="254" width="262" height="36" rx="8" fill="#f2f4fb"/><circle cx="104" cy="272" r="11" fill="#c3ccec"/><rect x="124" y="262" width="76" height="8" rx="4" fill="#4c5678"/><rect x="124" y="276" width="58" height="6" rx="3" fill="#a3abc7"/><rect x="296" y="264" width="42" height="15" rx="7.5" fill="#b8bcc9"/><rect x="86" y="298" width="90" height="22" rx="11" fill="#3d4a8a"/><rect x="186" y="298" width="90" height="22" rx="11" fill="#e3e6f2"/><rect x="380" y="82" width="148" height="120" rx="10" fill="#ffffff" stroke="#e4e7f0" stroke-width="1.5"/><rect x="394" y="96" width="90" height="10" rx="5" fill="#3d4a8a"/><rect x="402" y="170" width="20" height="20" rx="4" fill="#6a78b8"/><rect x="430" y="150" width="20" height="40" rx="4" fill="#3d4a8a"/><rect x="458" y="160" width="20" height="30" rx="4" fill="#8a96cf"/><rect x="486" y="136" width="20" height="54" rx="4" fill="#2f8f6c"/><rect x="380" y="216" width="148" height="116" rx="10" fill="#ffffff" stroke="#e4e7f0" stroke-width="1.5"/><rect x="394" y="230" width="76" height="10" rx="5" fill="#3d4a8a"/><rect x="394" y="252" width="120" height="8" rx="4" fill="#a3abc7"/><rect x="394" y="268" width="100" height="8" rx="4" fill="#c3ccec"/><rect x="394" y="284" width="112" height="8" rx="4" fill="#c3ccec"/><rect x="394" y="306" width="56" height="18" rx="9" fill="#2f8f6c"/><rect x="458" y="306" width="56" height="18" rx="9" fill="#b04a4a"/></svg>',
+'weatherbot':'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380"><rect width="600" height="380" fill="#1c2530"/><rect x="170" y="22" width="180" height="336" rx="28" fill="#0d1319"/><rect x="182" y="42" width="156" height="296" rx="14" fill="#f0f6fb"/><path d="M182,56a14,14 0 0 1 14,-14h128a14,14 0 0 1 14,14v22h-156z" fill="#1b7ac1"/><circle cx="204" cy="57" r="9" fill="#d3e9f8"/><rect x="220" y="50" width="70" height="7" rx="3.5" fill="#eaf5fc"/><rect x="220" y="61" width="44" height="5" rx="2.5" fill="#a8cfe8"/><rect x="196" y="90" width="128" height="74" rx="10" fill="#ffffff" stroke="#dce9f3" stroke-width="1.5"/><circle cx="226" cy="116" r="15" fill="#f6c344"/><circle cx="248" cy="116" r="11" fill="#8ecdf0"/><circle cx="264" cy="112" r="13" fill="#8ecdf0"/><rect x="238" y="118" width="46" height="12" rx="6" fill="#8ecdf0"/><rect x="284" y="104" width="30" height="14" rx="4" fill="#1b7ac1"/><rect x="208" y="146" width="70" height="8" rx="4" fill="#5d7285"/><rect x="196" y="176" width="128" height="30" rx="9" fill="#1b7ac1"/><rect x="240" y="187" width="40" height="8" rx="4" fill="#d9edf9"/><rect x="196" y="218" width="62" height="34" rx="9" fill="#ffffff" stroke="#dce9f3" stroke-width="1.5"/><rect x="208" y="228" width="38" height="7" rx="3.5" fill="#5d7285"/><rect x="208" y="240" width="26" height="6" rx="3" fill="#9fb6c7"/><rect x="262" y="218" width="62" height="34" rx="9" fill="#ffffff" stroke="#dce9f3" stroke-width="1.5"/><rect x="274" y="228" width="38" height="7" rx="3.5" fill="#5d7285"/><rect x="274" y="240" width="26" height="6" rx="3" fill="#9fb6c7"/><rect x="196" y="262" width="128" height="26" rx="9" fill="#e3eff8"/><rect x="206" y="271" width="66" height="8" rx="4" fill="#7d95a8"/><rect x="196" y="298" width="128" height="20" rx="10" fill="#dce9f3"/><circle cx="312" cy="308" r="7" fill="#1b7ac1"/><rect x="416" y="130" width="128" height="104" rx="14" fill="#ffffff"/><circle cx="448" cy="164" r="14" fill="#f6c344"/><circle cx="466" cy="164" r="10" fill="#8ecdf0"/><circle cx="480" cy="160" r="12" fill="#8ecdf0"/><rect x="456" y="166" width="40" height="10" rx="5" fill="#8ecdf0"/><rect x="432" y="192" width="60" height="10" rx="5" fill="#1b7ac1"/><rect x="432" y="210" width="96" height="7" rx="3.5" fill="#9fb6c7"/><rect x="100" y="150" width="14" height="14" rx="4" fill="#1b7ac1" opacity=".8"/><rect x="84" y="176" width="14" height="14" rx="4" fill="#1b7ac1" opacity=".5"/><rect x="108" y="198" width="14" height="14" rx="4" fill="#1b7ac1" opacity=".3"/><rect x="90" y="222" width="14" height="14" rx="4" fill="#1b7ac1" opacity=".18"/></svg>'
+};
+
+/* ════════════════ ترجمه‌ها ════════════════ */
+var I18N={
+fa:{
+ brand:'یوسف <b>پرورش</b>',
+ nav:{home:'خانه',portfolio:'نمونه کارها',skills:'مهارت‌ها',contact:'ارتباط با من'},
+ hero:{chip:'👋 به وب‌سایت شخصی من خوش اومدی!',
+  h1:'ایده‌ها رو به <span class="grad">کد و خلاقیت</span> تبدیل می‌کنم',
+  lead:'من یوسف پرورش هستم؛ سایت می‌سازم، ربات تلگرام می‌نویسم، با هوش مصنوعی ایده‌ها رو به محصول واقعی تبدیل می‌کنم و طراحی لوگو و بنر هم انجام می‌دم. اگه دنبال یه اجراکار سریع و خلاق هستی، جای درستی اومدی!',
+  btnWork:'مشاهده نمونه کارها',btnContact:'ارتباط با من',
+  badges:[['🐍','Python','برنامه‌نویسی'],['🌐','HTML/CSS','طراحی وب'],['🤖','AI','هوش مصنوعی']],
+  stat1:'پروژه انجام‌شده',stat2:'مشتری راضی',stat3:'سال تجربه',stat4:'مهارت تخصصی',initial:'ی'},
+ roles:['توسعه‌دهنده وب 🌐','برنامه‌نویس پایتون 🐍','سازنده ربات تلگرام 🤖','طراح لوگو و بنر 🎨','علاقه‌مند به هوش مصنوعی 🧠'],
+ about:{kicker:'درباره من',title:'کمی بیشتر <span class="grad">با من آشنا شو</span>',
+  p1:'من <b>یوسف پرورش</b> هستم؛ با بیش از <b>۲ سال تجربه</b> در دنیای تکنولوژی و برنامه‌نویسی. مسیر من از یه کنجکاوی ساده شروع شد: «این سایت‌ها چطور ساخته می‌شن؟» و امروز به جایی رسیدم که می‌تونم از صفر تا صد یه پروژه نرم‌افزاری رو بسازم، رفع اشکال کنم و منتشرش کنم.',
+  p2:'تخصص اصلی من <b>طراحی و ساخت سایت با HTML و CSS</b>، <b>برنامه‌نویسی پایتون</b> و <b>ساخت ربات‌های تلگرام با n8n</b> هست. علاوه بر اون، از ابزارهای هوش مصنوعی برای سریع‌تر و خلاقانه‌تر شدن کارم استفاده می‌کنم و توی طراحی لوگو و بنر و مدیریت فایل‌های آفیس هم تجربه دارم.',
+  why:[['⚡','یادگیری سریع','همیشه در حال یادگیری تکنولوژی‌های جدیدم'],['🎯','حل خلاقانه مسئله','به چالش‌ها به چشم فرصت نگاه می‌کنم'],['🤝','تعهد و صداقت','تحویل به‌موقع و شفاف در همه مراحل'],['🛠','پشتیبانی واقعی','بعد از تحویل هم کنارت هستم']],
+  infoTitle:'📋 اطلاعات شخصی',
+  rows:[['نام و نام خانوادگی','یوسف پرورش'],['رشته تحصیلی','کامپیوتر'],['سابقه کار','۲ سال'],['زمینه فعالیت','برنامه‌نویسی و طراحی'],['زبان‌ها','فارسی'],['وضعیت همکاری','آماده دریافت پروژه']]},
+ portfolio:{kicker:'نمونه کارها',title:'پروژه‌هایی که <span class="grad">ساختم</span>',desc:'روی هر پروژه کلیک کن تا جزئیات کاملش رو ببینی. برای سفارش پروژه مشابه، از بخش ارتباط با من در ارتباط باش.',more:'جزئیات پروژه ←',empty:'هنوز نمونه‌کاری این دسته اضافه نشده؛ خیلی زود با پروژه‌های جدید برمی‌گردم!'},
+ filters:{all:'همه',site:'سایت',shop:'فروشگاه',software:'نرم‌افزار',bot:'ربات',design:'طراحی'},
+ skills:{kicker:'مهارت‌ها',title:'چی بلدم و <span class="grad">چقدر بلدم</span>',toolsTitle:'🧰 ابزارهایی که باهاشون کار می‌کنم'},
+ experience:{kicker:'سابقه و تجربه',title:'مسیر <span class="grad">رشد من</span>'},
+ contact:{kicker:'ارتباط با من',title:'بیا با هم <span class="grad">شروع کنیم</span>',desc:'از هر راهی که راحتی، من در دسترسم؛ تلفن، تلگرام، اینستاگرام یا کانال تلگرامم.',
+  phone:'تلفن',copy:'📋 کپی شماره',direct:'تماس مستقیم',
+  telegram:'تلگرام شخصی',tgHint:'ارسال پیام در تلگرام ←',
+  instagram:'اینستاگرام',igHint:'دنبال کردن و دایرکت ←',
+  channel:'کانال تلگرام',chHint:'عضویت در کانال ←',
+  ctaTitle:'یه ایده تو سرته؟ بزن بریم! 🚀',
+  ctaText:'برای سفارش طراحی سایت، ساخت ربات تلگرام، طراحی لوگو یا هر پروژه دیگه‌ای، مستقیم تو تلگرام پیام بده. معمولاً خیلی سریع جواب می‌دم!',
+  ctaBtn:'💬 پیام در تلگرام',ctaChannel:'📢 عضویت در کانال'},
+ modal:{prev:'→ پروژه قبلی',next:'پروژه بعدی ←',order:'سفارش پروژه مشابه'},
+ copied:'شماره کپی شد ✅',
+ footer:'© ۱۴۰۴ یوسف پرورش — ساخته شده با <b>❤</b> و کدهای خالص',
+ titles:{home:'یوسف پرورش | خانه',portfolio:'یوسف پرورش | نمونه کارها',skills:'یوسف پرورش | مهارت‌ها',contact:'یوسف پرورش | ارتباط با من'}
+},
+en:{
+ brand:'Yousef <b>Parvaresh</b>',
+ nav:{home:'Home',portfolio:'Portfolio',skills:'Skills',contact:'Contact'},
+ hero:{chip:'👋 Welcome to my personal website!',
+  h1:'I turn ideas into <span class="grad">code &amp; creativity</span>',
+  lead:'I\'m Yousef Parvaresh — I build websites, develop Telegram bots, turn AI-powered ideas into real products, and design logos & banners. If you\'re looking for a fast and creative developer, you\'re in the right place!',
+  btnWork:'View My Work',btnContact:'Contact Me',
+  badges:[['🐍','Python','Programming'],['🌐','HTML/CSS','Web Design'],['🤖','AI','Artificial Intelligence']],
+  stat1:'Projects Done',stat2:'Happy Clients',stat3:'Years of Experience',stat4:'Core Skills',initial:'Y'},
+ roles:['Web Developer 🌐','Python Developer 🐍','Telegram Bot Maker 🤖','Logo & Banner Designer 🎨','AI Enthusiast 🧠'],
+ about:{kicker:'About Me',title:'Get to know <span class="grad">me better</span>',
+  p1:'I\'m <b>Yousef Parvaresh</b> with over <b>2 years of experience</b> in technology and programming. My journey began with a simple curiosity: "How are websites made?" Today I can take a software project from zero to hero — build it, debug it and ship it.',
+  p2:'My core expertise is <b>web design with HTML & CSS</b>, <b>Python programming</b> and <b>building Telegram bots with n8n</b>. On top of that, I use AI tools to work faster and more creatively, with hands-on experience in logo & banner design and Office files.',
+  why:[['⚡','Fast Learner','Always exploring new technologies'],['🎯','Creative Problem Solver','I see challenges as opportunities'],['🤝','Committed & Honest','On-time delivery, full transparency'],['🛠','Real Support','I stay by your side after delivery']],
+  infoTitle:'📋 Personal Info',
+  rows:[['Full Name','Yousef Parvaresh'],['Field of Study','Computer'],['Experience','2 Years'],['Focus Area','Programming & Design'],['Languages','Persian'],['Availability','Open for Projects']]},
+ portfolio:{kicker:'Portfolio',title:'Projects I\'ve <span class="grad">built</span>',desc:'Click any project to see its full details. To order a similar one, reach me through the contact section.',more:'View details →',empty:'No projects in this category yet — new ones are coming soon!'},
+ filters:{all:'All',site:'Websites',shop:'Shops',software:'Software',bot:'Bots',design:'Design'},
+ skills:{kicker:'Skills',title:'What I know & <span class="grad">how well</span>',toolsTitle:'🧰 Tools I work with'},
+ experience:{kicker:'Experience',title:'My <span class="grad">growth journey</span>'},
+ contact:{kicker:'Contact',title:'Let\'s <span class="grad">start together</span>',desc:'Reach me any way you like — phone, Telegram, Instagram or my Telegram channel.',
+  phone:'Phone',copy:'📋 Copy number',direct:'Direct call',
+  telegram:'Personal Telegram',tgHint:'Send a message on Telegram →',
+  instagram:'Instagram',igHint:'Follow & DM →',
+  channel:'Telegram Channel',chHint:'Join the channel →',
+  ctaTitle:'Got an idea? Let\'s go! 🚀',
+  ctaText:'For website design, Telegram bots, logo design or any other project — message me directly on Telegram. I usually reply fast!',
+  ctaBtn:'💬 Message on Telegram',ctaChannel:'📢 Join the Channel'},
+ modal:{prev:'← Previous',next:'Next →',order:'Order a similar project'},
+ copied:'Number copied ✅',
+ footer:'© 2025 Yousef Parvaresh — Crafted with <b>❤</b> and pure code',
+ titles:{home:'Yousef Parvaresh | Home',portfolio:'Yousef Parvaresh | Portfolio',skills:'Yousef Parvaresh | Skills',contact:'Yousef Parvaresh | Contact'}
+}};
+
+/* ════════════════ داده‌ها ════════════════ */
+var catNames={site:{fa:'سایت',en:'Website'},shop:{fa:'فروشگاه',en:'Shop'},software:{fa:'نرم‌افزار',en:'Software'},bot:{fa:'ربات',en:'Bot'},design:{fa:'طراحی',en:'Design'}};
+var PROJECTS=[
+ {id:'sabz',cat:'site',icon:'🎓',year:{fa:'۱۴۰۴',en:'2025'},
+  images:['images/sabzapply-1.jpg','images/sabzapply-2.jpg','images/sabzapply-3.jpg','images/sabzapply-4.jpg'],
+  title:{fa:'سایت مشاوره تحصیلی سبز اپلای',en:'SabzApply Educational Website'},
+  desc:{fa:'وب‌سایت کامل مشاوره تحصیلی سبز اپلای با طراحی سبز اختصاصی و کاملاً ریسپانسیو؛ شامل صفحه اصلی، خدمات، کارنامه پذیرش‌ها، مقایسه کشورها، فرم رزرو مشاوره و خبرنامه.',en:'A complete website for SabzApply educational consultancy with a custom green design, fully responsive — home, services, admissions, country comparison, consultation booking form and newsletter.'},
+  features:{fa:['طراحی مدرن و کاملاً ریسپانسیو','بخش خدمات و کارنامه پذیرش‌ها','صفحه مقایسه کشورها با جزئیات کامل','فرم رزرو مشاوره و عضویت در خبرنامه','آمار پذیرش‌ها با انیمیشن نرم'],en:['Modern, fully responsive design','Services & admissions showcase','Detailed country comparison pages','Consultation form & newsletter','Animated admission statistics']},
+  tech:['HTML','CSS','JavaScript','GitHub Pages']},
+ {id:'bagify',cat:'shop',icon:'👜',year:{fa:'۱۴۰۴',en:'2025'},
+  images:['images/bagify-1.jpg','images/bagify-2.jpg'],
+  title:{fa:'فروشگاه آنلاین کلکسیون کیف Bagify',en:'Bagify Online Bag Store'},
+  desc:{fa:'فروشگاه اینترنتی کیف و اکسسوری با دسته‌بندی حرفه‌ای محصولات، جستجوی زنده، سبد خرید، صفحه جزئیات محصول، بنرهای تبلیغاتی و بخش پیشنهادهای ویژه.',en:'An online bag & accessory store with professional categories, live search, shopping cart, product detail pages, promo banners and special offers.'},
+  features:{fa:['دسته‌بندی حرفه‌ای محصولات','سبد خرید و صفحه جزئیات محصول','جستجوی زنده بین محصولات','بنرهای تبلیغاتی هماهنگ با برند','طراحی ریسپانسیو موبایل‌فرست'],en:['Professional product categories','Shopping cart & product details','Live product search','Matching promo banners','Mobile-first responsive design']},
+  tech:['HTML','CSS','JavaScript']},
+ {id:'fashion',cat:'shop',icon:'🛍️',year:{fa:'۱۴۰۴',en:'2025'},
+  images:['images/fashion-1.jpg'],
+  title:{fa:'فروشگاه اینترنتی پوشاک',en:'Fashion Clothing Store'},
+  desc:{fa:'فروشگاه پوشاک با طراحی همزمان برای دسکتاپ و موبایل؛ صفحه اصلی، صفحه محصول با گالری تصاویر، سبد خرید، صفحه پرداخت و مدیریت موجودی محصولات.',en:'A clothing store designed for desktop and mobile at once — home page, product page with image gallery, cart, checkout flow and stock management.'},
+  features:{fa:['طراحی اختصاصی دسکتاپ و موبایل','صفحه محصول با گالری تصاویر','سبد خرید و فرآیند پرداخت','دسته‌بندی و جستجوی محصولات','پرداخت امن با رابط کاربری ساده'],en:['Custom desktop & mobile design','Product page with image gallery','Cart & checkout flow','Category browsing & search','Secure checkout with clean UI']},
+  tech:['HTML','CSS','JavaScript','Responsive Design']},
+ {id:'qronix',cat:'bot',icon:'🤖',year:{fa:'۱۴۰۵',en:'2026'},
+  images:['images/qronix-1.jpg'],
+  title:{fa:'ربات تلگرام QRONIX',en:'QRONIX Telegram Bot'},
+  desc:{fa:'ربات تلگرام تبدیل هر چیزی به کد QR؛ لینک، Wi-Fi، تصویر، vCard و شماره تماس را با کیفیت بالا و دکمه‌های شیشه‌ای به کد QR تبدیل می‌کند و امکان ذخیره و اشتراک‌گذاری مستقیم می‌دهد.',en:'QRONIX turns anything into a QR code — links, Wi-Fi, images, vCards and phone numbers — with high quality, glassy inline buttons, save & share options.'},
+  features:{fa:['تبدیل لینک به کد QR','تبدیل Wi-Fi، تصویر، vCard و شماره تماس به QR','دکمه‌های شیشه‌ای تعاملی','ذخیره تصویر و اشتراک‌گذاری در تلگرام','پاسخ سریع با رابط کاربری ساده'],en:['Turn any link into a QR code','Wi-Fi, image, vCard & phone to QR','Interactive inline buttons','Save image & share on Telegram','Fast responses, simple UX']},
+  tech:['Python','python-telegram-bot','QR Code Library']},
+ {id:'logos',cat:'design',icon:'✒️',year:{fa:'۱۴۰۴',en:'2025'},
+  images:['images/logo-banner-1.jpg'],
+  title:{fa:'کالکشن لوگو و بنر لوکس',en:'Luxury Logo & Banner Collection'},
+  desc:{fa:'کالکشن طراحی لوگو و بنر با سبک لوکس و مینیمال برای برندهای خاص؛ شامل لوگوی اختصاصی، ست پست و استوری اینستاگرام و بنرهای تبلیغاتی با تایپوگرافی و پالت رنگی منحصربه‌فرد.',en:'A luxury-minimal logo & banner collection for premium brands — custom logos, Instagram post/story sets and advertising banners with unique typography and palette.'},
+  features:{fa:['طراحی لوگوی اختصاصی از صفر','ست پست و استوری اینستاگرام','بنرهای تبلیغاتی لوکس','تایپوگرافی و پالت رنگی خاص','فایل‌های آماده چاپ و انتشار'],en:['Custom logo design from scratch','Instagram post & story sets','Luxury advertising banners','Unique typography & palette','Print & web ready files']},
+  tech:['Photoshop','Illustrator','Canva']},
+ {id:'cyberguard',cat:'software',icon:'🛡️',year:{fa:'۱۴۰۵',en:'2026'},
+  images:['images/cyberguard-1.jpg','images/cyberguard-2.jpg','images/cyberguard-3.jpg','images/cyberguard-4.jpg','images/cyberguard-5.jpg','images/cyberguard-6.jpg','images/cyberguard-7.jpg'],
+  title:{fa:'نرم‌افزار آموزشی CyberGuard',en:'CyberGuard Security Software'},
+  desc:{fa:'نرم‌افزار آموزشی امنیت سایبری با پایتون و رابط گرافیکی کاملاً فارسی؛ شامل ابزارهای کاربردی مثل سنجش قدرت رمز عبور، تولید رمز تصادفی امن، بررسی لینک و ایمیل مشکوک، هش SHA-256 و آموزش پروتکل‌های امنیتی.',en:'An educational cybersecurity software built with Python and a fully Persian GUI — password strength checker, secure random password generator, suspicious link & email checker, SHA-256 hashing and security protocol lessons.'},
+  features:{fa:['بررسی قدرت رمز عبور','تولید رمز تصادفی امن','بررسی لینک‌های مشکوک','بررسی قالب ایمیل‌های فیشینگ','ابزار هش SHA-256','آموزش پروتکل‌های امنیتی','رابط گرافیکی کاملاً فارسی'],en:['Password strength checker','Secure random password generator','Suspicious link checker','Phishing email template checker','SHA-256 hash tool','Security protocol lessons','Fully Persian graphical interface']},
+  tech:['Python','Tkinter','Hashlib','Persian GUI']},
+ {id:'membersim',cat:'software',icon:'👥',year:{fa:'۱۴۰۵',en:'2026'},
+  images:['images/membersim-1.jpg','images/membersim-2.jpg'],
+  title:{fa:'نرم‌افزار شبیه‌ساز اعضای تلگرام',en:'Telegram Member Simulator Pro'},
+  desc:{fa:'نرم‌افزار دسکتاپ ساخت و مدیریت اعضای مجازی تلگرام تا ۱۰٬۰۰۰ نفر با نام‌های تصادفی واقع‌گرایانه، آمار فعال/غیرفعال، شبیه‌سازی فعالیت، ذخیره‌سازی امن با SQLite و خروجی CSV.',en:'A desktop app for generating and managing up to 10,000 virtual Telegram members with realistic random names, active/inactive stats, activity simulation, SQLite storage and CSV export.'},
+  features:{fa:['ساخت تا ۱۰٬۰۰۰ عضو مجازی','تولید نام‌های تصادفی واقع‌گرایانه','آمار اعضای فعال و غیرفعال','شبیه‌سازی فعالیت اعضا','ذخیره‌سازی امن با SQLite','خروجی گرفتن به فایل CSV','پاک‌سازی سریع داده‌های آزمایشی'],en:['Generate up to 10,000 virtual members','Realistic random name generator','Active / inactive statistics','Member activity simulation','Secure storage with SQLite','CSV export','One-click test data cleanup']},
+  tech:['Python','Tkinter','SQLite','CSV']},
+ {id:'weatherbot',cat:'bot',icon:'🌦️',year:{fa:'۱۴۰۵',en:'2026'},
+  images:['images/weatherbot-1.jpg'],
+  title:{fa:'ربات هواشناسی WeatherBot Pro',en:'WeatherBot Pro'},
+  desc:{fa:'ربات تلگرام هواشناسی با گزارش دمای هوا و وضعیت جوی، پیش‌بینی ۷ روز آینده، دکمه‌های شیشه‌ای تعاملی و ساختار ماژولار و قابل توسعه برای افزودن امکانات جدید.',en:'A Telegram weather bot with live temperature and conditions, 7-day forecast, interactive inline buttons and a modular, extensible architecture.'},
+  features:{fa:['گزارش دمای هوا و وضعیت جوی','پیش‌بینی هوای ۷ روز آینده','دکمه‌های شیشه‌ای تعاملی','ساختار ماژولار و قابل توسعه'],en:['Live temperature & conditions','7-day weather forecast','Interactive inline buttons','Modular, extensible architecture']},
+  tech:['Python','Telegram Bot API','Weather API']}
+];
+PROJECTS.forEach(function(p){p.gal=[svgURI(ART[p.id])]});
+/* ════════════════ probe بی‌صدا (رفع کامل خطاهای ۴۰۴ کنسول) ════════════════
+   بررسی وجود عکس بدون هیچ خطای قرمز در کنسول:
+   در http/https داخل Web Worker با fetch — در file:// با Image (fallback) */
+var __workerOK=(function(){
+  if(location.protocol.indexOf('http')!==0)return false;
+  try{var w=new Worker(URL.createObjectURL(new Blob([''],{type:'text/javascript'})));w.terminate();return true}catch(e){return false}
+})();
+function silentProbe(src,cb){
+  if(__workerOK){
+    try{
+      var abs=new URL(src,location.href).href;
+      var code="fetch("+JSON.stringify(abs)+").then(function(r){postMessage(!!r.ok)}).catch(function(){postMessage(false)})";
+      var w=new Worker(URL.createObjectURL(new Blob([code],{type:'text/javascript'})));
+      w.onmessage=function(e){w.terminate();cb(!!e.data)};
+      w.onerror=function(){w.terminate();cb(false)};
+      return;
+    }catch(err){}
+  }
+  var im=new Image();
+  im.onload=function(){cb(true)};
+  im.onerror=function(){cb(false)};
+  im.src=src;
+}
+function probeSrc(src){return new Promise(function(res){silentProbe(src,function(ok){res(ok?src:null)})})}
+function probeGallery(){
+  var jobs=[];
+  PROJECTS.forEach(function(p){
+    var list=(p.images||[]);
+    if(!list.length)return;
+    jobs.push(Promise.all(list.map(probeSrc)).then(function(rs){
+      var ok=rs.filter(Boolean);
+      if(ok.length)p.gal=ok;
+    }));
+  });
+  Promise.all(jobs).then(function(){renderProjects()});
+}
+
+var SKILLS=[
+ {i:'🌐',n:{fa:'طراحی سایت با HTML و CSS',en:'Web Design with HTML & CSS'},v:92},
+ {i:'🐍',n:{fa:'برنامه‌نویسی Python',en:'Python Programming'},v:85},
+ {i:'🤖',n:{fa:'ساخت ربات تلگرام با n8n و Python',en:'Telegram Bots with n8n & Python'},v:80},
+ {i:'🧠',n:{fa:'استفاده از ابزارهای هوش مصنوعی (AI)',en:'Working with AI Tools'},v:90},
+ {i:'🎨',n:{fa:'طراحی لوگو و بنر',en:'Logo & Banner Design'},v:78},
+ {i:'📄',n:{fa:'تسلط بر Word، Excel و PowerPoint',en:'Word, Excel & PowerPoint'},v:95},
+ {i:'📱',n:{fa:'ساخت اپلیکیشن و نرم‌افزار',en:'App & Software Development'},v:70},
+ {i:'🛠',n:{fa:'رفع خطا و اشکال‌زدایی پروژه‌ها',en:'Debugging & Troubleshooting'},v:88},
+ {i:'🚀',n:{fa:'انتشار سایت با GitHub Pages',en:'Publishing with GitHub Pages'},v:86},
+ {i:'⚙️',n:{fa:'توسعه و بهینه‌سازی پروژه‌های نرم‌افزاری',en:'Software Development & Optimization'},v:82}
+];
+/* تایم‌لاین — سابقه ۲ سال (۱۴۰۳ تا ۱۴۰۴) */
+var TIMELINE=[
+ {e:'🚀',date:{fa:'۱۴۰۳',en:'2024'},t:{fa:'شروع سفر؛ یادگیری HTML و CSS',en:'Starting the Journey: HTML & CSS'},d:{fa:'اولین صفحات وب، اولین باگ‌ها و لذت دیدن اولین سایت روی مرورگر!',en:'First web pages, first bugs, and the joy of seeing my first website live!'}},
+ {e:'🐍',date:{fa:'۱۴۰۳',en:'2024'},t:{fa:'ورود جدی به پایتون',en:'Diving into Python'},d:{fa:'نوشتن اولین اسکریپت‌ها و ابزارهای کاربردی برای خودکار کردن کارها.',en:'Writing my first scripts and handy tools for automating tasks.'}},
+ {e:'🎨',date:{fa:'۱۴۰۳',en:'2024'},t:{fa:'اولین سفارش‌های طراحی لوگو و بنر',en:'First Logo & Banner Orders'},d:{fa:'همکاری با کسب‌وکارهای کوچک برای طراحی لوگو، بنر و هویت بصری.',en:'Collaborating with small businesses on logos, banners and visual identity.'}},
+ {e:'🤖',date:{fa:'۱۴۰۳',en:'2024'},t:{fa:'ساخت اولین ربات تلگرام',en:'My First Telegram Bot'},d:{fa:'ربات مدیریت گروه با پایتون و n8n؛ خوش‌آمدگویی خودکار، ضداسپم و دستورات سفارشی.',en:'A group-management bot with Python & n8n — auto welcome, anti-spam and custom commands.'}},
+ {e:'📊',date:{fa:'۱۴۰۳',en:'2024'},t:{fa:'پروژه‌های آفیس و داشبورد اکسل',en:'Office Projects & Excel Dashboard'},d:{fa:'ساخت داشبورد گزارش فروش و قالب‌های حرفه‌ای Word برای مشتریان.',en:'Building a sales dashboard and professional Word templates for clients.'}},
+ {e:'💻',date:{fa:'۱۴۰۴',en:'2025'},t:{fa:'ورود به دنیای نرم‌افزار دسکتاپ',en:'Entering Desktop Software'},d:{fa:'ساخت اولین نرم‌افزارهای دسکتاپ با رابط گرافیکی؛ تجربه‌ای که بعداً به ساخت CyberGuard و Member Simulator Pro رسید.',en:'Building my first desktop apps with GUIs — the experience that later led to CyberGuard and Member Simulator Pro.'}},
+ {e:'⚙️',date:{fa:'۱۴۰۴',en:'2025'},t:{fa:'اتوماسیون حرفه‌ای با n8n',en:'Professional Automation with n8n'},d:{fa:'راه‌اندازی ورک‌فلوهای خودکار برای کسب‌وکارها؛ اتصال ربات‌ها به سرویس‌های مختلف.',en:'Setting up automated workflows connecting bots to various services.'}},
+ {e:'🌍',date:{fa:'۱۴۰۴',en:'2025'},t:{fa:'انتشار سایت‌ها با GitHub Pages',en:'Publishing with GitHub Pages'},d:{fa:'انتشار چندین پروژه وب آنلاین و ترکیب هوش مصنوعی با روند کار.',en:'Publishing several web projects online and blending AI into my workflow.'}}
+];
+
+/* ════════════════ ابزار ════════════════ */
+function $(s){return document.querySelector(s)}
+function $all(s){return document.querySelectorAll(s)}
+function t(path){return path.split('.').reduce(function(o,k){return o?o[k]:undefined},I18N[lang])}
+var lang='fa',curFilter='all',curPage='home',cur=0,countersDone=false,typeTimer=null;
+function faNum(n){return Number(n).toLocaleString('fa-IR')}
+function locNum(n){return lang==='fa'?faNum(n):String(n)}
+var io=('IntersectionObserver' in window)?new IntersectionObserver(function(es){
+  es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+},{threshold:.12}):null;
+function watchReveals(){
+  if(!io){$all('.reveal').forEach(function(el){el.classList.add('in')});return}
+  $all('.reveal:not(.in)').forEach(function(el){io.observe(el)});
+}
+function closeMenu(){
+  $('#navLinks').classList.remove('open');
+  $('#burger').textContent='☰';
+}
+
+/* ════════════════ رندرها ════════════════ */
+function renderBadges(){
+  $('#badges').innerHTML=I18N[lang].hero.badges.map(function(b,i){
+    return '<div class="badge b'+(i+1)+'"><span class="ico">'+b[0]+'</span><span>'+b[1]+'<small>'+b[2]+'</small></span></div>';
+  }).join('');
+  $('#avatarInitial').textContent=I18N[lang].hero.initial;
+}
+function renderWhy(){
+  $('#whyGrid').innerHTML=I18N[lang].about.why.map(function(w){
+    return '<div class="item"><span class="ico">'+w[0]+'</span><div><h4>'+w[1]+'</h4><p>'+w[2]+'</p></div></div>';
+  }).join('');
+}
+function renderInfo(){
+  $('#infoRows').innerHTML=I18N[lang].about.rows.map(function(r){
+    return '<div class="info-row"><span class="k">'+r[0]+'</span><span class="v">'+r[1]+'</span></div>';
+  }).join('');
+}
+function renderProjects(){
+  var g=$('#pGrid');g.innerHTML='';
+  var list=viewList();
+  if(!list.length){g.innerHTML='<div class="p-empty">'+(t('portfolio.empty')||'')+'</div>';return}
+  list.forEach(function(p,idx){
+    var media='<span class="icon">'+p.icon+'</span>';
+    media+='<img src="'+p.gal[0]+'" alt="'+p.title[lang]+'" loading="lazy" onerror="this.remove()">';
+    if(p.gal.length>1)media+='<span class="g-badge">🖼 '+locNum(p.gal.length)+'</span>';
+    var card=document.createElement('div');
+    card.className='p-card';
+    card.style.animationDelay=(idx*60)+'ms';
+    card.innerHTML=
+      '<div class="p-media">'+media+'</div>'+
+      '<div class="p-body">'+
+        '<span class="p-cat">'+catNames[p.cat][lang]+'</span>'+
+        '<h3 class="p-title">'+p.title[lang]+'</h3>'+
+        '<p class="p-desc">'+p.desc[lang]+'</p>'+
+        '<div class="p-foot"><span class="p-year">📅 '+p.year[lang]+'</span><span class="p-more">'+I18N[lang].portfolio.more+'</span></div>'+
+      '</div>';
+    card.addEventListener('click',function(){openProject(p.id)});
+    g.appendChild(card);
+  });
+}
+function renderSkills(){
+  $('#skillGrid').innerHTML=SKILLS.map(function(s){
+    return '<div class="skill-card"><div class="skill-top">'+
+      '<span class="skill-name"><span class="ico">'+s.i+'</span>'+s.n[lang]+'</span>'+
+      '<span class="skill-pct">'+locNum(s.v)+(lang==='fa'?'٪':'%')+'</span></div>'+
+      '<div class="bar"><i data-level="'+s.v+'"></i></div></div>';
+  }).join('');
+}
+function animateSkills(){
+  $all('.bar i').forEach(function(b){
+    b.style.width='0';
+    setTimeout(function(){b.style.width=b.getAttribute('data-level')+'%'},80);
+  });
+}
+function renderTimeline(){
+  $('#timeline').innerHTML=TIMELINE.map(function(x){
+    return '<div class="t-item reveal"><span class="t-date">'+x.date[lang]+'</span>'+
+      '<div class="t-card"><h4>'+x.e+' '+x.t[lang]+'</h4><p>'+x.d[lang]+'</p></div></div>';
+  }).join('');
+  watchReveals();
+}
+
+/* ════════════════ مودال + گالری اسلایدی ════════════════ */
+function viewList(){
+  return PROJECTS.filter(function(p){return curFilter==='all'||p.cat===curFilter});
+}
+var slideIdx=0,autoT=null;
+function startAuto(){stopAuto();autoT=setInterval(function(){showSlide(slideIdx+1)},4200)}
+function stopAuto(){if(autoT){clearInterval(autoT);autoT=null}}
+function showSlide(n){
+  var imgs=$all('#mSlides img');
+  if(!imgs.length)return;
+  slideIdx=(n+imgs.length)%imgs.length;
+  for(var i=0;i<imgs.length;i++)imgs[i].classList.toggle('on',i===slideIdx);
+  var dots=$all('#gDots .g-dot');
+  for(var j=0;j<dots.length;j++)dots[j].classList.toggle('on',j===slideIdx);
+  $('#gCount').textContent=locNum(slideIdx+1)+' / '+locNum(imgs.length);
+}
+function slideGo(n){showSlide(n);startAuto()}
+function buildSlides(p){
+  var wrap=$('#mSlides');wrap.innerHTML='';
+  p.gal.forEach(function(src){
+    var im=document.createElement('img');
+    im.src=src;im.alt=p.title[lang];im.loading='lazy';
+    wrap.appendChild(im);
+  });
+  $('#gDots').innerHTML=p.gal.map(function(_,i){return '<button class="g-dot" data-s="'+i+'" aria-label="تصویر '+(i+1)+'"></button>'}).join('');
+  var multi=p.gal.length>1;
+  $('#gPrev').style.display=multi?'grid':'none';
+  $('#gNext').style.display=multi?'grid':'none';
+  $('#gDots').style.display=multi?'flex':'none';
+  $('#gCount').style.display=multi?'block':'none';
+  slideIdx=0;showSlide(0);
+  startAuto();
+}
+function fillModal(){
+  var L=viewList(),p=L[cur];
+  if(!p){closeModal();return}
+  $('#mIcon').textContent=p.icon;
+  $('#mTitle').textContent=p.title[lang];
+  $('#mChips').innerHTML='<span class="m-chip">📂 '+catNames[p.cat][lang]+'</span><span class="m-chip">📅 '+p.year[lang]+'</span>';
+  $('#mDesc').textContent=p.desc[lang];
+  $('#mFeats').innerHTML=p.features[lang].map(function(f){return '<li>'+f+'</li>'}).join('');
+  $('#mTech').innerHTML=p.tech.map(function(x){return '<span>'+x+'</span>'}).join('');
+  buildSlides(p);
+  $('#modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function openProject(id){
+  var L=viewList();
+  for(var i=0;i<L.length;i++)if(L[i].id===id){cur=i;break}
+  fillModal();
+}
+function closeModal(){
+  $('#modal').classList.remove('open');
+  document.body.style.overflow='';
+  stopAuto();
+}
+$('#mClose').onclick=closeModal;
+$('#modalBg').onclick=closeModal;
+$('#gPrev').onclick=function(){slideGo(slideIdx-1)};
+$('#gNext').onclick=function(){slideGo(slideIdx+1)};
+$('#gDots').addEventListener('click',function(e){
+  var d=e.target.closest('.g-dot');if(d)slideGo(+d.getAttribute('data-s'));
+});
+$('#mNext').onclick=function(){var L=viewList();openProject(L[(cur+1)%L.length].id)};
+$('#mPrev').onclick=function(){var L=viewList();openProject(L[(cur-1+L.length)%L.length].id)};
+$('#mOrder').onclick=function(){closeModal();go('contact')};
+$('#mHero').addEventListener('mouseenter',stopAuto);
+$('#mHero').addEventListener('mouseleave',function(){
+  if($('#modal').classList.contains('open')&&$all('#mSlides img').length>1)startAuto();
+});
+/* سوایپ لمسی گالری — هماهنگ با جهت صفحه */
+(function(){
+  var sx=null;
+  $('#mHero').addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
+  $('#mHero').addEventListener('touchend',function(e){
+    if(sx===null)return;
+    var dx=e.changedTouches[0].clientX-sx;
+    if(Math.abs(dx)>40){
+      var fwd=lang==='fa'?dx>0:dx<0;
+      slideGo(slideIdx+(fwd?1:-1));
+    }
+    sx=null;
+  },{passive:true});
+})();
+document.addEventListener('keydown',function(e){
+  var open=$('#modal').classList.contains('open');
+  if(e.key==='Escape'){if(open)closeModal();closeMenu();return}
+  if(!open||$all('#mSlides img').length<2)return;
+  if(e.key==='ArrowLeft')slideGo(slideIdx+(lang==='fa'?1:-1));
+  else if(e.key==='ArrowRight')slideGo(slideIdx+(lang==='fa'?-1:1));
+});
+
+ $('#filters').addEventListener('click',function(e){
+  var b=e.target.closest('.filter-btn');if(!b)return;
+  $all('.filter-btn').forEach(function(x){x.classList.remove('active')});
+  b.classList.add('active');curFilter=b.getAttribute('data-f');renderProjects();
+});
+
+/* ════════════════ ناوبری (۴ صفحه) ════════════════ */
+function go(id){
+  if(!id||!I18N.fa.titles[id])id='home'; /* هش‌های قدیمی مثل #about به خانه برمی‌گردند */
+  curPage=id;
+  $all('.page').forEach(function(p){p.classList.remove('active')});
+  var pg=$('#page-'+id);if(pg)pg.classList.add('active');
+  $all('.nav-links a').forEach(function(a){a.classList.toggle('active',a.getAttribute('data-page')===id)});
+  document.title=I18N[lang].titles[id];
+  /* پرش فوری به بالای صفحه (بدون انیمیشن نرم که حس خرابی می‌دهد) */
+  var html=document.documentElement,oldSb=html.style.scrollBehavior;
+  html.style.scrollBehavior='auto';window.scrollTo(0,0);html.style.scrollBehavior=oldSb;
+  closeMenu();
+  if(id==='skills')animateSkills();
+  if(id==='home')runCounters();
+  watchReveals();
+  try{if(location.hash.slice(1)!==id)location.hash=id}catch(err){/* iframeهای sandboxed */}
+}
+/* ناوبری ضدخطا: هر لینک داخلی (#) مستقیم go() را صدا می‌زند؛
+   حتی اگر hashchange در iframe/وب‌ویو کار نکند یا کاربر روی لینک همین صفحه کلیک کند */
+document.addEventListener('click',function(e){
+  var a=e.target.closest('a[href^="#"]');
+  if(!a)return;
+  e.preventDefault();
+  go((a.getAttribute('href')||'').slice(1));
+},false);
+/* back/forward مرورگر و تغییر دستی هش */
+window.addEventListener('hashchange',function(){
+  var id=location.hash.slice(1)||'home';
+  if(id!==curPage)go(id);
+});
+ $('#burger').onclick=function(){
+  var nl=$('#navLinks');
+  nl.classList.toggle('open');
+  this.textContent=nl.classList.contains('open')?'✕':'☰';
+};
+
+/* ════════════════ افکت تایپ ════════════════ */
+var ri=0,ci=0,del=false;
+function startTyping(){
+  if(typeTimer)clearTimeout(typeTimer);
+  ri=0;ci=0;del=false;$('#typed').textContent='';
+  typeLoop();
+}
+function typeLoop(){
+  var w=I18N[lang].roles[ri];
+  ci=del?ci-1:ci+1;
+  $('#typed').textContent=w.slice(0,ci);
+  var sp=del?45:90;
+  if(!del&&ci===w.length){del=true;sp=1600}
+  else if(del&&ci===0){del=false;ri=(ri+1)%I18N[lang].roles.length;sp=350}
+  typeTimer=setTimeout(typeLoop,sp);
+}
+
+/* ════════════════ شمارنده آمار ════════════════ */
+function fillStats(){
+  $all('.stat .num').forEach(function(el){
+    el.textContent=locNum(+el.getAttribute('data-target'))+'+';
+  });
+}
+function runCounters(){
+  if(countersDone){fillStats();return}
+  countersDone=true;
+  $all('.stat .num').forEach(function(el){
+    var target=+el.getAttribute('data-target'),st=performance.now();
+    (function step(n){
+      var p=Math.min((n-st)/1400,1);
+      var v=Math.round(target*(1-Math.pow(1-p,3)));
+      el.textContent=(lang==='fa'?faNum(v):String(v))+'+';
+      if(p<1)requestAnimationFrame(step);
+    })(st);
+  });
+}
+setTimeout(runCounters,800);
+
+/* ════════════════ اسکرول ════════════════ */
+var header=$('#header'),topBtn=$('#topBtn');
+window.addEventListener('scroll',function(){
+  header.classList.toggle('scrolled',window.scrollY>30);
+  topBtn.classList.toggle('show',window.scrollY>500);
+});
+topBtn.onclick=function(){window.scrollTo({top:0,behavior:'smooth'})};
+
+/* ════════════════ تم ════════════════ */
+function setTheme(x){
+  document.documentElement.setAttribute('data-theme',x);
+  $('#themeBtn').textContent=x==='dark'?'☀️':'🌙';
+  try{localStorage.setItem('yp-theme',x)}catch(e){}
+}
+ $('#themeBtn').onclick=function(){
+  setTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark');
+};
+
+/* ════════════════ دو زبانه ════════════════ */
+function applyLang(l){
+  lang=l;
+  try{localStorage.setItem('yp-lang',l)}catch(e){}
+  var d=I18N[l];
+  document.documentElement.setAttribute('lang',l);
+  document.documentElement.setAttribute('dir',l==='fa'?'rtl':'ltr');
+  $all('[data-i18n]').forEach(function(el){
+    var v=t(el.getAttribute('data-i18n'));
+    if(typeof v==='string')el.innerHTML=v;
+  });
+  closeModal();
+  renderBadges();renderWhy();renderInfo();renderProjects();renderSkills();renderTimeline();
+  $('#langBtn').textContent=l==='fa'?'EN':'فا';
+  startTyping();
+  if(countersDone)fillStats();
+  if(curPage==='skills')animateSkills();
+  document.title=d.titles[curPage]||d.titles.home;
+  watchReveals();
+}
+ $('#langBtn').onclick=function(){applyLang(lang==='fa'?'en':'fa')};
+
+/* ════════════════ کپی و توست ════════════════ */
+var toastEl=$('#toast'),toastT=null;
+function showToast(msg){
+  toastEl.textContent=msg;toastEl.classList.add('show');
+  if(toastT)clearTimeout(toastT);
+  toastT=setTimeout(function(){toastEl.classList.remove('show')},2600);
+}
+function copyPhone(){
+  var txt='09370132965';
+  function done(){showToast(I18N[lang].copied)}
+  function fallback(){
+    var ta=document.createElement('textarea');
+    ta.value=txt;ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy')}catch(e){}
+    ta.remove();done();
+  }
+  if(navigator.clipboard&&window.isSecureContext&&location.protocol==='https:'){
+    navigator.clipboard.writeText(txt).then(done).catch(fallback);
+  }else{
+    fallback();
+  }
+}
+
+/* ════════════════ عکس پروفایل خودکار (بدون خطای ۴۰۴ در کنسول) ════════════════
+   عکست رو با یکی از این اسم‌ها کنار index.html بذار:
+   me.jpg یا me.png یا me.jpeg یا profile.jpg — خودکار نمایش داده می‌شه */
+(function(){
+  var names=['me.jpg','me.png','me.jpeg','profile.jpg'];
+  function show(n){
+    var img=document.createElement('img');
+    img.src=n;img.alt='Yousef Parvaresh';
+    $('#avatarBox').appendChild(img);
+  }
+  var i=0;
+  (function next(){
+    if(i>=names.length)return;
+    silentProbe(names[i],function(ok){
+      if(ok)show(names[i]);
+      else{i++;next()}
+    });
+  })();
+})();
+
+/* ════════════════ شروع ════════════════ */
+(function init(){
+  var savedTheme='light',savedLang='fa';
+  try{
+    savedTheme=localStorage.getItem('yp-theme')||'light';
+    savedLang=localStorage.getItem('yp-lang')||'fa';
+  }catch(e){}
+  setTheme(savedTheme);
+  probeGallery();
+  applyLang(savedLang);
+  go(location.hash.slice(1)||'home');
+  setTimeout(function(){
+    var l=document.getElementById('loader');
+    if(l)l.style.display='none';
+  },2400);
+})();
+</script>
+</body>
+</html>
