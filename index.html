@@ -173,8 +173,8 @@ html[dir="ltr"] .home-sec{padding-top:70px}
 .modal-hero{height:clamp(240px,46vh,420px);display:grid;place-items:center;position:relative;overflow:hidden;background:var(--card2);touch-action:pan-y}
 .modal-hero .icon{font-size:4rem;filter:drop-shadow(0 12px 20px rgba(0,0,0,.25));position:relative;z-index:1}
 .m-slides{position:absolute;top:0;right:0;bottom:0;left:0;z-index:2}
-.m-slides img{position:absolute;top:0;right:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity .45s ease}
-.m-slides img.on{opacity:1}
+.m-slides img{position:absolute;top:0;right:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity .45s ease;pointer-events:none}
+.m-slides img.on{opacity:1;pointer-events:auto}
 .g-arrow{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.28);background:rgba(10,12,16,.4);color:#fff;font-size:1.05rem;line-height:1;z-index:4;display:grid;place-items:center;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:background .3s}
 .g-arrow:hover{background:rgba(10,12,16,.68)}
 html[dir="rtl"] .g-prev,html[dir="rtl"] .g-next{transform:translateY(-50%) rotate(180deg)}
@@ -199,6 +199,29 @@ html[dir="rtl"] .g-prev,html[dir="rtl"] .g-next{transform:translateY(-50%) rotat
 .m-nav{display:flex;justify-content:space-between;align-items:center;margin-top:24px;padding-top:18px;border-top:1px dashed var(--border);gap:10px;flex-wrap:wrap}
 .m-nav button{background:var(--card);border:1px solid var(--border);color:var(--text);padding:10px 18px;border-radius:12px;font-size:.84rem;font-weight:700;transition:.3s}
 .m-nav button:hover{border-color:var(--acc)}
+/* دکمه مشاهده پروژه روی کارت */
+.p-visit{position:absolute;top:12px;inset-inline-end:12px;z-index:4;width:37px;height:37px;border-radius:50%;background:rgba(10,12,16,.55);color:#fff;font-size:1.05rem;font-weight:700;display:grid;place-items:center;text-decoration:none;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);transition:.3s}
+.p-visit:hover{background:var(--acc);transform:scale(1.12)}
+/* دکمه بزرگ‌نمایی + لینک مشاهده پروژه در مودال */
+.m-zoom{position:absolute;bottom:13px;inset-inline-end:14px;z-index:5;width:38px;height:38px;border-radius:12px;border:1px solid rgba(255,255,255,.3);background:rgba(10,12,16,.45);color:#fff;font-size:1.05rem;display:grid;place-items:center;cursor:zoom-in;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:.3s}
+.m-zoom:hover{background:rgba(10,12,16,.75);transform:scale(1.06)}
+.m-slides img{cursor:zoom-in}
+.m-link{display:flex;width:max-content;max-width:100%;align-items:center;gap:8px;margin:-4px 0 8px;padding:11px 28px;border-radius:12px;background:var(--grad);background-size:200% 100%;color:#fff;font-weight:800;font-size:.9rem;text-decoration:none;transition:.3s;box-shadow:0 12px 26px -12px rgba(0,0,0,.4)}
+.m-link:hover{transform:translateY(-2px);filter:brightness(1.1)}
+/* لایت‌باکس تمام‌صفحه (زوم عکس) */
+.lightbox{position:fixed;top:0;right:0;bottom:0;left:0;z-index:260;display:none;align-items:center;justify-content:center;background:rgba(5,8,13,.93);-webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px)}
+.lightbox.open{display:flex;animation:lbIn .25s ease}
+.lightbox img{max-width:92vw;max-height:86vh;object-fit:contain;border-radius:14px;box-shadow:0 30px 90px -20px rgba(0,0,0,.85);animation:lbZoom .3s ease}
+.lb-close{position:absolute;top:18px;inset-inline-start:18px;width:44px;height:44px;border-radius:13px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.08);color:#fff;font-size:1.15rem;cursor:pointer;display:grid;place-items:center;transition:.3s;z-index:2}
+.lb-close:hover{background:rgba(220,60,60,.45)}
+.lb-arrow{position:absolute;top:50%;transform:translateY(-50%);width:50px;height:50px;border-radius:50%;border:1px solid rgba(255,255,255,.32);background:rgba(10,14,20,.5);color:#fff;font-size:1.25rem;cursor:pointer;display:grid;place-items:center;transition:.3s;z-index:2;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.lb-arrow:hover{background:rgba(10,14,20,.85)}
+.lb-prev{inset-inline-start:22px}
+.lb-next{inset-inline-end:22px}
+html[dir="rtl"] .lb-prev,html[dir="rtl"] .lb-next{transform:translateY(-50%) rotate(180deg)}
+.lb-count{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);background:rgba(10,14,20,.55);border:1px solid rgba(255,255,255,.18);color:#fff;font-size:.82rem;font-weight:700;padding:6px 16px;border-radius:99px;direction:ltr;z-index:2}
+@keyframes lbIn{from{opacity:0}to{opacity:1}}
+@keyframes lbZoom{from{transform:scale(.92);opacity:0}to{transform:scale(1);opacity:1}}
 #mOrder{background:var(--acc);color:var(--on-acc);border-color:transparent}
 #mOrder:hover{opacity:.85}
 
@@ -494,12 +517,14 @@ footer{border-top:1px solid var(--border);padding:30px 0;position:relative;z-ind
       <button class="g-arrow g-next" id="gNext" aria-label="تصویر بعدی">❯</button>
       <div class="g-dots" id="gDots"></div>
       <span class="g-count" id="gCount"></span>
+      <button class="m-zoom" id="mZoom" aria-label="نمایش تمام‌صفحه تصویر">🔍</button>
       <button class="modal-close" id="mClose" aria-label="بستن">✕</button>
     </div>
     <div class="modal-body">
       <h3 id="mTitle"></h3>
       <div class="m-meta" id="mChips"></div>
       <p id="mDesc"></p>
+      <a id="mLink" class="m-link" target="_blank" rel="noopener noreferrer" style="display:none"></a>
       <ul class="m-feats" id="mFeats"></ul>
       <div class="m-tech" id="mTech"></div>
       <div class="m-nav">
@@ -509,6 +534,14 @@ footer{border-top:1px solid var(--border);padding:30px 0;position:relative;z-ind
       </div>
     </div>
   </div>
+</div>
+
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lbClose" aria-label="بستن">✕</button>
+  <button class="lb-arrow lb-prev" id="lbPrev" aria-label="تصویر قبلی">❮</button>
+  <img id="lbImg" alt="نمایش تمام‌صفحه تصویر پروژه">
+  <button class="lb-arrow lb-next" id="lbNext" aria-label="تصویر بعدی">❯</button>
+  <span class="lb-count" id="lbCount"></span>
 </div>
 
 <div class="toast" id="toast"></div>
@@ -525,7 +558,10 @@ var ART={
 'logos':'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380"><rect width="600" height="380" fill="#0c0c0e"/><rect x="70" y="52" width="140" height="230" rx="10" fill="#151517" stroke="#2e2e33" stroke-width="1.5"/><circle cx="140" cy="132" r="30" fill="none" stroke="#c9a227" stroke-width="2"/><path d="M128,120l12,24l12,-24" stroke="#c9a227" stroke-width="2.5" fill="none"/><rect x="122" y="184" width="36" height="3.5" rx="1.75" fill="#c9a227"/><rect x="112" y="196" width="56" height="3" rx="1.5" fill="#7d6a3d"/><rect x="120" y="206" width="40" height="3" rx="1.5" fill="#4e4327"/><rect x="230" y="52" width="140" height="230" rx="10" fill="#f3efe7"/><circle cx="300" cy="132" r="30" fill="none" stroke="#a8871f" stroke-width="2"/><rect x="291" y="123" width="18" height="18" fill="none" stroke="#a8871f" stroke-width="2" transform="rotate(45 300 132)"/><rect x="282" y="184" width="36" height="3.5" rx="1.75" fill="#a8871f"/><rect x="272" y="196" width="56" height="3" rx="1.5" fill="#b9ad93"/><rect x="280" y="206" width="40" height="3" rx="1.5" fill="#cfc7b4"/><rect x="390" y="52" width="140" height="230" rx="10" fill="#151517" stroke="#2e2e33" stroke-width="1.5"/><circle cx="460" cy="132" r="30" fill="none" stroke="#c9a227" stroke-width="2"/><path d="M446,142l10,-17l7,10l7,-11l10,18" stroke="#c9a227" stroke-width="2.5" fill="none"/><rect x="442" y="184" width="36" height="3.5" rx="1.75" fill="#c9a227"/><rect x="432" y="196" width="56" height="3" rx="1.5" fill="#7d6a3d"/><rect x="440" y="206" width="40" height="3" rx="1.5" fill="#4e4327"/><rect x="70" y="308" width="460" height="2" fill="#2e2e33"/><rect x="70" y="322" width="120" height="8" rx="4" fill="#c9a227" opacity=".85"/><rect x="200" y="322" width="200" height="8" rx="4" fill="#3a3a40"/><rect x="410" y="322" width="120" height="8" rx="4" fill="#3a3a40"/></svg>',
 'cyberguard':'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380"><rect width="600" height="380" fill="#141a16"/><rect x="50" y="28" width="500" height="324" rx="14" fill="#0e1f18" stroke="#1e3b2d" stroke-width="1.5"/><path d="M50,42a14,14 0 0 1 14,-14h472a14,14 0 0 1 14,14v24h-500z" fill="#132b21"/><circle cx="74" cy="47" r="5" fill="#2f8f6c"/><circle cx="92" cy="47" r="5" fill="#1d5c42"/><circle cx="110" cy="47" r="5" fill="#16402f"/><rect x="380" y="41" width="150" height="12" rx="6" fill="#1d5c42"/><rect x="50" y="66" width="130" height="286" fill="#0c1a14"/><rect x="66" y="86" width="16" height="16" rx="4" fill="#2f8f6c"/><rect x="90" y="90" width="70" height="8" rx="4" fill="#9fd8c2"/><rect x="66" y="126" width="16" height="16" rx="4" fill="#1d5c42"/><rect x="90" y="130" width="58" height="8" rx="4" fill="#52756a"/><rect x="66" y="166" width="16" height="16" rx="4" fill="#1d5c42"/><rect x="90" y="170" width="64" height="8" rx="4" fill="#52756a"/><rect x="66" y="206" width="16" height="16" rx="4" fill="#1d5c42"/><rect x="90" y="210" width="52" height="8" rx="4" fill="#52756a"/><rect x="66" y="246" width="16" height="16" rx="4" fill="#1d5c42"/><rect x="90" y="250" width="60" height="8" rx="4" fill="#52756a"/><path d="M180,120l46,16v38c0,34 -20,54 -46,64c-26,-10 -46,-30 -46,-64v-38z" fill="#153527" stroke="#2f8f6c" stroke-width="2.5"/><path d="M164,168l12,12l22,-24" stroke="#7fe0b6" stroke-width="4" fill="none"/><rect x="250" y="110" width="270" height="34" rx="8" fill="#132b21"/><rect x="262" y="122" width="90" height="9" rx="4.5" fill="#9fd8c2"/><rect x="430" y="118" width="76" height="18" rx="9" fill="#2f8f6c"/><rect x="250" y="156" width="270" height="12" rx="6" fill="#132b21"/><rect x="250" y="156" width="170" height="12" rx="6" fill="#3fae7f"/><rect x="250" y="180" width="270" height="12" rx="6" fill="#132b21"/><rect x="250" y="180" width="110" height="12" rx="6" fill="#c9a227"/><rect x="250" y="212" width="130" height="60" rx="10" fill="#132b21"/><rect x="262" y="224" width="100" height="8" rx="4" fill="#52756a"/><rect x="262" y="240" width="106" height="7" rx="3.5" fill="#3c554b"/><rect x="262" y="254" width="80" height="7" rx="3.5" fill="#3c554b"/><rect x="394" y="212" width="126" height="60" rx="10" fill="#132b21"/><rect x="406" y="224" width="80" height="8" rx="4" fill="#52756a"/><rect x="406" y="240" width="100" height="7" rx="3.5" fill="#3c554b"/><rect x="406" y="254" width="70" height="7" rx="3.5" fill="#3c554b"/><rect x="250" y="288" width="270" height="44" rx="10" fill="#132b21"/><rect x="262" y="300" width="140" height="8" rx="4" fill="#9fd8c2"/><rect x="262" y="315" width="180" height="7" rx="3.5" fill="#3c554b"/><rect x="468" y="298" width="40" height="24" rx="7" fill="#2f8f6c"/></svg>',
 'membersim':'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380"><rect width="600" height="380" fill="#23262e"/><rect x="56" y="28" width="488" height="324" rx="14" fill="#f5f6fa"/><path d="M56,42a14,14 0 0 1 14,-14h460a14,14 0 0 1 14,14v24h-488z" fill="#3d4a8a"/><circle cx="80" cy="47" r="5" fill="#b9c3ea"/><rect x="96" y="41" width="130" height="12" rx="6" fill="#d6dcf3"/><rect x="456" y="41" width="70" height="12" rx="6" fill="#6a78b8"/><rect x="72" y="82" width="290" height="250" rx="10" fill="#ffffff" stroke="#e4e7f0" stroke-width="1.5"/><rect x="86" y="96" width="120" height="10" rx="5" fill="#3d4a8a"/><rect x="86" y="122" width="262" height="36" rx="8" fill="#f2f4fb"/><circle cx="104" cy="140" r="11" fill="#c3ccec"/><rect x="124" y="130" width="90" height="8" rx="4" fill="#4c5678"/><rect x="124" y="144" width="60" height="6" rx="3" fill="#a3abc7"/><rect x="296" y="132" width="42" height="15" rx="7.5" fill="#2f8f6c"/><rect x="86" y="166" width="262" height="36" rx="8" fill="#f2f4fb"/><circle cx="104" cy="184" r="11" fill="#c3ccec"/><rect x="124" y="174" width="80" height="8" rx="4" fill="#4c5678"/><rect x="124" y="188" width="56" height="6" rx="3" fill="#a3abc7"/><rect x="296" y="176" width="42" height="15" rx="7.5" fill="#b8bcc9"/><rect x="86" y="210" width="262" height="36" rx="8" fill="#f2f4fb"/><circle cx="104" cy="228" r="11" fill="#c3ccec"/><rect x="124" y="218" width="96" height="8" rx="4" fill="#4c5678"/><rect x="124" y="232" width="64" height="6" rx="3" fill="#a3abc7"/><rect x="296" y="220" width="42" height="15" rx="7.5" fill="#2f8f6c"/><rect x="86" y="254" width="262" height="36" rx="8" fill="#f2f4fb"/><circle cx="104" cy="272" r="11" fill="#c3ccec"/><rect x="124" y="262" width="76" height="8" rx="4" fill="#4c5678"/><rect x="124" y="276" width="58" height="6" rx="3" fill="#a3abc7"/><rect x="296" y="264" width="42" height="15" rx="7.5" fill="#b8bcc9"/><rect x="86" y="298" width="90" height="22" rx="11" fill="#3d4a8a"/><rect x="186" y="298" width="90" height="22" rx="11" fill="#e3e6f2"/><rect x="380" y="82" width="148" height="120" rx="10" fill="#ffffff" stroke="#e4e7f0" stroke-width="1.5"/><rect x="394" y="96" width="90" height="10" rx="5" fill="#3d4a8a"/><rect x="402" y="170" width="20" height="20" rx="4" fill="#6a78b8"/><rect x="430" y="150" width="20" height="40" rx="4" fill="#3d4a8a"/><rect x="458" y="160" width="20" height="30" rx="4" fill="#8a96cf"/><rect x="486" y="136" width="20" height="54" rx="4" fill="#2f8f6c"/><rect x="380" y="216" width="148" height="116" rx="10" fill="#ffffff" stroke="#e4e7f0" stroke-width="1.5"/><rect x="394" y="230" width="76" height="10" rx="5" fill="#3d4a8a"/><rect x="394" y="252" width="120" height="8" rx="4" fill="#a3abc7"/><rect x="394" y="268" width="100" height="8" rx="4" fill="#c3ccec"/><rect x="394" y="284" width="112" height="8" rx="4" fill="#c3ccec"/><rect x="394" y="306" width="56" height="18" rx="9" fill="#2f8f6c"/><rect x="458" y="306" width="56" height="18" rx="9" fill="#b04a4a"/></svg>',
-'weatherbot':'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380"><rect width="600" height="380" fill="#1c2530"/><rect x="170" y="22" width="180" height="336" rx="28" fill="#0d1319"/><rect x="182" y="42" width="156" height="296" rx="14" fill="#f0f6fb"/><path d="M182,56a14,14 0 0 1 14,-14h128a14,14 0 0 1 14,14v22h-156z" fill="#1b7ac1"/><circle cx="204" cy="57" r="9" fill="#d3e9f8"/><rect x="220" y="50" width="70" height="7" rx="3.5" fill="#eaf5fc"/><rect x="220" y="61" width="44" height="5" rx="2.5" fill="#a8cfe8"/><rect x="196" y="90" width="128" height="74" rx="10" fill="#ffffff" stroke="#dce9f3" stroke-width="1.5"/><circle cx="226" cy="116" r="15" fill="#f6c344"/><circle cx="248" cy="116" r="11" fill="#8ecdf0"/><circle cx="264" cy="112" r="13" fill="#8ecdf0"/><rect x="238" y="118" width="46" height="12" rx="6" fill="#8ecdf0"/><rect x="284" y="104" width="30" height="14" rx="4" fill="#1b7ac1"/><rect x="208" y="146" width="70" height="8" rx="4" fill="#5d7285"/><rect x="196" y="176" width="128" height="30" rx="9" fill="#1b7ac1"/><rect x="240" y="187" width="40" height="8" rx="4" fill="#d9edf9"/><rect x="196" y="218" width="62" height="34" rx="9" fill="#ffffff" stroke="#dce9f3" stroke-width="1.5"/><rect x="208" y="228" width="38" height="7" rx="3.5" fill="#5d7285"/><rect x="208" y="240" width="26" height="6" rx="3" fill="#9fb6c7"/><rect x="262" y="218" width="62" height="34" rx="9" fill="#ffffff" stroke="#dce9f3" stroke-width="1.5"/><rect x="274" y="228" width="38" height="7" rx="3.5" fill="#5d7285"/><rect x="274" y="240" width="26" height="6" rx="3" fill="#9fb6c7"/><rect x="196" y="262" width="128" height="26" rx="9" fill="#e3eff8"/><rect x="206" y="271" width="66" height="8" rx="4" fill="#7d95a8"/><rect x="196" y="298" width="128" height="20" rx="10" fill="#dce9f3"/><circle cx="312" cy="308" r="7" fill="#1b7ac1"/><rect x="416" y="130" width="128" height="104" rx="14" fill="#ffffff"/><circle cx="448" cy="164" r="14" fill="#f6c344"/><circle cx="466" cy="164" r="10" fill="#8ecdf0"/><circle cx="480" cy="160" r="12" fill="#8ecdf0"/><rect x="456" y="166" width="40" height="10" rx="5" fill="#8ecdf0"/><rect x="432" y="192" width="60" height="10" rx="5" fill="#1b7ac1"/><rect x="432" y="210" width="96" height="7" rx="3.5" fill="#9fb6c7"/><rect x="100" y="150" width="14" height="14" rx="4" fill="#1b7ac1" opacity=".8"/><rect x="84" y="176" width="14" height="14" rx="4" fill="#1b7ac1" opacity=".5"/><rect x="108" y="198" width="14" height="14" rx="4" fill="#1b7ac1" opacity=".3"/><rect x="90" y="222" width="14" height="14" rx="4" fill="#1b7ac1" opacity=".18"/></svg>'
+'weatherbot':'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380"><rect width="600" height="380" fill="#1c2530"/><rect x="170" y="22" width="180" height="336" rx="28" fill="#0d1319"/><rect x="182" y="42" width="156" height="296" rx="14" fill="#f0f6fb"/><path d="M182,56a14,14 0 0 1 14,-14h128a14,14 0 0 1 14,14v22h-156z" fill="#1b7ac1"/><circle cx="204" cy="57" r="9" fill="#d3e9f8"/><rect x="220" y="50" width="70" height="7" rx="3.5" fill="#eaf5fc"/><rect x="220" y="61" width="44" height="5" rx="2.5" fill="#a8cfe8"/><rect x="196" y="90" width="128" height="74" rx="10" fill="#ffffff" stroke="#dce9f3" stroke-width="1.5"/><circle cx="226" cy="116" r="15" fill="#f6c344"/><circle cx="248" cy="116" r="11" fill="#8ecdf0"/><circle cx="264" cy="112" r="13" fill="#8ecdf0"/><rect x="238" y="118" width="46" height="12" rx="6" fill="#8ecdf0"/><rect x="284" y="104" width="30" height="14" rx="4" fill="#1b7ac1"/><rect x="208" y="146" width="70" height="8" rx="4" fill="#5d7285"/><rect x="196" y="176" width="128" height="30" rx="9" fill="#1b7ac1"/><rect x="240" y="187" width="40" height="8" rx="4" fill="#d9edf9"/><rect x="196" y="218" width="62" height="34" rx="9" fill="#ffffff" stroke="#dce9f3" stroke-width="1.5"/><rect x="208" y="228" width="38" height="7" rx="3.5" fill="#5d7285"/><rect x="208" y="240" width="26" height="6" rx="3" fill="#9fb6c7"/><rect x="262" y="218" width="62" height="34" rx="9" fill="#ffffff" stroke="#dce9f3" stroke-width="1.5"/><rect x="274" y="228" width="38" height="7" rx="3.5" fill="#5d7285"/><rect x="274" y="240" width="26" height="6" rx="3" fill="#9fb6c7"/><rect x="196" y="262" width="128" height="26" rx="9" fill="#e3eff8"/><rect x="206" y="271" width="66" height="8" rx="4" fill="#7d95a8"/><rect x="196" y="298" width="128" height="20" rx="10" fill="#dce9f3"/><circle cx="312" cy="308" r="7" fill="#1b7ac1"/><rect x="416" y="130" width="128" height="104" rx="14" fill="#ffffff"/><circle cx="448" cy="164" r="14" fill="#f6c344"/><circle cx="466" cy="164" r="10" fill="#8ecdf0"/><circle cx="480" cy="160" r="12" fill="#8ecdf0"/><rect x="456" y="166" width="40" height="10" rx="5" fill="#8ecdf0"/><rect x="432" y="192" width="60" height="10" rx="5" fill="#1b7ac1"/><rect x="432" y="210" width="96" height="7" rx="3.5" fill="#9fb6c7"/><rect x="100" y="150" width="14" height="14" rx="4" fill="#1b7ac1" opacity=".8"/><rect x="84" y="176" width="14" height="14" rx="4" fill="#1b7ac1" opacity=".5"/><rect x="108" y="198" width="14" height="14" rx="4" fill="#1b7ac1" opacity=".3"/><rect x="90" y="222" width="14" height="14" rx="4" fill="#1b7ac1" opacity=".18"/></svg>',
+'weatherpro':'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380"><rect width="600" height="380" fill="#182c44"/><rect x="66" y="26" width="468" height="328" rx="14" fill="#eef5fc"/><path d="M66,40a14,14 0 0 1 14,-14h440a14,14 0 0 1 14,14v26h-468z" fill="#2f7fc1"/><circle cx="90" cy="46" r="5" fill="#cfe6f7"/><rect x="106" y="40" width="110" height="12" rx="6" fill="#d8ecfa"/><rect x="462" y="40" width="54" height="12" rx="6" fill="#7fb2e0"/><rect x="90" y="84" width="240" height="30" rx="15" fill="#ffffff" stroke="#d3e5f4" stroke-width="1.5"/><circle cx="108" cy="99" r="6" fill="none" stroke="#8fb8d9" stroke-width="2.5"/><rect x="122" y="95" width="120" height="8" rx="4" fill="#c3d9ec"/><rect x="346" y="84" width="92" height="30" rx="15" fill="#2f7fc1"/><rect x="366" y="95" width="52" height="8" rx="4" fill="#d8ecfa"/><rect x="90" y="130" width="240" height="170" rx="12" fill="#ffffff" stroke="#dbe9f6" stroke-width="1.5"/><circle cx="142" cy="184" r="26" fill="#f6c344"/><circle cx="168" cy="198" r="16" fill="#e9eef4"/><circle cx="188" cy="192" r="19" fill="#dfe8f1"/><rect x="152" y="200" width="52" height="13" rx="6.5" fill="#d3e2ef"/><rect x="212" y="152" width="86" height="18" rx="9" fill="#2f7fc1"/><rect x="224" y="158" width="56" height="6" rx="3" fill="#d8ecfa"/><rect x="212" y="184" width="102" height="30" rx="9" fill="#eaf3fb"/><rect x="226" y="192" width="70" height="13" rx="6.5" fill="#7fb2e0"/><rect x="212" y="228" width="96" height="10" rx="5" fill="#b9d2e8"/><rect x="212" y="246" width="68" height="8" rx="4" fill="#cfdfec"/><rect x="212" y="266" width="82" height="8" rx="4" fill="#cfdfec"/><rect x="346" y="130" width="92" height="50" rx="10" fill="#ffffff" stroke="#dbe9f6" stroke-width="1.5"/><rect x="358" y="142" width="34" height="7" rx="3.5" fill="#6d8aa5"/><rect x="358" y="156" width="62" height="10" rx="5" fill="#3f9e6a"/><rect x="346" y="190" width="92" height="50" rx="10" fill="#ffffff" stroke="#dbe9f6" stroke-width="1.5"/><rect x="358" y="202" width="34" height="7" rx="3.5" fill="#6d8aa5"/><rect x="358" y="216" width="62" height="10" rx="5" fill="#2f7fc1"/><rect x="346" y="250" width="92" height="50" rx="10" fill="#e8f7ee"/><rect x="358" y="262" width="44" height="7" rx="3.5" fill="#3f9e6a"/><rect x="358" y="276" width="56" height="9" rx="4.5" fill="#8cc9a8"/><rect x="90" y="316" width="63" height="28" rx="8" fill="#ffffff" stroke="#dbe9f6" stroke-width="1.5"/><circle cx="106" cy="328" r="7" fill="#f6c344"/><rect x="120" y="325" width="22" height="6" rx="3" fill="#9fb9cf"/><rect x="161" y="316" width="63" height="28" rx="8" fill="#ffffff" stroke="#dbe9f6" stroke-width="1.5"/><circle cx="177" cy="328" r="7" fill="#8ecdf0"/><rect x="191" y="325" width="22" height="6" rx="3" fill="#9fb9cf"/><rect x="232" y="316" width="63" height="28" rx="8" fill="#ffffff" stroke="#dbe9f6" stroke-width="1.5"/><circle cx="248" cy="328" r="7" fill="#dfe8f1"/><rect x="262" y="325" width="22" height="6" rx="3" fill="#9fb9cf"/><rect x="303" y="316" width="63" height="28" rx="8" fill="#ffffff" stroke="#dbe9f6" stroke-width="1.5"/><circle cx="319" cy="328" r="7" fill="#f6c344"/><rect x="333" y="325" width="22" height="6" rx="3" fill="#9fb9cf"/><rect x="374" y="316" width="64" height="28" rx="8" fill="#ffffff" stroke="#dbe9f6" stroke-width="1.5"/><circle cx="390" cy="328" r="7" fill="#8ecdf0"/><rect x="404" y="325" width="22" height="6" rx="3" fill="#9fb9cf"/><rect x="100" y="150" width="12" height="12" rx="3" fill="#2f7fc1" opacity=".7"/><rect x="86" y="172" width="12" height="12" rx="3" fill="#2f7fc1" opacity=".4"/></svg>',
+'qronixweb':'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380"><rect width="600" height="380" fill="#232042"/><rect x="66" y="26" width="468" height="328" rx="14" fill="#f6f6fd"/><path d="M66,40a14,14 0 0 1 14,-14h440a14,14 0 0 1 14,14v26h-468z" fill="#5b50c8"/><circle cx="90" cy="46" r="5" fill="#cbc7ef"/><rect x="106" y="40" width="104" height="12" rx="6" fill="#dddaf5"/><rect x="448" y="40" width="68" height="12" rx="6" fill="#8d84dd"/><rect x="90" y="84" width="200" height="230" rx="10" fill="#ffffff" stroke="#e6e4f5" stroke-width="1.5"/><rect x="104" y="98" width="150" height="11" rx="5.5" fill="#5b50c8"/><rect x="104" y="122" width="172" height="22" rx="11" fill="#eef"/><rect x="118" y="130" width="70" height="7" rx="3.5" fill="#5b50c8"/><rect x="286" y="130" width="0" height="0" fill="#5b50c8"/><rect x="104" y="152" width="172" height="22" rx="11" fill="#f3f2fb"/><rect x="118" y="160" width="62" height="7" rx="3.5" fill="#a5a0d8"/><rect x="104" y="182" width="172" height="22" rx="11" fill="#f3f2fb"/><rect x="118" y="190" width="80" height="7" rx="3.5" fill="#a5a0d8"/><rect x="104" y="212" width="172" height="22" rx="11" fill="#f3f2fb"/><rect x="118" y="220" width="54" height="7" rx="3.5" fill="#a5a0d8"/><rect x="104" y="248" width="172" height="28" rx="9" fill="#ffffff" stroke="#dddaf5" stroke-width="1.5"/><rect x="116" y="259" width="90" height="7" rx="3.5" fill="#c9c5ea"/><rect x="104" y="288" width="96" height="26" rx="13" fill="#5b50c8"/><rect x="126" y="298" width="52" height="7" rx="3.5" fill="#e6e3fa"/><rect x="306" y="84" width="228" height="230" rx="10" fill="#ffffff" stroke="#e6e4f5" stroke-width="1.5"/><rect x="352" y="104" width="136" height="136" rx="8" fill="#ffffff" stroke="#e6e4f5" stroke-width="1.5"/><rect x="366" y="118" width="30" height="30" fill="none" stroke="#1a1830" stroke-width="7"/><rect x="378" y="130" width="8" height="8" fill="#1a1830"/><rect x="444" y="118" width="30" height="30" fill="none" stroke="#1a1830" stroke-width="7"/><rect x="456" y="130" width="8" height="8" fill="#1a1830"/><rect x="366" y="196" width="30" height="30" fill="none" stroke="#1a1830" stroke-width="7"/><rect x="378" y="208" width="8" height="8" fill="#1a1830"/><rect x="406" y="118" width="8" height="8" fill="#1a1830"/><rect x="420" y="130" width="8" height="8" fill="#1a1830"/><rect x="406" y="144" width="8" height="8" fill="#1a1830"/><rect x="420" y="118" width="8" height="8" fill="#5b50c8"/><rect x="434" y="144" width="8" height="8" fill="#1a1830"/><rect x="448" y="156" width="8" height="8" fill="#1a1830"/><rect x="462" y="144" width="8" height="8" fill="#5b50c8"/><rect x="366" y="156" width="8" height="8" fill="#5b50c8"/><rect x="380" y="168" width="8" height="8" fill="#1a1830"/><rect x="394" y="156" width="8" height="8" fill="#1a1830"/><rect x="408" y="168" width="8" height="8" fill="#1a1830"/><rect x="422" y="182" width="8" height="8" fill="#1a1830"/><rect x="436" y="168" width="8" height="8" fill="#5b50c8"/><rect x="450" y="182" width="8" height="8" fill="#1a1830"/><rect x="366" y="236" width="0" height="0" fill="#1a1830"/><rect x="408" y="196" width="8" height="8" fill="#1a1830"/><rect x="422" y="208" width="8" height="8" fill="#1a1830"/><rect x="408" y="220" width="8" height="8" fill="#5b50c8"/><rect x="436" y="196" width="8" height="8" fill="#1a1830"/><rect x="450" y="208" width="8" height="8" fill="#1a1830"/><rect x="462" y="196" width="8" height="8" fill="#1a1830"/><rect x="366" y="236" width="0" height="0" fill="#1a1830"/><rect x="352" y="256" width="100" height="26" rx="13" fill="#5b50c8"/><rect x="376" y="266" width="52" height="7" rx="3.5" fill="#e6e3fa"/><rect x="462" y="256" width="58" height="26" rx="13" fill="#eceafc"/><rect x="478" y="266" width="26" height="7" rx="3.5" fill="#8d84dd"/><rect x="100" y="140" width="12" height="12" rx="3" fill="#5b50c8" opacity=".7"/><rect x="86" y="164" width="12" height="12" rx="3" fill="#5b50c8" opacity=".4"/><rect x="104" y="186" width="12" height="12" rx="3" fill="#5b50c8" opacity=".25"/></svg>',
+'cyberguardweb':'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380"><rect width="600" height="380" fill="#04070d"/><rect x="66" y="26" width="468" height="328" rx="14" fill="#0a1322" stroke="#16324f" stroke-width="1.5"/><path d="M66,40a14,14 0 0 1 14,-14h440a14,14 0 0 1 14,14v26h-468z" fill="#0d1a2e"/><circle cx="90" cy="46" r="5" fill="#38bdf8"/><circle cx="108" cy="46" r="5" fill="#1e4a6e"/><circle cx="126" cy="46" r="5" fill="#143452"/><rect x="368" y="41" width="60" height="10" rx="5" fill="#234a6e"/><rect x="436" y="41" width="60" height="10" rx="5" fill="#17395a"/><rect x="90" y="90" width="170" height="14" rx="7" fill="#bfe3fb"/><rect x="90" y="114" width="130" height="14" rx="7" fill="#38bdf8"/><rect x="90" y="146" width="180" height="8" rx="4" fill="#3c5a78"/><rect x="90" y="162" width="150" height="8" rx="4" fill="#2c4660"/><rect x="90" y="186" width="96" height="26" rx="13" fill="#38bdf8"/><rect x="112" y="196" width="52" height="7" rx="3.5" fill="#062033"/><rect x="196" y="186" width="96" height="26" rx="13" fill="none" stroke="#38bdf8" stroke-width="1.5"/><rect x="218" y="196" width="52" height="7" rx="3.5" fill="#7dd6fb"/><ellipse cx="392" cy="168" rx="86" ry="80" fill="#38bdf8" opacity=".07"/><path d="M392,96l56,20v48c0,44 -26,70 -56,82c-30,-12 -56,-38 -56,-82v-48z" fill="#0e2038" stroke="#38bdf8" stroke-width="2.5"/><path d="M372,168l14,14l26,-28" stroke="#7dd6fb" stroke-width="4.5" fill="none"/><rect x="90" y="242" width="120" height="66" rx="10" fill="#0d1a2e" stroke="#16324f" stroke-width="1.5"/><rect x="104" y="256" width="20" height="20" rx="6" fill="#38bdf8" opacity=".85"/><rect x="104" y="284" width="82" height="7" rx="3.5" fill="#3c5a78"/><rect x="104" y="297" width="60" height="6" rx="3" fill="#243c52"/><rect x="226" y="242" width="120" height="66" rx="10" fill="#0d1a2e" stroke="#16324f" stroke-width="1.5"/><rect x="240" y="256" width="20" height="20" rx="6" fill="#38bdf8" opacity=".6"/><rect x="240" y="284" width="82" height="7" rx="3.5" fill="#3c5a78"/><rect x="240" y="297" width="60" height="6" rx="3" fill="#243c52"/><rect x="362" y="242" width="120" height="66" rx="10" fill="#0d1a2e" stroke="#16324f" stroke-width="1.5"/><rect x="376" y="256" width="20" height="20" rx="6" fill="#38bdf8" opacity=".4"/><rect x="376" y="284" width="82" height="7" rx="3.5" fill="#3c5a78"/><rect x="376" y="297" width="60" height="6" rx="3" fill="#243c52"/><rect x="90" y="322" width="200" height="8" rx="4" fill="#143452"/><rect x="410" y="316" width="72" height="20" rx="10" fill="#0e2038" stroke="#38bdf8" stroke-width="1.2"/><rect x="424" y="323" width="44" height="6" rx="3" fill="#7dd6fb"/><rect x="60" y="130" width="10" height="10" rx="2" fill="#38bdf8" opacity=".5"/><rect x="50" y="156" width="10" height="10" rx="2" fill="#38bdf8" opacity=".3"/><rect x="534" y="120" width="10" height="10" rx="2" fill="#38bdf8" opacity=".5"/><rect x="544" y="146" width="10" height="10" rx="2" fill="#38bdf8" opacity=".3"/></svg>'
 };
 
 /* ════════════════ ترجمه‌ها ════════════════ */
@@ -546,7 +582,7 @@ fa:{
   why:[['⚡','یادگیری سریع','همیشه در حال یادگیری تکنولوژی‌های جدیدم'],['🎯','حل خلاقانه مسئله','به چالش‌ها به چشم فرصت نگاه می‌کنم'],['🤝','تعهد و صداقت','تحویل به‌موقع و شفاف در همه مراحل'],['🛠','پشتیبانی واقعی','بعد از تحویل هم کنارت هستم']],
   infoTitle:'📋 اطلاعات شخصی',
   rows:[['نام و نام خانوادگی','یوسف پرورش'],['رشته تحصیلی','کامپیوتر'],['سابقه کار','۲ سال'],['زمینه فعالیت','برنامه‌نویسی و طراحی'],['زبان‌ها','فارسی'],['وضعیت همکاری','آماده دریافت پروژه']]},
- portfolio:{kicker:'نمونه کارها',title:'پروژه‌هایی که <span class="grad">ساختم</span>',desc:'روی هر پروژه کلیک کن تا جزئیات کاملش رو ببینی. برای سفارش پروژه مشابه، از بخش ارتباط با من در ارتباط باش.',more:'جزئیات پروژه ←',empty:'هنوز نمونه‌کاری این دسته اضافه نشده؛ خیلی زود با پروژه‌های جدید برمی‌گردم!'},
+ portfolio:{kicker:'نمونه کارها',title:'پروژه‌هایی که <span class="grad">ساختم</span>',desc:'روی هر پروژه کلیک کن تا جزئیات کاملش رو ببینی. برای سفارش پروژه مشابه، از بخش ارتباط با من در ارتباط باش.',more:'جزئیات پروژه ←',view:'🌐 مشاهده پروژه',empty:'هنوز نمونه‌کاری این دسته اضافه نشده؛ خیلی زود با پروژه‌های جدید برمی‌گردم!'},
  filters:{all:'همه',site:'سایت',shop:'فروشگاه',software:'نرم‌افزار',bot:'ربات',design:'طراحی'},
  skills:{kicker:'مهارت‌ها',title:'چی بلدم و <span class="grad">چقدر بلدم</span>',toolsTitle:'🧰 ابزارهایی که باهاشون کار می‌کنم'},
  experience:{kicker:'سابقه و تجربه',title:'مسیر <span class="grad">رشد من</span>'},
@@ -579,7 +615,7 @@ en:{
   why:[['⚡','Fast Learner','Always exploring new technologies'],['🎯','Creative Problem Solver','I see challenges as opportunities'],['🤝','Committed & Honest','On-time delivery, full transparency'],['🛠','Real Support','I stay by your side after delivery']],
   infoTitle:'📋 Personal Info',
   rows:[['Full Name','Yousef Parvaresh'],['Field of Study','Computer'],['Experience','2 Years'],['Focus Area','Programming & Design'],['Languages','Persian'],['Availability','Open for Projects']]},
- portfolio:{kicker:'Portfolio',title:'Projects I\'ve <span class="grad">built</span>',desc:'Click any project to see its full details. To order a similar one, reach me through the contact section.',more:'View details →',empty:'No projects in this category yet — new ones are coming soon!'},
+ portfolio:{kicker:'Portfolio',title:'Projects I\'ve <span class="grad">built</span>',desc:'Click any project to see its full details. To order a similar one, reach me through the contact section.',more:'View details →',view:'🌐 View Project',empty:'No projects in this category yet — new ones are coming soon!'},
  filters:{all:'All',site:'Websites',shop:'Shops',software:'Software',bot:'Bots',design:'Design'},
  skills:{kicker:'Skills',title:'What I know & <span class="grad">how well</span>',toolsTitle:'🧰 Tools I work with'},
  experience:{kicker:'Experience',title:'My <span class="grad">growth journey</span>'},
@@ -630,6 +666,27 @@ var PROJECTS=[
   desc:{fa:'کالکشن طراحی لوگو و بنر با سبک لوکس و مینیمال برای برندهای خاص؛ شامل لوگوی اختصاصی، ست پست و استوری اینستاگرام و بنرهای تبلیغاتی با تایپوگرافی و پالت رنگی منحصربه‌فرد.',en:'A luxury-minimal logo & banner collection for premium brands — custom logos, Instagram post/story sets and advertising banners with unique typography and palette.'},
   features:{fa:['طراحی لوگوی اختصاصی از صفر','ست پست و استوری اینستاگرام','بنرهای تبلیغاتی لوکس','تایپوگرافی و پالت رنگی خاص','فایل‌های آماده چاپ و انتشار'],en:['Custom logo design from scratch','Instagram post & story sets','Luxury advertising banners','Unique typography & palette','Print & web ready files']},
   tech:['Photoshop','Illustrator','Canva']},
+ {id:'weatherpro',cat:'site',icon:'⛅',year:{fa:'۱۴۰۵',en:'2026'},
+  images:['images/weatherpro-1.jpg'],
+  link:'https://yousef0177.github.io/weatherpro/',
+  title:{fa:'وب‌سایت هواشناسی WeatherPro',en:'WeatherPro Weather Website'},
+  desc:{fa:'وب‌سایت مدرن پیش‌بینی آب‌وهوا برای شهرهای ایران و جهان؛ با جست‌وجوی شهر، نمایش دما و وضعیت جوی، پیش‌بینی روزهای آینده، سرعت باد و رطوبت، شاخص کیفیت هوا (AQI)، حالت روشن و تاریک، پشتیبانی دوزبانه فارسی/انگلیسی و طراحی کاملاً واکنش‌گرا.',en:'A modern weather website for cities across Iran and the world — city search, live temperature & conditions, upcoming-days forecast, wind speed & humidity, Air Quality Index (AQI), light/dark mode, bilingual FA/EN support and a fully responsive design.'},
+  features:{fa:['جست‌وجوی شهرهای ایران و جهان','نمایش دما و وضعیت فعلی آب‌وهوا','پیش‌بینی وضعیت جوی روزهای آینده','نمایش سرعت باد و میزان رطوبت','بررسی شاخص کیفیت هوا (AQI)','حالت روشن و تاریک','پشتیبانی از زبان فارسی و انگلیسی','طراحی واکنش‌گرا برای موبایل و کامپیوتر'],en:['Search cities across Iran & the world','Live temperature & current conditions','Upcoming days weather forecast','Wind speed & humidity display','Air Quality Index (AQI) checker','Light & dark mode','Persian & English support','Fully responsive design']},
+  tech:['HTML5','CSS3','JavaScript','OpenWeather API']},
+ {id:'qronixweb',cat:'site',icon:'🔳',year:{fa:'۱۴۰۵',en:'2026'},
+  images:['images/qronixweb-1.jpg'],
+  link:'https://yousef0177.github.io/QR-Code-Generator/',
+  title:{fa:'وب‌سایت ساخت QR Code — QRONIX',en:'QRONIX — QR Code Generator Website'},
+  desc:{fa:'وب‌سایت کاربردی ساخت سریع و آسان انواع کد QR؛ تبدیل لینک سایت، اتصال Wi-Fi، شماره تلفن، اطلاعات تماس (vCard) و متن به کد QR با امکان دانلود تصویر و اشتراک‌گذاری — با طراحی مدرن، رابط کاربری ساده و تجربه‌ای سریع و کاربردی.',en:'A handy website for quickly creating all kinds of QR codes — turn links, Wi-Fi access, phone numbers, contact info (vCard) and plain text into QR codes, then download the image and share it — modern design, simple interface, fast experience.'},
+  features:{fa:['تبدیل لینک و آدرس سایت به QR Code','ساخت QR Code برای اتصال به Wi-Fi','تبدیل شماره تلفن به کد QR','ساخت QR Code برای اطلاعات تماس (vCard)','تبدیل متن به کد QR','دانلود تصویر کد QR','امکان اشتراک‌گذاری کدهای تولیدشده','طراحی واکنش‌گرا برای موبایل و کامپیوتر'],en:['Turn links & URLs into QR codes','Wi-Fi connection QR codes','Phone number to QR code','vCard contact QR codes','Plain text to QR code','Download the QR image','Share generated codes','Responsive for mobile & desktop']},
+  tech:['HTML5','CSS3','JavaScript','QR Code Generation']},
+ {id:'cyberguardweb',cat:'site',icon:'🛡️',year:{fa:'۱۴۰۵',en:'2026'},
+  images:['images/cyberguardweb-1.jpg'],
+  link:'https://yousef0177.github.io/CyberGuard/#home',
+  title:{fa:'وب‌سایت امنیت سایبری CyberGuard',en:'CyberGuard Cybersecurity Website'},
+  desc:{fa:'وب‌سایتی با موضوع امنیت سایبری برای معرفی مفاهیم امنیت دیجیتال، حفاظت از اطلاعات و افزایش آگاهی کاربران در فضای اینترنت؛ با طراحی مدرن، رابط کاربری جذاب و حرفه‌ای، جلوه‌های بصری چشم‌نواز و تم تیره با رنگ‌های آبی نئونی.',en:'A cybersecurity-themed website introducing digital security concepts, data protection and online safety awareness — modern design, engaging professional UI, eye-catching visual effects and a dark theme with neon blue accents.'},
+  features:{fa:['طراحی مدرن با موضوع امنیت سایبری','معرفی مفاهیم حفاظت از اطلاعات و امنیت شبکه','رابط کاربری جذاب و حرفه‌ای','طراحی مناسب برای تجربه کاربری بهتر','جلوه‌های بصری و تم تیره با رنگ‌های آبی نئونی'],en:['Modern cybersecurity-themed design','Data protection & network security concepts','Engaging, professional UI','Optimized user experience','Neon-blue dark theme with visual effects']},
+  tech:['HTML','CSS','JavaScript']},
  {id:'cyberguard',cat:'software',icon:'🛡️',year:{fa:'۱۴۰۵',en:'2026'},
   images:['images/cyberguard-1.jpg','images/cyberguard-2.jpg','images/cyberguard-3.jpg','images/cyberguard-4.jpg','images/cyberguard-5.jpg','images/cyberguard-6.jpg','images/cyberguard-7.jpg'],
   title:{fa:'نرم‌افزار آموزشی CyberGuard',en:'CyberGuard Security Software'},
@@ -755,6 +812,7 @@ function renderProjects(){
     var media='<span class="icon">'+p.icon+'</span>';
     media+='<img src="'+p.gal[0]+'" alt="'+p.title[lang]+'" loading="lazy" onerror="this.remove()">';
     if(p.gal.length>1)media+='<span class="g-badge">🖼 '+locNum(p.gal.length)+'</span>';
+    if(p.link)media+='<a class="p-visit" href="'+p.link+'" target="_blank" rel="noopener noreferrer" aria-label="'+t('portfolio.view')+'" title="'+t('portfolio.view')+'">↗</a>';
     var card=document.createElement('div');
     card.className='p-card';
     card.style.animationDelay=(idx*60)+'ms';
@@ -766,7 +824,10 @@ function renderProjects(){
         '<p class="p-desc">'+p.desc[lang]+'</p>'+
         '<div class="p-foot"><span class="p-year">📅 '+p.year[lang]+'</span><span class="p-more">'+I18N[lang].portfolio.more+'</span></div>'+
       '</div>';
-    card.addEventListener('click',function(){openProject(p.id)});
+    card.addEventListener('click',function(ev){
+      if(ev.target.closest('.p-visit'))return; /* دکمه مشاهده پروژه → فقط لینک باز شود، مودال نه */
+      openProject(p.id);
+    });
     g.appendChild(card);
   });
 }
@@ -834,6 +895,9 @@ function fillModal(){
   $('#mDesc').textContent=p.desc[lang];
   $('#mFeats').innerHTML=p.features[lang].map(function(f){return '<li>'+f+'</li>'}).join('');
   $('#mTech').innerHTML=p.tech.map(function(x){return '<span>'+x+'</span>'}).join('');
+  var lk=$('#mLink');
+  if(p.link){lk.href=p.link;lk.style.display='flex';lk.textContent=t('portfolio.view')}
+  else lk.style.display='none';
   buildSlides(p);
   $('#modal').classList.add('open');
   document.body.style.overflow='hidden';
@@ -844,6 +908,7 @@ function openProject(id){
   fillModal();
 }
 function closeModal(){
+  closeLightbox();
   $('#modal').classList.remove('open');
   document.body.style.overflow='';
   stopAuto();
@@ -876,10 +941,71 @@ $('#mHero').addEventListener('mouseleave',function(){
     sx=null;
   },{passive:true});
 })();
+/* ════════════════ لایت‌باکس تمام‌صفحه (زوم عکس) ════════════════ */
+function openLightbox(){
+  var imgs=$all('#mSlides img');
+  if(!imgs.length)return;
+  var im=imgs[slideIdx];
+  $('#lbImg').src=im?im.src:'';
+  var multi=imgs.length>1;
+  $('#lbPrev').style.display=multi?'grid':'none';
+  $('#lbNext').style.display=multi?'grid':'none';
+  $('#lbCount').style.display=multi?'block':'none';
+  $('#lbCount').textContent=locNum(slideIdx+1)+' / '+locNum(imgs.length);
+  $('#lightbox').classList.add('open');
+  stopAuto();
+}
+function closeLightbox(){
+  $('#lightbox').classList.remove('open');
+  if($('#modal').classList.contains('open')&&$all('#mSlides img').length>1)startAuto();
+}
+function lbGo(n){
+  var imgs=$all('#mSlides img');
+  if(imgs.length<2)return;
+  showSlide(n);
+  $('#lbImg').src=imgs[slideIdx].src;
+  $('#lbCount').textContent=locNum(slideIdx+1)+' / '+locNum(imgs.length);
+}
+$('#mSlides').addEventListener('click',function(e){
+  if(e.target.tagName==='IMG')openLightbox();
+});
+$('#mZoom').onclick=openLightbox;
+$('#lbClose').onclick=closeLightbox;
+$('#lbPrev').onclick=function(){lbGo(slideIdx-1)};
+$('#lbNext').onclick=function(){lbGo(slideIdx+1)};
+$('#lightbox').addEventListener('click',function(e){
+  if(e.target.id==='lightbox')closeLightbox();
+});
+/* سوایپ لمسی لایت‌باکس — هماهنگ با جهت صفحه */
+(function(){
+  var sx=null;
+  $('#lightbox').addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
+  $('#lightbox').addEventListener('touchend',function(e){
+    if(sx===null)return;
+    var dx=e.changedTouches[0].clientX-sx;
+    if(Math.abs(dx)>40){
+      var fwd=lang==='fa'?dx>0:dx<0;
+      lbGo(slideIdx+(fwd?1:-1));
+    }
+    sx=null;
+  },{passive:true});
+})();
 document.addEventListener('keydown',function(e){
-  var open=$('#modal').classList.contains('open');
-  if(e.key==='Escape'){if(open)closeModal();closeMenu();return}
-  if(!open||$all('#mSlides img').length<2)return;
+  var lbOpen=$('#lightbox').classList.contains('open');
+  var mOpen=$('#modal').classList.contains('open');
+  if(e.key==='Escape'){
+    if(lbOpen){closeLightbox();return}
+    if(mOpen)closeModal();
+    closeMenu();
+    return;
+  }
+  if(lbOpen){
+    if($all('#mSlides img').length<2)return;
+    if(e.key==='ArrowLeft')lbGo(slideIdx+(lang==='fa'?1:-1));
+    else if(e.key==='ArrowRight')lbGo(slideIdx+(lang==='fa'?-1:1));
+    return;
+  }
+  if(!mOpen||$all('#mSlides img').length<2)return;
   if(e.key==='ArrowLeft')slideGo(slideIdx+(lang==='fa'?1:-1));
   else if(e.key==='ArrowRight')slideGo(slideIdx+(lang==='fa'?-1:1));
 });
