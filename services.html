@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>خدمات و تخصص‌ها | یوسف پرورش</title>
+  <meta name="description" content="خدمات یوسف پرورش: طراحی سایت، فروشگاه اینترنتی، ربات تلگرام و n8n، ابزارهای هوش مصنوعی، طراحی لوگو و بنر، نرم‌افزار و رفع خطا.">
+  <meta name="theme-color" content="#1f1d25">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preload" href="fonts/Vazirmatn-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    /* اعمال تم ذخیره‌شده قبل از رندر برای جلوگیری از پرش رنگ */
+    (function () {
+      try {
+        var t = localStorage.getItem('yp-theme');
+        if (t === 'light' || t === 'dark') {
+          document.documentElement.setAttribute('data-theme', t);
+        }
+      } catch (e) { /* حالت خصوصی مرورگر */ }
+    })();
+  </script>
+</head>
+<body data-page="services">
+
+  <a class="skip-link" href="#main">پرش به محتوای اصلی</a>
+
+  <!-- پیش‌بارگذار -->
+  <div id="preloader" class="preloader" aria-hidden="true">
+    <div class="preloader-mark">Y</div>
+  </div>
+
+  <!-- ═══════════════ هدر ═══════════════ -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+
+      <a class="brand" href="index.html" aria-label="یوسف پرورش — صفحه اصلی">
+        <!-- ویرایش: برای نمایش لوگوی خود، فایل لوگو را با نام logo.png در پوشه images بگذارید -->
+        <span class="brand-mark" id="brandMark" aria-hidden="true"><img class="brand-logo" alt="" width="34" height="34"><span class="brand-fallback">Y</span></span>
+        <span class="brand-name">Yousef Parvaresh</span>
+        <span class="brand-divider"></span>
+      </a>
+
+      <nav class="main-nav" aria-label="منوی اصلی">
+        <ul>
+          <li><a class="nav-link" href="index.html">خانه</a></li>
+          <li><a class="nav-link" href="projects.html">پروژه‌ها</a></li>
+          <li><a class="nav-link active" href="services.html">خدمات</a></li>
+          <li><a class="nav-link" href="blog.html">وبلاگ</a></li>
+          <li><a class="nav-link" href="contact.html">تماس با من</a></li>
+          <li><a class="nav-link" href="index.html#about">درباره من</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-btn" id="searchToggle" type="button" aria-label="جست‌وجو در سایت">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button class="icon-btn" id="themeToggle" type="button" aria-label="تغییر حالت روز و شب">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="4.2" y1="4.2" x2="6.3" y2="6.3"/><line x1="17.7" y1="17.7" x2="19.8" y2="19.8"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.2" y1="19.8" x2="6.3" y2="17.7"/><line x1="17.7" y1="6.3" x2="19.8" y2="4.2"/></svg>
+        </button>
+        <button class="menu-toggle" id="navToggle" type="button" aria-label="باز کردن منو" aria-expanded="false" aria-controls="mobileDrawer">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- لایه تیره پشت منوی کشویی -->
+  <div class="overlay" id="overlay" hidden></div>
+
+  <!-- منوی کشویی -->
+  <aside class="drawer" id="mobileDrawer" aria-label="منوی کشویی" aria-hidden="true">
+    <div class="drawer-head">
+      <span class="drawer-title">منو</span>
+      <button class="icon-btn" id="drawerClose" type="button" aria-label="بستن منو">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <nav aria-label="منوی کشویی">
+      <ul class="drawer-links">
+        <li><a class="nav-link" href="index.html"><span class="dot"></span>خانه</a></li>
+        <li><a class="nav-link" href="projects.html"><span class="dot"></span>پروژه‌ها</a></li>
+        <li><a class="nav-link active" href="services.html"><span class="dot"></span>خدمات</a></li>
+        <li><a class="nav-link" href="blog.html"><span class="dot"></span>وبلاگ</a></li>
+        <li><a class="nav-link" href="contact.html"><span class="dot"></span>تماس با من</a></li>
+        <li><a class="nav-link" href="index.html#about"><span class="dot"></span>درباره من</a></li>
+      </ul>
+    </nav>
+    <div class="drawer-foot">
+      <p class="drawer-note">برای شروع همکاری، پیام بدهید:</p>
+      <a class="drawer-mail" href="https://t.me/Yousef017" target="_blank" rel="noopener">@Yousef017 در تلگرام</a>
+<div class="socials "><a href="https://t.me/Yousef017" target="_blank" rel="noopener" aria-label="تلگرام"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg></a><a href="https://www.instagram.com/yousef._.parvaresh" target="_blank" rel="noopener" aria-label="اینستاگرام"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a><a href="https://www.linkedin.com/in/yousef-parvaresh-808247308" target="_blank" rel="noopener" aria-label="لینکدین"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a><a href="https://github.com/yousef0177" target="_blank" rel="noopener" aria-label="گیت‌هاب"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></a></div>
+    </div>
+  </aside>
+<main id="main">
+  <!-- ═══════════════ سربرگ صفحه ═══════════════ -->
+  <section class="page-header">
+    <div class="page-glow" aria-hidden="true"></div>
+    <div class="container page-header-inner">
+      <nav class="crumbs" aria-label="مسیر صفحه">
+        <a href="index.html">خانه</a>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+        <span aria-current="page">خدمات</span>
+      </nav>
+      <h1 class="page-title">خدمات و تخصص‌های من</h1>
+      <p class="page-sub">هر کاری از دنیای دیجیتال که به کسب‌وکار شما کمک می‌کند؛ از طراحی سایت تا ربات تلگرام</p>
+      <span class="page-badge">۶ خدمت اصلی</span>
+    </div>
+  </section>
+
+
+    <!-- ═══════════════ خدمات ═══════════════ -->
+    <section class="section services" id="services">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-tag">خدمات</span>
+          <h2 class="section-title">چه کاری از من برمی‌آید؟</h2>
+          <p class="section-sub">از ایده اولیه تا راه‌اندازی و پشتیبانی، کنار شما هستم</p>
+        </div>
+
+        <div class="services-grid">
+          <div class="service-card reveal" data-delay="0">
+            <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span>
+            <h3>طراحی سایت اختصاصی</h3>
+            <p>از لندینگ تا سایت چندصفحه‌ای کامل با HTML و CSS و JavaScript؛ ریسپانسیو، سریع و آماده انتشار روی GitHub Pages.</p>
+          </div>
+          <div class="service-card reveal" data-delay="80">
+            <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1.6"/><circle cx="19" cy="21" r="1.6"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></span>
+            <h3>فروشگاه اینترنتی</h3>
+            <p>سبد خرید، جستجوی زنده، صفحه جزئیات محصول و فرآیند پرداخت؛ تجربه خریدی که مشتری را برمی‌گرداند.</p>
+          </div>
+          <div class="service-card reveal" data-delay="160">
+            <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 8V4"/><circle cx="12" cy="3" r="1.2"/><circle cx="9" cy="13.5" r="1.3" fill="currentColor" stroke="none"/><circle cx="15" cy="13.5" r="1.3" fill="currentColor" stroke="none"/><path d="M9.5 17h5"/></svg></span>
+            <h3>ربات تلگرام و n8n</h3>
+            <p>ساخت ربات‌های کاربردی تلگرام و اتوماسیون گردش‌کارها با n8n و پایتون؛ ماژولار و قابل توسعه.</p>
+          </div>
+          <div class="service-card reveal" data-delay="0">
+            <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 4.7L18.6 9.6l-4.7 1.9L12 16.2l-1.9-4.7L5.4 9.6l4.7-1.9z"/><path d="M19 14.5l.9 2.2 2.2.9-2.2.9-.9 2.2-.9-2.2-2.2-.9 2.2-.9z"/></svg></span>
+            <h3>ابزارها و هوش مصنوعی</h3>
+            <p>ساخت ابزارهای کاربردی وب با کمک AI؛ دقیقاً مثل QRONIX و WeatherPro که در بخش پروژه‌ها می‌بینید.</p>
+          </div>
+          <div class="service-card reveal" data-delay="80">
+            <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></span>
+            <h3>طراحی لوگو و بنر</h3>
+            <p>لوگوی اختصاصی، ست پست و استوری اینستاگرام و بنرهای تبلیغاتی با تایپوگرافی و پالت رنگی خاص.</p>
+          </div>
+          <div class="service-card reveal" data-delay="160">
+            <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
+            <h3>نرم‌افزار و رفع خطا</h3>
+            <p>اپلیکیشن و نرم‌افزار دسکتاپ با پایتون، اشکال‌زدایی دقیق و بهینه‌سازی پروژه‌های موجود.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ ابزارها ═══════════════ -->
+    <section class="section tools" id="tools">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-tag">ابزارها</span>
+          <h2 class="section-title">ابزارهایی که با آن‌ها کار می‌کنم</h2>
+          <p class="section-sub">ترکیب درست ابزارها، سرعت و کیفیت کار را چند برابر می‌کند</p>
+        </div>
+
+        <div class="tools-grid">
+          <div class="tool-tile reveal" data-delay="60">
+            <span class="tool-mark" aria-hidden="true">VS</span>
+            <span class="tool-name">VS Code</span>
+          </div>
+          <div class="tool-tile reveal" data-delay="60">
+            <span class="tool-mark" aria-hidden="true">Git</span>
+            <span class="tool-name">Git & GitHub</span>
+          </div>
+          <div class="tool-tile reveal" data-delay="60">
+            <span class="tool-mark" aria-hidden="true">n8n</span>
+            <span class="tool-name">n8n</span>
+          </div>
+          <div class="tool-tile reveal" data-delay="60">
+            <span class="tool-mark" aria-hidden="true">AI</span>
+            <span class="tool-name">ChatGPT</span>
+          </div>
+          <div class="tool-tile reveal" data-delay="60">
+            <span class="tool-mark" aria-hidden="true">Cv</span>
+            <span class="tool-name">Canva</span>
+          </div>
+          <div class="tool-tile reveal" data-delay="60">
+            <span class="tool-mark" aria-hidden="true">Ps</span>
+            <span class="tool-name">Photoshop</span>
+          </div>
+          <div class="tool-tile reveal" data-delay="60">
+            <span class="tool-mark" aria-hidden="true">W</span>
+            <span class="tool-name">Word</span>
+          </div>
+          <div class="tool-tile reveal" data-delay="60">
+            <span class="tool-mark" aria-hidden="true">Xl</span>
+            <span class="tool-name">Excel</span>
+          </div>
+          <div class="tool-tile reveal" data-delay="60">
+            <span class="tool-mark" aria-hidden="true">Pp</span>
+            <span class="tool-name">PowerPoint</span>
+          </div>
+          <div class="tool-tile reveal" data-delay="60">
+            <span class="tool-mark" aria-hidden="true">GP</span>
+            <span class="tool-name">GitHub Pages</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ فرآیند همکاری ═══════════════ -->
+    <section class="section process" id="process">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-tag">فرآیند همکاری</span>
+          <h2 class="section-title">مسیر یک پروژه از صفر تا صد</h2>
+          <p class="section-sub">قدم‌به‌قدم، شفاف و بدون ابهام</p>
+        </div>
+
+        <div class="process-grid">
+          <div class="process-step reveal" data-delay="80">
+            <span class="process-num" aria-hidden="true">۰۱</span>
+            <h3>مشاوره و تحلیل</h3>
+            <p>نیاز و هدف شما را می‌شنویم و بهترین و کم‌هزینه‌ترین مسیر را انتخاب می‌کنیم.</p>
+          </div>
+          <div class="process-step reveal" data-delay="80">
+            <span class="process-num" aria-hidden="true">۰۲</span>
+            <h3>طراحی و ساخت</h3>
+            <p>طراحی اختصاصی متناسب با برند شما و پیاده‌سازی با کدنویسی تمیز و استاندارد.</p>
+          </div>
+          <div class="process-step reveal" data-delay="80">
+            <span class="process-num" aria-hidden="true">۰۳</span>
+            <h3>تست و رفع خطا</h3>
+            <p>بررسی دقیق روی موبایل و کامپیوتر و مرورگرهای مختلف تا همه‌چیز بی‌نقص کار کند.</p>
+          </div>
+          <div class="process-step reveal" data-delay="80">
+            <span class="process-num" aria-hidden="true">۰۴</span>
+            <h3>انتشار و پشتیبانی</h3>
+            <p>انتشار آنلاین پروژه، تحویل کامل و همراهی برای نگهداری و توسعه بعدی.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ نوار دعوت به همکاری ═══════════════ -->
+    <section class="section cta-section">
+      <div class="container">
+        <div class="cta-band reveal">
+          <div class="cta-text">
+            <h2>آماده شروع یک پروژه تازه هستم</h2>
+            <p>فقط کافی است ایده‌تان را بگویید؛ بقیه مسیر را با هم طراحی می‌کنیم.</p>
+          </div>
+          <div class="cta-actions">
+            <a class="btn btn-light" href="contact.html">شروع همکاری</a>
+            <a class="btn btn-ghost" href="projects.html">مشاهده نمونه‌کارها</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ═══════════════ فوتر ═══════════════ -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html"><span class="brand-mark" id="brandMarkFooter" aria-hidden="true"><img class="brand-logo" alt="" width="30" height="30"><span class="brand-fallback">Y</span></span><span class="brand-name">Yousef Parvaresh</span></a>
+        <p>طراح سایت و برنامه‌نویس پایتون از بیله‌سوار، اردبیل؛ خلق وب‌سایت، فروشگاه اینترنتی، ربات تلگرام و ابزارهای کاربردی با طراحی مدرن.</p>
+      </div>
+      <div class="footer-col">
+        <h4>دسترسی سریع</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">خانه</a></li>
+          <li><a href="index.html#about">درباره من</a></li>
+          <li><a href="projects.html">پروژه‌ها</a></li>
+          <li><a href="services.html">خدمات</a></li>
+          <li><a href="blog.html">وبلاگ</a></li>
+          <li><a href="contact.html">تماس با من</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>ارتباط با من</h4>
+        <ul class="footer-contact">
+          <li><a href="mailto:yousefparvaresh89@gmail.com" class="ltr">yousefparvaresh89@gmail.com</a></li>
+          <li><a href="tel:+989370132965" class="ltr" dir="ltr">۰۹۳۷۰۱۳۲۹۶۵</a></li>
+          <li><a href="https://t.me/Yousef017" target="_blank" rel="noopener" class="ltr">@Yousef017</a></li>
+          <li><a href="https://t.me/NeuroCodeX_1" target="_blank" rel="noopener" class="ltr">کانال @NeuroCodeX_1</a></li>
+        </ul>
+<div class="socials footer-socials"><a href="https://t.me/Yousef017" target="_blank" rel="noopener" aria-label="تلگرام"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg></a><a href="https://www.instagram.com/yousef._.parvaresh" target="_blank" rel="noopener" aria-label="اینستاگرام"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a><a href="https://www.linkedin.com/in/yousef-parvaresh-808247308" target="_blank" rel="noopener" aria-label="لینکدین"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a><a href="https://github.com/yousef0177" target="_blank" rel="noopener" aria-label="گیت‌هاب"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></a></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <span>© <span id="faYear">۱۴۰۵</span> یوسف پرورش — تمامی حقوق محفوظ است.</span>
+        <span>طراحی و توسعه با دقت و علاقه</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- دکمه بازگشت به بالا -->
+  <button class="back-to-top" id="backToTop" type="button" aria-label="بازگشت به بالای صفحه">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg>
+  </button>
+
+  <!-- مودال جزئیات پروژه / مقاله -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-dialog" role="document">
+      <button class="modal-close icon-btn" id="modalClose" type="button" aria-label="بستن">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div class="modal-content" id="modalContent"></div>
+    </div>
+  </div>
+
+  <!-- جست‌وجوی کل سایت -->
+  <div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="جست‌وجو در سایت" hidden>
+    <div class="modal-backdrop" id="searchBackdrop"></div>
+    <div class="search-panel">
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="searchInput" placeholder="جست‌وجو در پروژه‌ها، خدمات و مقاله‌ها..." autocomplete="off">
+        <button class="icon-btn" id="searchClose" type="button" aria-label="بستن جست‌وجو">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <p class="search-hint" id="searchHint">مثلاً: هواشناسی، فروشگاه، QR Code، ربات، تلگرام</p>
+      <ul class="search-results" id="searchResults"></ul>
+    </div>
+  </div>
+
+  <!-- اعلان (توست) -->
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <span class="toast-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span>
+    <span id="toastMsg"></span>
+  </div>
+
+  <noscript>
+    <style>.reveal{opacity:1;transform:none}.preloader{display:none}</style>
+  </noscript>
+
+  <script src="js/script.js" defer></script>
+</body>
+</html>

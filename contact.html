@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تماس با من | یوسف پرورش</title>
+  <meta name="description" content="راه‌های ارتباط با یوسف پرورش: تلگرام @Yousef017، اینستاگرام، لینکدین، گیت‌هاب، تلفن ۰۹۳۷۰۱۳۲۹۶۵ و ایمیل.">
+  <meta name="theme-color" content="#1f1d25">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preload" href="fonts/Vazirmatn-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    /* اعمال تم ذخیره‌شده قبل از رندر برای جلوگیری از پرش رنگ */
+    (function () {
+      try {
+        var t = localStorage.getItem('yp-theme');
+        if (t === 'light' || t === 'dark') {
+          document.documentElement.setAttribute('data-theme', t);
+        }
+      } catch (e) { /* حالت خصوصی مرورگر */ }
+    })();
+  </script>
+</head>
+<body data-page="contact">
+
+  <a class="skip-link" href="#main">پرش به محتوای اصلی</a>
+
+  <!-- پیش‌بارگذار -->
+  <div id="preloader" class="preloader" aria-hidden="true">
+    <div class="preloader-mark">Y</div>
+  </div>
+
+  <!-- ═══════════════ هدر ═══════════════ -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+
+      <a class="brand" href="index.html" aria-label="یوسف پرورش — صفحه اصلی">
+        <!-- ویرایش: برای نمایش لوگوی خود، فایل لوگو را با نام logo.png در پوشه images بگذارید -->
+        <span class="brand-mark" id="brandMark" aria-hidden="true"><img class="brand-logo" alt="" width="34" height="34"><span class="brand-fallback">Y</span></span>
+        <span class="brand-name">Yousef Parvaresh</span>
+        <span class="brand-divider"></span>
+      </a>
+
+      <nav class="main-nav" aria-label="منوی اصلی">
+        <ul>
+          <li><a class="nav-link" href="index.html">خانه</a></li>
+          <li><a class="nav-link" href="projects.html">پروژه‌ها</a></li>
+          <li><a class="nav-link" href="services.html">خدمات</a></li>
+          <li><a class="nav-link" href="blog.html">وبلاگ</a></li>
+          <li><a class="nav-link active" href="contact.html">تماس با من</a></li>
+          <li><a class="nav-link" href="index.html#about">درباره من</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-btn" id="searchToggle" type="button" aria-label="جست‌وجو در سایت">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button class="icon-btn" id="themeToggle" type="button" aria-label="تغییر حالت روز و شب">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="4.2" y1="4.2" x2="6.3" y2="6.3"/><line x1="17.7" y1="17.7" x2="19.8" y2="19.8"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.2" y1="19.8" x2="6.3" y2="17.7"/><line x1="17.7" y1="6.3" x2="19.8" y2="4.2"/></svg>
+        </button>
+        <button class="menu-toggle" id="navToggle" type="button" aria-label="باز کردن منو" aria-expanded="false" aria-controls="mobileDrawer">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- لایه تیره پشت منوی کشویی -->
+  <div class="overlay" id="overlay" hidden></div>
+
+  <!-- منوی کشویی -->
+  <aside class="drawer" id="mobileDrawer" aria-label="منوی کشویی" aria-hidden="true">
+    <div class="drawer-head">
+      <span class="drawer-title">منو</span>
+      <button class="icon-btn" id="drawerClose" type="button" aria-label="بستن منو">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <nav aria-label="منوی کشویی">
+      <ul class="drawer-links">
+        <li><a class="nav-link" href="index.html"><span class="dot"></span>خانه</a></li>
+        <li><a class="nav-link" href="projects.html"><span class="dot"></span>پروژه‌ها</a></li>
+        <li><a class="nav-link" href="services.html"><span class="dot"></span>خدمات</a></li>
+        <li><a class="nav-link" href="blog.html"><span class="dot"></span>وبلاگ</a></li>
+        <li><a class="nav-link active" href="contact.html"><span class="dot"></span>تماس با من</a></li>
+        <li><a class="nav-link" href="index.html#about"><span class="dot"></span>درباره من</a></li>
+      </ul>
+    </nav>
+    <div class="drawer-foot">
+      <p class="drawer-note">برای شروع همکاری، پیام بدهید:</p>
+      <a class="drawer-mail" href="https://t.me/Yousef017" target="_blank" rel="noopener">@Yousef017 در تلگرام</a>
+<div class="socials "><a href="https://t.me/Yousef017" target="_blank" rel="noopener" aria-label="تلگرام"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg></a><a href="https://www.instagram.com/yousef._.parvaresh" target="_blank" rel="noopener" aria-label="اینستاگرام"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a><a href="https://www.linkedin.com/in/yousef-parvaresh-808247308" target="_blank" rel="noopener" aria-label="لینکدین"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a><a href="https://github.com/yousef0177" target="_blank" rel="noopener" aria-label="گیت‌هاب"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></a></div>
+    </div>
+  </aside>
+<main id="main">
+  <!-- ═══════════════ سربرگ صفحه ═══════════════ -->
+  <section class="page-header">
+    <div class="page-glow" aria-hidden="true"></div>
+    <div class="container page-header-inner">
+      <nav class="crumbs" aria-label="مسیر صفحه">
+        <a href="index.html">خانه</a>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+        <span aria-current="page">تماس با من</span>
+      </nav>
+      <h1 class="page-title">بیایید صحبت کنیم</h1>
+      <p class="page-sub">سریع‌ترین راه، پیام در تلگرام است؛ اما هر راهی که راحت‌ترید را انتخاب کنید</p>
+      <span class="page-badge">پاسخ‌گویی سریع</span>
+    </div>
+  </section>
+
+    <!-- ═══════════════ راه‌های سریع ارتباط ═══════════════ -->
+    <section class="section quick-contact-section">
+      <div class="container">
+        <div class="quick-contact">
+
+          <div class="qc-card qc-tg reveal">
+            <span class="qc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg></span>
+            <h2>تلگرام</h2>
+            <a class="qc-handle ltr" href="https://t.me/Yousef017" target="_blank" rel="noopener">@Yousef017</a>
+            <p>سریع‌ترین راه ارتباطی؛ برای مشاوره، سفارش پروژه و پشتیبانی همین‌جا پیام بدهید.</p>
+            <div class="qc-buttons">
+              <a class="btn btn-primary" href="https://t.me/Yousef017" target="_blank" rel="noopener">ورود مستقیم به آیدی</a>
+              <a class="btn btn-outline" href="https://t.me/Yousef017" target="_blank" rel="noopener">پیام به پشتیبانی</a>
+            </div>
+          </div>
+
+          <div class="qc-card qc-ig reveal" data-delay="90">
+            <span class="qc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></span>
+            <h2>اینستاگرام</h2>
+            <a class="qc-handle ltr" href="https://www.instagram.com/yousef._.parvaresh" target="_blank" rel="noopener">@yousef._.parvaresh</a>
+            <p>طرح‌ها و پروژه‌ها را اینجا می‌بینید؛ برای شروع گفتگو از دکمه پیام مستقیم استفاده کنید.</p>
+            <div class="qc-buttons">
+              <a class="btn btn-primary" href="https://ig.me/m/yousef._.parvaresh" target="_blank" rel="noopener">پیام مستقیم</a>
+              <a class="btn btn-outline" href="https://www.instagram.com/yousef._.parvaresh" target="_blank" rel="noopener">مشاهده صفحه</a>
+            </div>
+          </div>
+
+          <div class="qc-card qc-ch reveal" data-delay="180">
+            <span class="qc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg></span>
+            <h2>کانال تلگرام</h2>
+            <a class="qc-handle ltr" href="https://t.me/NeuroCodeX_1" target="_blank" rel="noopener">@NeuroCodeX_1</a>
+            <p>آموزش‌ها، ابزارهای کاربردی و خبر پروژه‌های جدید را در کانال NeuroCodeX دنبال کنید.</p>
+            <div class="qc-buttons">
+              <a class="btn btn-primary" href="https://t.me/NeuroCodeX_1" target="_blank" rel="noopener">عضویت در کانال</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════ اطلاعات تماس و فرم ═══════════════ -->
+    <section class="section contact contact-page" id="contactDetails">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-info reveal">
+            <div class="info-card">
+              <span class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
+              <div><span class="info-title">ایمیل</span>
+                <a class="info-text ltr" href="mailto:yousefparvaresh89@gmail.com">yousefparvaresh89@gmail.com</a>
+                <button class="copy-btn" type="button" data-copy="yousefparvaresh89@gmail.com" aria-label="کپی آدرس ایمیل"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+              </div>
+            </div>
+            <div class="info-card">
+              <span class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+              <div><span class="info-title">تلفن</span>
+                <a class="info-text ltr" href="tel:+989370132965" dir="ltr">۰۹۳۷۰۱۳۲۹۶۵</a>
+                <button class="copy-btn" type="button" data-copy="09370132965" aria-label="کپی شماره تلفن"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+              </div>
+            </div>
+            <div class="info-card">
+              <span class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+              <div><span class="info-title">آدرس</span>
+                <span class="info-text">ایران، استان اردبیل، شهرستان بیله‌سوار</span>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%D8%A8%DB%8C%D9%84%D9%87%E2%80%8C%D8%B3%D9%88%D8%A7%D8%B1%D8%8C+%D8%A7%D8%B1%D8%AF%D8%A8%DB%8C%D9%84" target="_blank" rel="noopener">مشاهده روی نقشه <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+              </div>
+            </div>
+            <div class="info-card">
+              <span class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></span>
+              <div><span class="info-title">گیت‌هاب</span>
+                <a class="info-text ltr" href="https://github.com/yousef0177" target="_blank" rel="noopener">github.com/yousef0177</a>
+              </div>
+            </div>
+            <div class="info-card">
+              <span class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span>
+              <div><span class="info-title">لینکدین</span>
+                <a class="info-text" href="https://www.linkedin.com/in/yousef-parvaresh-808247308" target="_blank" rel="noopener">پروفایل یوسف پرورش</a>
+              </div>
+            </div>
+<div class="socials contact-socials"><a href="https://t.me/Yousef017" target="_blank" rel="noopener" aria-label="تلگرام"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg></a><a href="https://www.instagram.com/yousef._.parvaresh" target="_blank" rel="noopener" aria-label="اینستاگرام"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a><a href="https://www.linkedin.com/in/yousef-parvaresh-808247308" target="_blank" rel="noopener" aria-label="لینکدین"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a><a href="https://github.com/yousef0177" target="_blank" rel="noopener" aria-label="گیت‌هاب"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></a></div>
+          </div>
+
+          <form class="contact-form reveal" data-delay="100" id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="fName">نام و نام خانوادگی</label>
+                <input type="text" id="fName" name="name" autocomplete="name" placeholder="مثلاً: سارا محمدی">
+                <span class="error-msg" id="errName"></span>
+              </div>
+              <div class="form-field">
+                <label for="fEmail">ایمیل شما</label>
+                <input type="email" id="fEmail" name="email" autocomplete="email" placeholder="you@example.com" dir="ltr" style="text-align:right">
+                <span class="error-msg" id="errEmail"></span>
+              </div>
+            </div>
+            <div class="form-field">
+              <label for="fSubject">موضوع</label>
+              <input type="text" id="fSubject" name="subject" placeholder="مثلاً: طراحی فروشگاه اینترنتی">
+              <span class="error-msg" id="errSubject"></span>
+            </div>
+            <div class="form-field">
+              <label for="fMessage">پیام شما</label>
+              <textarea id="fMessage" name="message" rows="5" placeholder="پروژه‌تان را کوتاه توضیح دهید..."></textarea>
+              <span class="error-msg" id="errMsg"></span>
+            </div>
+            <button class="btn btn-primary btn-block" type="submit">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg>
+              ارسال پیام
+            </button>
+            <p class="form-note">با ارسال این فرم، پیام مستقیم به ایمیل من باز می‌شود؛ یا سریع‌تر، در تلگرام پیام بدهید.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ═══════════════ فوتر ═══════════════ -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html"><span class="brand-mark" id="brandMarkFooter" aria-hidden="true"><img class="brand-logo" alt="" width="30" height="30"><span class="brand-fallback">Y</span></span><span class="brand-name">Yousef Parvaresh</span></a>
+        <p>طراح سایت و برنامه‌نویس پایتون از بیله‌سوار، اردبیل؛ خلق وب‌سایت، فروشگاه اینترنتی، ربات تلگرام و ابزارهای کاربردی با طراحی مدرن.</p>
+      </div>
+      <div class="footer-col">
+        <h4>دسترسی سریع</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">خانه</a></li>
+          <li><a href="index.html#about">درباره من</a></li>
+          <li><a href="projects.html">پروژه‌ها</a></li>
+          <li><a href="services.html">خدمات</a></li>
+          <li><a href="blog.html">وبلاگ</a></li>
+          <li><a href="contact.html">تماس با من</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>ارتباط با من</h4>
+        <ul class="footer-contact">
+          <li><a href="mailto:yousefparvaresh89@gmail.com" class="ltr">yousefparvaresh89@gmail.com</a></li>
+          <li><a href="tel:+989370132965" class="ltr" dir="ltr">۰۹۳۷۰۱۳۲۹۶۵</a></li>
+          <li><a href="https://t.me/Yousef017" target="_blank" rel="noopener" class="ltr">@Yousef017</a></li>
+          <li><a href="https://t.me/NeuroCodeX_1" target="_blank" rel="noopener" class="ltr">کانال @NeuroCodeX_1</a></li>
+        </ul>
+<div class="socials footer-socials"><a href="https://t.me/Yousef017" target="_blank" rel="noopener" aria-label="تلگرام"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg></a><a href="https://www.instagram.com/yousef._.parvaresh" target="_blank" rel="noopener" aria-label="اینستاگرام"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a><a href="https://www.linkedin.com/in/yousef-parvaresh-808247308" target="_blank" rel="noopener" aria-label="لینکدین"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a><a href="https://github.com/yousef0177" target="_blank" rel="noopener" aria-label="گیت‌هاب"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></a></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <span>© <span id="faYear">۱۴۰۵</span> یوسف پرورش — تمامی حقوق محفوظ است.</span>
+        <span>طراحی و توسعه با دقت و علاقه</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- دکمه بازگشت به بالا -->
+  <button class="back-to-top" id="backToTop" type="button" aria-label="بازگشت به بالای صفحه">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg>
+  </button>
+
+  <!-- مودال جزئیات پروژه / مقاله -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-dialog" role="document">
+      <button class="modal-close icon-btn" id="modalClose" type="button" aria-label="بستن">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div class="modal-content" id="modalContent"></div>
+    </div>
+  </div>
+
+  <!-- جست‌وجوی کل سایت -->
+  <div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="جست‌وجو در سایت" hidden>
+    <div class="modal-backdrop" id="searchBackdrop"></div>
+    <div class="search-panel">
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="searchInput" placeholder="جست‌وجو در پروژه‌ها، خدمات و مقاله‌ها..." autocomplete="off">
+        <button class="icon-btn" id="searchClose" type="button" aria-label="بستن جست‌وجو">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <p class="search-hint" id="searchHint">مثلاً: هواشناسی، فروشگاه، QR Code، ربات، تلگرام</p>
+      <ul class="search-results" id="searchResults"></ul>
+    </div>
+  </div>
+
+  <!-- اعلان (توست) -->
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <span class="toast-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span>
+    <span id="toastMsg"></span>
+  </div>
+
+  <noscript>
+    <style>.reveal{opacity:1;transform:none}.preloader{display:none}</style>
+  </noscript>
+
+  <script src="js/script.js" defer></script>
+</body>
+</html>
